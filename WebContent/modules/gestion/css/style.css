@@ -1,0 +1,142 @@
+@CHARSET "ISO-8859-1";
+.compte{
+	width: 250px;
+	float: left;
+	background: rgba(35, 150, 100, 0.1);
+	border: 2px solid rgba(35, 150, 100, 1);
+	margin: 6px;
+	padding: 35px 10px 35px 10px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.3);
+}
+.compte h5.title{
+	position: absolute;
+	background: rgba(35, 150, 100, 1);
+	color: white;
+	width: 250px;
+	height: 25px;
+	overflow: hidden;
+	padding: 3px 10px;
+	margin: -35px 0px 0px -10px;
+}
+.infoCompte{
+	
+}
+.infoLine, .command{
+	display: block;
+	width: 100%;
+	line-height: 25px;
+	padding: 5px;
+}
+.command{
+	position: absolute;
+	background: rgba(35, 150, 100, 1);
+	color: white;
+	width: 250px;
+	padding: 3px 10px;
+	margin: 2px 0px 0px -10px;
+}
+.inactif h5.title, .inactif .command{
+	background: #D69A2B !important;
+}
+.inactif{
+	border: 2px solid #D69A2B !important;
+}
+.infoLabel{
+	color: #D69A2B;
+}
+.anInfo{
+}
+.cmd{
+	display: block;
+	margin: 1px 2px 1px 0px;
+	float: left;
+}
+.cmdCircle{
+	position: relative;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	box-sizing: border-box;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-color: rgba(35, 150, 100, 0.1);
+}
+.acc_type_icon{
+	background-image: url("../images/icon-48-newcategory.png");
+}
+.acc_admin_icon{
+	background-image: url("../images/icon-48-cpanel.png");
+}
+.man_usr_icon{
+	background-image: url("../images/icon-48-user.png");
+}
+.con_acc_icon{
+	background-image: url("../images/icon-48-contacts.png");
+}
+.deb_acc_icon{
+	background-image: url("../images/icon-48-revert.png");
+}
+.cred_acc_icon{
+	background-image: url("../images/icon-48-article-add.png");
+}
+.del_acc_icon{
+	background-image: url("../images/icon-48-trash.png");
+}
+.trans_icon{
+	background-image: url("../images/icon-48-move.png");
+}
+.val_op_icon{
+	background-image: url("../images/icon-48-apply.png");
+}
+.acc_icon{
+	background-image: url("../images/icon-48-category.png");
+}
+.cre_acc_icon{
+	background-image: url("../images/icon-48-contacts-categories.png");
+}
+.add_usr_icon{
+	background-image: url("../images/icon-48-user-add.png");
+}
+.his_acc_icon{
+	background-image: url("../images/icon-48-archive.png");
+}
+.auth_button{
+	background: rgba(35, 150, 50, 0.7); 
+	color: white; 
+	line-height: 25px; 
+	font-size: 1.03em; 
+	padding: 1px 5px 1px 3px; 
+	border: 1px solid rgba(35, 150, 50, 0.7);
+	border-radius: 5px;
+}
+.select{
+	max-width: 200px;
+	background: rgba(35, 150, 50, 0.5); 
+	color: white; 
+	line-height: 25px; 
+	font-size: 1.03em; 
+	padding: 1px 5px 1px 3px; 
+	border: 1px solid rgba(35, 150, 50, 0.7);
+	border-radius: 5px;
+}
+.auth_button:hover{
+	border: 1px solid #D69A2B; 
+	background: #D69A2B;
+}
+.fieldset{
+	border: 1px solid #D69A2B;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.1);
+}
+.results .resultLine{
+	display: block;
+	width: 100%;
+	line-height: 20px;
+	font-size: 0.95em;
+	margin-top: 10px;
+}
+.ui-state-highlight {
+	
+}

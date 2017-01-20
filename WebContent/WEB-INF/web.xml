@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Research Outcome Publishing</display-name>
+  <listener>
+    <listener-class>rop.miu.util.ROPApplication</listener-class>
+  </listener>
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <include-prelude>/ressources/jsp/taglibs.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+  <filter>
+    <filter-name>FiltrePrincipal</filter-name>
+    <filter-class>rop.miu.FiltrePrincipal</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltrePrincipal</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>FiltreAdmin</filter-name>
+    <filter-class>rop.miu.FiltreAdmin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltreAdmin</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>ModControlpanel</servlet-name>
+    <servlet-class>rop.miu.modules.controlpanel.ModControlpanel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModControlpanel</servlet-name>
+    <url-pattern>/ModControlpanel</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModHello</servlet-name>
+    <servlet-class>rop.miu.modules.hello.ModHello</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModHello</servlet-name>
+    <url-pattern>/ModHello</url-pattern>
+  </servlet-mapping>
+</web-app>
