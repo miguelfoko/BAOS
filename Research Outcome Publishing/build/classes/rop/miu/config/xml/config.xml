@@ -3,6 +3,7 @@
 	<modules>
 	    <module>controlpanel</module>
 	    <module>authentication</module>
+	    <module>journal</module>
 		<default>controlpanel</default>
 	</modules>
 	<adminmodules>

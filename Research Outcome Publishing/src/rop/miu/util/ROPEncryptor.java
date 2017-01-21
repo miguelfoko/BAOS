@@ -19,24 +19,24 @@ import sun.misc.BASE64Encoder;
 
 public class ROPEncryptor {
 	/**
-	 * Forme courte de l'algorithme de cryptage par défaut
+	 * Forme courte de l'algorithme de cryptage par dï¿½faut
 	 */
 	public static final String DEFAULT_ENCRYPTION_ALGO_SHORT = "AES";
 	
 	/**
-	 * Forme longue de l'algorithme de cryptage par défaut
+	 * Forme longue de l'algorithme de cryptage par dï¿½faut
 	 */
 	public static final String DEFAULT_ENCRYPTION_ALGO_LONG = "AES/CBC/PKCS5Padding";
 	
 	/**
-	 * Clé privée de cryptage (<i>ne utiliser qu'en cas de besoin réel</i>)
+	 * Clï¿½ privï¿½e de cryptage (<i>ne utiliser qu'en cas de besoin rï¿½el</i>)
 	 */
 	public static final String DEFAULT_ENCRYPTION_SECRET_KEY = "#1_%$M-(>=*/@]{+";
 	
 	/**
-	 * Vecteur d'initialisation de cryptage (<i>ne utiliser qu'en cas de besoin réel</i>) 
+	 * Vecteur d'initialisation de cryptage (<i>ne utiliser qu'en cas de besoin rï¿½el</i>) 
 	 */
-	public static final String DEFAULT_ENCRYPTION_INIT_VECTOR = "<~r2&-I|ç.q[}9s:";
+	public static final String DEFAULT_ENCRYPTION_INIT_VECTOR = "<~r2&-I|a.q[}9s:";
 
 	public String encrypt(String message) throws ROPCryptographyException{
 		try {
