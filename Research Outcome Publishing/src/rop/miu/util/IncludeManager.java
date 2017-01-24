@@ -62,4 +62,11 @@ public class IncludeManager {
 	public void addKeyword(String keyword){
 		getKeywordList().add(keyword);
     }
+	
+	public void resetInclude(){
+		request.setAttribute("listeInclude", new ArrayList<String>());
+		request.setAttribute("listeCss", new ArrayList<String>());
+		request.setAttribute("listeJs", new ArrayList<String>());
+		request.setAttribute("keywords", new ArrayList<String>());
+	}
 }

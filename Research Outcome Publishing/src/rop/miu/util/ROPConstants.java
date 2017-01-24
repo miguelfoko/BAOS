@@ -21,24 +21,23 @@ public class ROPConstants {
 				STATE_WAITING_CORRECTION = 3,
 				STATE_WAITING_VALIDATION = 4,
 				STATE_DRAFT = 4,
-				STATE_SUBMITTED = 5;
+				STATE_SUBMITTED = 5,
+				
+				MAX_REFRESH_TIME = 180;
 
 	public static final String
-				DROIT_TOUT = "TOUT",
-				DROIT_TOUT_SAUF = "TOUT_SAUF",
-				DROIT_ACCEDER_ADMIN = "ACCEDER_ADMIN",
-				DROIT_CONSULTER_COMPTES = "CONSULTER_COMPTES",
-				DROIT_DEBITER_COMPTES = "DEBITER_COMPTES",
-				DROIT_CREDITER_COMPTES = "CREDITER_COMPTES",
-				DROIT_CREER_COMPTES = "CREER_COMPTES",
-				DROIT_GELER_COMPTES = "GELER_COMPTES",
-				DROIT_REALISER_TRANFERT = "REALISER_TRANFERT",
-				DROIT_CONSULTER_OPERATION = "CONSULTER_OPERATION",
-				DROIT_VALIDER_OPERATION = "VALIDER_OPERATION",
-				DROIT_OPERATION_GENERALE = "OPERATION_GENERALE",
+				PUBLIC_ACCESS = "public",
+				MEMBER_ACCESS = "registered",
+				ADMIN_ACCESS = "administrator",
+				
+				MEMBER_ACCESS_RIGHT = "Access member modules options",
+				ADMIN_ACCESS_RIGHT = "Access admin modules options",
+				ROOT_RIGHT = "All",
 				
 				DEBIT = "Debit",
 				CREDIT = "Credit",
 				
-				DAO_FILE = "rop/miu/dao/dao.cfg.rop.xml";
+				DAO_FILE = "rop/miu/dao/dao.cfg.rop.xml",
+				
+				COOKIE_SESSION_ID_LABEL = "baossrid";
 }

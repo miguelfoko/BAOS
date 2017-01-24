@@ -12,13 +12,18 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import rop.miu.beans.BaoUser;
+import rop.miu.dao.ROPUserDao;
 import rop.miu.util.IncludeManager;
-import rop.miu.util.ROPCryptographyException;
+import rop.miu.util.ROPConstants;
 import rop.miu.util.ROPEncryptor;
 import rop.miu.util.ROPLanguageManager;
+import rop.miu.util.exceptions.ROPApplException;
+import rop.miu.util.exceptions.ROPCryptographyException;
 
 
 public class FiltrePrincipal implements Filter {
@@ -41,6 +46,8 @@ public class FiltrePrincipal implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
+		
+		this.init(request, response);
 		
 		testeur = new TesteurFiltrePrincipal();
 		String tag = (String)request.getSession().getAttribute("tag");
@@ -79,13 +86,13 @@ public class FiltrePrincipal implements Filter {
 			}
 			request.setAttribute("langItems", link);
 			
-			String success = request.getParameter("success");
+			String success = request.getParameter("s");
 			if(success != null)
-				request.setAttribute("success", languageManager.getLanguageValue(encryptor.decrypt(success), tag));
+				request.setAttribute("systemSuccess", languageManager.getLanguageValue(encryptor.decrypt(success), tag));
 			
-			String error = request.getParameter("error");
+			String error = request.getParameter("e");
 			if(error != null)
-				request.setAttribute("error", languageManager.getLanguageValue(encryptor.decrypt(error), tag));
+				request.setAttribute("systemError", languageManager.getLanguageValue(encryptor.decrypt(error), tag));
 		}catch(Exception e){
 			
 		}
@@ -107,13 +114,6 @@ public class FiltrePrincipal implements Filter {
 			return;
 		}
 		
-		//Récupérer un user
-		
-		/*if(user == null){
-			request.getServletContext().getRequestDispatcher("/ModAuth").forward(request, response);
-			return;
-		}*/
-		
 		if((chemin.endsWith("/index.jsp") || chemin.length() <= 1) && (moduleName == null)){
 			request.getServletContext().getRequestDispatcher("/Mod"+TesteurFiltrePrincipal.setFirstUppercase(testeur.getDefaultModule())).forward(request, response);
 			return;
@@ -125,6 +125,38 @@ public class FiltrePrincipal implements Filter {
 			includeManager.addJSP(REDIRECT404);
 			includeManager.setTitle(languageManager.getLanguageValue("404_title", tag));
 			request.getServletContext().getRequestDispatcher("/templates/"+testeur.getDefaultTemplate()+"/index.jsp").forward(request, response);
+		}
+	}
+
+	private void init(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getCookies() != null){
+			for(Cookie cookie : request.getCookies()){
+				if(cookie.getName().equalsIgnoreCase(ROPConstants.COOKIE_SESSION_ID_LABEL)){
+					try{						
+						this.constructSessionWithCookie(cookie.getValue(), request, response);
+					} catch(ROPApplException e){
+						
+					}
+					break;
+				}
+			}
+		}
+	}
+
+	private void constructSessionWithCookie(String value, HttpServletRequest request, HttpServletResponse response) throws ROPApplException{
+		try {
+			String baossrid = encryptor.decrypt(value);
+			int id = Integer.parseInt(baossrid);
+			BaoUser user = ROPUserDao.getUserById(id);
+			if(user != null){
+				request.getSession().setAttribute("baoUser", user);
+				Cookie cook = new Cookie(ROPConstants.COOKIE_SESSION_ID_LABEL, encryptor.encrypt(user.getUserId()+""));
+				cook.setPath("/");
+				cook.setMaxAge(2 * 7 * 24 * 60 * 60);
+				response.addCookie(cook);
+			}
+		}catch(Exception e){
+			throw new ROPApplException(e);
 		}
 	}
 

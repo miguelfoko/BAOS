@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import rop.miu.util.ROPConstants;
-import rop.miu.util.ROPDaoException;
+import rop.miu.util.exceptions.ROPDaoException;
 
 
 

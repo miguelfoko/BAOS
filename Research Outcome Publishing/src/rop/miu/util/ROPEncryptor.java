@@ -13,30 +13,30 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import rop.miu.util.ROPCryptographyException;
+import rop.miu.util.exceptions.ROPCryptographyException;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 public class ROPEncryptor {
 	/**
-	 * Forme courte de l'algorithme de cryptage par dï¿½faut
+	 * Forme courte de l'algorithme de cryptage par défaut
 	 */
 	public static final String DEFAULT_ENCRYPTION_ALGO_SHORT = "AES";
 	
 	/**
-	 * Forme longue de l'algorithme de cryptage par dï¿½faut
+	 * Forme longue de l'algorithme de cryptage par défaut
 	 */
 	public static final String DEFAULT_ENCRYPTION_ALGO_LONG = "AES/CBC/PKCS5Padding";
 	
 	/**
-	 * Clï¿½ privï¿½e de cryptage (<i>ne utiliser qu'en cas de besoin rï¿½el</i>)
+	 * Clé privée de cryptage (<i>ne utiliser qu'en cas de besoin réel</i>)
 	 */
 	public static final String DEFAULT_ENCRYPTION_SECRET_KEY = "#1_%$M-(>=*/@]{+";
 	
 	/**
-	 * Vecteur d'initialisation de cryptage (<i>ne utiliser qu'en cas de besoin rï¿½el</i>) 
+	 * Vecteur d'initialisation de cryptage (<i>ne utiliser qu'en cas de besoin réel</i>) 
 	 */
-	public static final String DEFAULT_ENCRYPTION_INIT_VECTOR = "<~r2&-I|a.q[}9s:";
+	public static final String DEFAULT_ENCRYPTION_INIT_VECTOR = "<~r2&-I|ç.q[}9s:";
 
 	public String encrypt(String message) throws ROPCryptographyException{
 		try {

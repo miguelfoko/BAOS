@@ -1,16 +1,15 @@
 package rop.miu.modules.journal;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import rop.miu.beans.BaoJournalOrConf;
 import rop.miu.dao.ROPCrudDao;
 import rop.miu.modules.ServletModel;
-import rop.miu.util.ROPDaoException;
+import rop.miu.util.exceptions.ROPDaoException;
 
 
 public class ModJournal extends ServletModel {

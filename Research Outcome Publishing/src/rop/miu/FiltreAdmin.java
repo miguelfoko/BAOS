@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import rop.miu.util.IncludeManager;
-import rop.miu.util.ROPCryptographyException;
 import rop.miu.util.ROPEncryptor;
 import rop.miu.util.ROPLanguageManager;
+import rop.miu.util.exceptions.ROPCryptographyException;
 
 
 
@@ -60,9 +60,9 @@ public class FiltreAdmin implements Filter {
 			return;
 		}
 		
-		/*UserBanque user = (UserBanque)request.getSession().getAttribute("user");
+		/*UserBanque baoUser = (UserBanque)request.getSession().getAttribute("baoUser");
 		try {
-			if(user == null || !AccesRightDao.isAccessGranted(ROPConstants.DROIT_ACCEDER_ADMIN, user)){
+			if(baoUser == null || !AccesRightDao.isAccessGranted(ROPConstants.DROIT_ACCEDER_ADMIN, baoUser)){
 				String redirect = "";
 				String name;
 				Enumeration<String> enumeration = request.getParameterNames();
