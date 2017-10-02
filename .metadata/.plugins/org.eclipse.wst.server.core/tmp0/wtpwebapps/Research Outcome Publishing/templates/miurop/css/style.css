@@ -1,8 +1,8 @@
 html{background: rgba(135, 150, 150, 0.1); height: 100%;}
 body{width: 100%; min-height: 100%; background: rgba(135, 150, 150, 0.1); margin: auto; font-size: 1.1em; padding-top: 1px;}
-#header{z-index: 15; box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.3); position: fixed; background: rgba(100, 150, 200, 1); height: 70px; width: 100%; margin-top: -10px;}
+#header{z-index: 15; box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.3); position: fixed; background: rgba(100, 150, 200, 1); height: 90px; width: 100%; margin-top: -10px;}
 #headercontent{width: 1024px; height: 100%; margin: auto;}
-#headertopbar{width: 100%; margin: auto; background:rgba(100, 150, 200, 1); height: 70px;}
+#headertopbar{width: 100%; margin: auto; background:rgba(100, 150, 200, 1); height: 90px;}
 #headernavbar{width: 100%; overflow: hidden; margin: auto; border: 1px solid rgba(100, 150, 200, 0.7); border-top: none; background: white; height: 30px; box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.3);}
 #mainnav{width: 100%; height: 100%;}
 .hmenu{margin-top: 0px; margin-left: -30px; height: 100%;}
@@ -11,15 +11,16 @@ body{width: 100%; min-height: 100%; background: rgba(135, 150, 150, 0.1); margin
 .hmenu > li:nth-last-child(1){border-right: none !important;}
 .hmenu li:hover{background: rgba(100, 150, 200, 1); color: white;}
 #logo{display: inline-block; width: 90px; height: 60px; margin-top: 10px; text-align: center; border-right: 1px dotted white;}
+#logo img{width: 100%; margin-top: -3px; border: none;}
 #websiteTitle{display: inline-block; vertical-align: top; margin-top: 5px; width: 520px; height: 60px; padding-left: 10px;}
 #websiteTitle h1 a{color: black; text-decoration: none; font-size: 1.65em;}
-#searchbar{display: inline-block; vertical-align: middle; margin-top: -12px; width: 220px;}
-#searchkey{width: 220px; height: 30px; padding-left: 25px; padding-right: 5px; border: 1px solid rgba(100, 150, 200, 0.7); box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.3); background-image: url("../images/mini_search.gif"); background-position: 5px 50%; background-repeat: no-repeat; border-radius: 5px;}
+#searchbar{display: inline-block; vertical-align: top; margin-top: 5px; width: 220px;}
+#searchkey{width: 220px; margin-top: 20px; height: 30px; padding-left: 25px; padding-right: 5px; border: 1px solid rgba(100, 150, 200, 0.7); box-shadow: 1px 1px 3px 1px rgba(35, 50, 50, 0.3); background-image: url("../images/mini_search.gif"); background-position: 5px 50%; background-repeat: no-repeat; border-radius: 5px;}
 #profilebar{display: inline-block; vertical-align: top; height: 100%; width: 150px;}
 .profilebutton{display: inline-block; vertical-align: top; height: 100%; width: 70px; border-right: 1px dotted white;}
 .profilebutton:nth-child(1){border-left: 1px dotted white;}
 .profilebutton a{display: block; width: 100%; text-align: center; text-decoration: none; padding-top: 25px; padding-bottom: 25px; color: white;}
-#content{width: 1024px; background: none; margin: auto; margin-top: 100px;}
+#content{width: 1024px; background: none; margin: auto; margin-top: 123px;}
 #mainwrapper{height: auto; width: 100%; min-height: 355px; margin: auto; background: none;}
 #leftblock{min-height: 355px; display: inline-block; width: 180px; padding: 10px;}
 .leftcontent{width: 100%; height: auto; border: 1px solid rgba(100, 150, 200, 0.7); border-top: none; background: white; padding: 0px 7px 0px 7px; margin-left: -5px; margin-top: -18px;}
