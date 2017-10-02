@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<config>
+	<modules>
+	    <module>controlpanel</module>
+	    <module>authentication</module>
+	    <module>journal</module>
+		<default>controlpanel</default>
+	</modules>
+	<adminmodules>
+	    <adminmodule>controlpanel</adminmodule>
+	    <admindefault>controlpanel</admindefault>
+	</adminmodules>
+	<templates>
+	    <template>miurop</template>
+	    <defaulttemplate>miurop</defaulttemplate>
+	</templates>
+	<admintemplates>
+	    <admintemplate>miuropadmin</admintemplate>
+	    <defaultadmintemplate>miuropadmin</defaultadmintemplate>
+	</admintemplates>
+	<languages>
+	    <lang>
+	        <name>English</name>
+	        <tag>en_GB</tag>
+	    </lang>
+	    <lang>
+	        <name>Français</name>
+	        <tag>fr_FR</tag>
+	    </lang>
+	</languages>
+	<authors>
+		<author>ZEKENG NDADJI Milliam Maxime</author>
+		<author>JAGHO MDEMAYA Garrik Brel</author>
+	</authors>
+</config>

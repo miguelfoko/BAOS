@@ -1,0 +1,94 @@
+@CHARSET "ISO-8859-1";
+#cmdBox{
+	margin: 5px 5px 20px 5px;
+	padding: 5px 0px;
+}
+.cmd{
+	display: block;
+	margin: 10px 50px 10px 0px;
+	float: left;
+}
+.cmd:hover .cmdCircle, .cmd:hover .cmdTitle{
+	border-color: #D69A2B;
+}
+.cmd:hover .cmdCircle{
+	background-color: rgba(100, 100, 100, 0.1);
+}
+.clr{
+	clear: both;
+}
+.cmdGroupTitle{
+	margin: 0px 0px 5px 0px;
+}
+.cmdCircle{
+	border: solid rgba(35, 150, 100, 1);
+	position: relative;
+	z-index: 1;
+	width: 88px;
+	height: 88px;
+	border-radius: 100%;
+	display: inline-block;
+	border-width: 0.3em;
+	box-sizing: border-box;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-color: rgba(35, 150, 100, 0.1);
+}
+
+.cmdTitle{
+	display: block;
+	width: 88px;
+	text-align: center;
+	border-top: 0.2em solid rgba(35, 150, 100, 1);
+	/*border-bottom: 0.1em solid rgba(35, 150, 100, 1);*/
+	border-radius: 15px;
+	font-size: 0.9em;
+}
+
+.acc_type_icon{
+	background-image: url("../images/icon-48-newcategory.png");
+}
+
+.acc_admin_icon{
+	background-image: url("../images/icon-48-cpanel.png");
+}
+
+.man_usr_icon{
+	background-image: url("../images/icon-48-user.png");
+}
+
+.con_acc_icon{
+	background-image: url("../images/icon-48-contacts.png");
+}
+
+.deb_acc_icon{
+	background-image: url("../images/icon-48-revert.png");
+}
+
+.cred_acc_icon{
+	background-image: url("../images/icon-48-article-add.png");
+}
+
+.del_acc_icon{
+	background-image: url("../images/icon-48-trash.png");
+}
+
+.trans_icon{
+	background-image: url("../images/icon-48-move.png");
+}
+
+.val_op_icon{
+	background-image: url("../images/icon-48-apply.png");
+}
+
+.acc_icon{
+	background-image: url("../images/icon-48-category.png");
+}
+
+.cre_acc_icon{
+	background-image: url("../images/icon-48-contacts-categories.png");
+}
+
+.add_usr_icon{
+	background-image: url("../images/icon-48-user-add.png");
+}

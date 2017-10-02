@@ -21,6 +21,7 @@ public class ROPConstants {
 				STATE_WAITING_CORRECTION = 3,
 				STATE_WAITING_VALIDATION = 4,
 				STATE_DRAFT = 4,
+				STATE_CLOSED = 4,
 				STATE_SUBMITTED = 5,
 				
 				MAX_REFRESH_TIME = 180;
@@ -30,14 +31,32 @@ public class ROPConstants {
 				MEMBER_ACCESS = "registered",
 				ADMIN_ACCESS = "administrator",
 				
-				MEMBER_ACCESS_RIGHT = "Access member modules options",
-				ADMIN_ACCESS_RIGHT = "Access admin modules options",
+				MEMBER_ACCESS_RIGHT = "Member Access Right",
+				ADMIN_ACCESS_RIGHT = "Admin Access Right",
 				ROOT_RIGHT = "All",
+				ADD_STUDENT_RIGHT = "Add Student",
+				ADD_COURSE_RIGHT = "Add Course",
 				
 				DEBIT = "Debit",
 				CREDIT = "Credit",
 				
 				DAO_FILE = "rop/miu/dao/dao.cfg.rop.xml",
 				
-				COOKIE_SESSION_ID_LABEL = "baossrid";
+				COOKIE_SESSION_ID_LABEL = "baossrid",
+				
+				AVATAR_TYPE_CLASSIC = "classic",
+				AVATAR_TYPE_GRAVATAR = "gravatar",
+				
+				DEFAULT_USER_GROUP = "Registered",
+				
+				TMP_FOLDER = "/ressources/tmp",
+				AVATARS_FOLDER = "/ressources/images/avatars";
+
+	public static String setParam(String paramId, String replacement, String content) {
+		return content.replaceAll("#"+paramId+"_[1-9]{1,4}#", replacement);
+	}
+
+	public static String setParam(int paramId, String replacement, String content) {
+		return content.replaceAll("#[a-zA-Z0-9_]{1,}"+paramId+"#", replacement);
+	}
 }

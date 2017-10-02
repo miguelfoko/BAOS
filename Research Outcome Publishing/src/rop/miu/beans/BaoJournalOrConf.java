@@ -17,13 +17,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Ndadji Maxime
  */
 @Entity
-@Table(name = "bao_journal_or_conf")
+@Table(name = "bao_journal_or_conf", uniqueConstraints = {
+	    @UniqueConstraint(columnNames = {"journal_or_conf_name"})})
 @NamedQueries({
     @NamedQuery(name = "BaoJournalOrConf.findAll", query = "SELECT b FROM BaoJournalOrConf b"),
     @NamedQuery(name = "BaoJournalOrConf.findByJournalOrConfId", query = "SELECT b FROM BaoJournalOrConf b WHERE b.journalOrConfId = :journalOrConfId"),
@@ -54,7 +56,7 @@ public class BaoJournalOrConf implements Serializable {
     private String journalOrConfLongDesc;
     @Basic(optional = false)
     @Column(name = "journal_or_conf_state", nullable = false)
-    private short journalOrConfState;
+    private int journalOrConfState;
     @JoinTable(name = "bao_journal_topic", joinColumns = {
         @JoinColumn(name = "journal_or_conf_id", referencedColumnName = "journal_or_conf_id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "topic_id", referencedColumnName = "topic_id", nullable = false)})
@@ -72,7 +74,7 @@ public class BaoJournalOrConf implements Serializable {
         this.journalOrConfId = journalOrConfId;
     }
 
-    public BaoJournalOrConf(Integer journalOrConfId, String journalOrConfName, String journalOrConfType, short journalOrConfState) {
+    public BaoJournalOrConf(Integer journalOrConfId, String journalOrConfName, String journalOrConfType, int journalOrConfState) {
         this.journalOrConfId = journalOrConfId;
         this.journalOrConfName = journalOrConfName;
         this.journalOrConfType = journalOrConfType;
@@ -127,11 +129,11 @@ public class BaoJournalOrConf implements Serializable {
         this.journalOrConfLongDesc = journalOrConfLongDesc;
     }
 
-    public short getJournalOrConfState() {
+    public int getJournalOrConfState() {
         return journalOrConfState;
     }
 
-    public void setJournalOrConfState(short journalOrConfState) {
+    public void setJournalOrConfState(int journalOrConfState) {
         this.journalOrConfState = journalOrConfState;
     }
 

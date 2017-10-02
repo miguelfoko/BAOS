@@ -19,11 +19,10 @@ import rop.miu.util.exceptions.ROPCryptographyException;
 
 
 public class FiltreAdmin implements Filter {
-
-	private TesteurFiltrePrincipal testeur;
 	public final String REDIRECT404 = "/ressources/jsp/redirect404.jsp";
 	protected ROPLanguageManager languageManager;
 	protected ROPEncryptor encryptor;
+	private ConfigManager configManager;
 	
     public FiltreAdmin() {
         
@@ -34,17 +33,21 @@ public class FiltreAdmin implements Filter {
 	public void destroy() {
 		
 	}
-
 	
+	protected IncludeManager getIncludeManager(HttpServletRequest request) throws ServletException, IOException{
+		return (IncludeManager)request.getAttribute("includeManager");
+	}
+
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		
-		testeur = new TesteurFiltrePrincipal();
-		String tag = (String)request.getSession().getAttribute("tag");
+		IncludeManager includeManager = getIncludeManager(request);
 		
-		String moduleName = request.getParameter("module"),
+		String langTag = (String)request.getSession().getAttribute("tag");
+		
+		String moduleName = request.getParameter("m"),
 			   contextPath = request.getContextPath();
 		if(moduleName != null){
 			try {
@@ -84,16 +87,15 @@ public class FiltreAdmin implements Filter {
 		}*/
 		
 		if((chemin.endsWith("/index.jsp") || chemin.length() <= 1) && (moduleName == null)){
-			request.getServletContext().getRequestDispatcher("/ModAdmin"+TesteurFiltrePrincipal.setFirstUppercase(testeur.getDefaultAdminModule())).forward(request, response);
+			request.getServletContext().getRequestDispatcher("/ModAdmin"+ConfigManager.setFirstUppercase(configManager.getDefaultAdminModule())).forward(request, response);
 			return;
 		}
-		if(testeur.adminModuleExist(moduleName))
-			request.getServletContext().getRequestDispatcher("/ModAdmin"+TesteurFiltrePrincipal.setFirstUppercase(moduleName)).forward(request, response);
+		if(configManager.adminModuleExist(moduleName))
+			request.getServletContext().getRequestDispatcher("/ModAdmin"+ConfigManager.setFirstUppercase(moduleName)).forward(request, response);
 		else{
-			IncludeManager includeManager = new IncludeManager(request);
-			includeManager.addJSP(REDIRECT404);
-			includeManager.setTitle(languageManager.getLanguageValue("404_title", tag));
-			request.getServletContext().getRequestDispatcher("/admin/templates/"+testeur.getDefaultAdminTemplate()+"/index.jsp").forward(request, response);
+			includeManager.addJSP(request, REDIRECT404);
+			includeManager.setTitle(request, languageManager.getLanguageValue("404_title", langTag));
+			request.getServletContext().getRequestDispatcher("/admin/templates/"+configManager.getDefaultAdminTemplate()+"/index.jsp").forward(request, response);
 		}
 	}
 
@@ -102,5 +104,6 @@ public class FiltreAdmin implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		languageManager = (ROPLanguageManager)fConfig.getServletContext().getAttribute("languageManager");
 		encryptor = (ROPEncryptor)fConfig.getServletContext().getAttribute("encryptor");
+		configManager = (ConfigManager)fConfig.getServletContext().getAttribute("configManager");
 	}
 }

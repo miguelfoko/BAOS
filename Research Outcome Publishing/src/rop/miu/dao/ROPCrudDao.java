@@ -240,25 +240,43 @@ public class ROPCrudDao {
     	return l;
 	}
 	
-	public static int executeInsUpdDelCreQuery(String query, Object ... params) throws HibernateException{
-		Session s = getSession();
-    	Query q = s.createQuery(query);
-    	for(int i = 0; i < params.length; i++){
-    		q.setParameter(i, params[i]);
-		}
-    	int l = q.executeUpdate();
-    	closeSession();
-    	return l;
+	public static int executeInsUpdDelCreQuery(String query, Object ... params) throws ROPDaoException{
+		try{
+   		 	beginTransaction();
+			Session s = getSession();
+	    	Query q = s.createQuery(query);
+	    	for(int i = 0; i < params.length; i++){
+	    		q.setParameter(i, params[i]);
+			}
+	    	int l = q.executeUpdate();
+	    	commitTransaction();
+		 	s.clear();
+	    	return l;
+		}catch(Exception e){
+   		 	rollBackTransaction();
+   		 	throw new ROPDaoException(e);
+	   	}finally{
+	   		closeSession();
+	   	}
 	}
 	
-	public static int executeInsUpdDelCreSQLQuery(String sqlQuery, Object ... params) throws HibernateException{
-		Session s = getSession();
-    	SQLQuery q = s.createSQLQuery(sqlQuery);
-    	for(int i = 0; i < params.length; i++){
-    		q.setParameter(i, params[i]);
-		}
-    	int l = q.executeUpdate();
-    	closeSession();
-    	return l;
+	public static int executeInsUpdDelCreSQLQuery(String sqlQuery, Object ... params) throws ROPDaoException{
+		try{
+   		 	beginTransaction();
+			Session s = getSession();
+	    	SQLQuery q = s.createSQLQuery(sqlQuery);
+	    	for(int i = 0; i < params.length; i++){
+	    		q.setParameter(i, params[i]);
+			}
+	    	int l = q.executeUpdate();
+	    	commitTransaction();
+		 	s.clear();
+		 	return l;
+	   	 }catch(Exception e){
+	   		 	rollBackTransaction();
+	   		 	throw new ROPDaoException(e);
+	   	 }finally{
+	   		 closeSession();
+	   	 }
 	}
 }

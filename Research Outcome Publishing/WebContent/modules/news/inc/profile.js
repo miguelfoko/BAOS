@@ -1,0 +1,2 @@
+function authenticationDoTabs(activeTab){jQuery("#mod_auth_tabs").tabs({fx:{opacity: 'toggle', duration: 'fast'}}); jQuery("#mod_auth_tabs").tabs('select', parseInt(activeTab, 10));}
+jQuery(document).ready(function(){jQuery(".mod_auth_scrollable").jScrollbar({allowMouseWheel : true, scrollStep : 10, showOnHover : false, position : 'right'});});

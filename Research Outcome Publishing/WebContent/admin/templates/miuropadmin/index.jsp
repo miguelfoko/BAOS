@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 	<head>
 		<c:import url="/ressources/jsp/header.jsp" />
@@ -21,5 +21,15 @@
 				<c:import url="${page}" />
 			</c:forEach>
 		</div>
+		<footer id="footer">
+			<ul>
+				<c:forEach	var="module" items="${modules}">
+					<li><a href="<c:url value="/?m=${encryptor.encrypt(module)}" />"><c:out value="${module}" /></a></li>
+				</c:forEach>
+				<c:forEach	var="module" items="${adminModules}">
+					<li><a href="<c:url value="/admin?m=${encryptor.encrypt(module)}" />"><c:out value="${module}" /></a></li>
+				</c:forEach>
+			</ul>
+		</footer>
 	</body>
 </html>

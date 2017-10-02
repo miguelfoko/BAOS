@@ -101,7 +101,7 @@ public class BaoPaper implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private BaoVolumeOrIssue volumeOrIssueId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "baoPaper", fetch = FetchType.LAZY)
-    private List<BaoExcludedReviewer> baoExcludedReviewerList;
+    private List<BaoPaperExcludedReviewer> baoExcludedReviewerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "baoPaper", fetch = FetchType.LAZY)
     private List<BaoPaperReview> baoPaperReviewList;
 
@@ -267,11 +267,11 @@ public class BaoPaper implements Serializable {
         this.volumeOrIssueId = volumeOrIssueId;
     }
 
-    public List<BaoExcludedReviewer> getBaoExcludedReviewerList() {
+    public List<BaoPaperExcludedReviewer> getBaoExcludedReviewerList() {
         return baoExcludedReviewerList;
     }
 
-    public void setBaoExcludedReviewerList(List<BaoExcludedReviewer> baoExcludedReviewerList) {
+    public void setBaoExcludedReviewerList(List<BaoPaperExcludedReviewer> baoExcludedReviewerList) {
         this.baoExcludedReviewerList = baoExcludedReviewerList;
     }
 

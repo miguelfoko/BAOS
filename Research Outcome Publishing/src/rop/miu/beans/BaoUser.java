@@ -96,10 +96,10 @@ public class BaoUser implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userIdEditor", fetch = FetchType.LAZY)
     private List<BaoPaper> baoPaperList1;
     @JoinColumn(name = "additional_info_id", referencedColumnName = "additional_info_id", nullable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private BaoAdditionalInfo additionalInfoId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "baoUser", fetch = FetchType.LAZY)
-    private List<BaoExcludedReviewer> baoExcludedReviewerList;
+    private List<BaoPaperExcludedReviewer> baoExcludedReviewerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "baoUser", fetch = FetchType.LAZY)
     private List<BaoPartnerUser> baoPartnerUserList;
     @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
@@ -319,11 +319,11 @@ public class BaoUser implements Serializable {
         this.additionalInfoId = additionalInfoId;
     }
 
-    public List<BaoExcludedReviewer> getBaoExcludedReviewerList() {
+    public List<BaoPaperExcludedReviewer> getBaoExcludedReviewerList() {
         return baoExcludedReviewerList;
     }
 
-    public void setBaoExcludedReviewerList(List<BaoExcludedReviewer> baoExcludedReviewerList) {
+    public void setBaoExcludedReviewerList(List<BaoPaperExcludedReviewer> baoExcludedReviewerList) {
         this.baoExcludedReviewerList = baoExcludedReviewerList;
     }
 

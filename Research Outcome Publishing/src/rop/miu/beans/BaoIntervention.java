@@ -1,9 +1,9 @@
 package rop.miu.beans;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class BaoIntervention implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date interventionDate;
     @Column(name = "intervention_like")
-    private BigInteger interventionLike;
+    private String interventionLike;
     @Basic(optional = false)
     @Column(name = "intervention_state", nullable = false)
     private short interventionState;
@@ -102,11 +102,11 @@ public class BaoIntervention implements Serializable {
         this.interventionDate = interventionDate;
     }
 
-    public BigInteger getInterventionLike() {
+    public String getInterventionLike() {
         return interventionLike;
     }
 
-    public void setInterventionLike(BigInteger interventionLike) {
+    public void setInterventionLike(String interventionLike) {
         this.interventionLike = interventionLike;
     }
 

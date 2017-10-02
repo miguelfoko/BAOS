@@ -16,13 +16,14 @@
     <mapping class="rop.miu.beans.BaoComment"></mapping>
     <mapping class="rop.miu.beans.BaoCouponType"></mapping>
     <mapping class="rop.miu.beans.BaoCourse"></mapping>
+    <mapping class="rop.miu.beans.BaoCourseTimetable"></mapping>
     <mapping class="rop.miu.beans.BaoEmailAccount"></mapping>
     <mapping class="rop.miu.beans.BaoEmailBugReport"></mapping>
     <mapping class="rop.miu.beans.BaoEmailTemplate"></mapping>
     <mapping class="rop.miu.beans.BaoExamination"></mapping>
     <mapping class="rop.miu.beans.BaoExamSheet"></mapping>
     <mapping class="rop.miu.beans.BaoExamSheetQuestion"></mapping>
-    <mapping class="rop.miu.beans.BaoExcludedReviewer"></mapping>
+    <mapping class="rop.miu.beans.BaoPaperExcludedReviewer"></mapping>
     <mapping class="rop.miu.beans.BaoGroup"></mapping>
     <mapping class="rop.miu.beans.BaoIntervention"></mapping>
     <mapping class="rop.miu.beans.BaoJournalOrConf"></mapping>
