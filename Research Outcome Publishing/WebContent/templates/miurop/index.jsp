@@ -12,7 +12,7 @@
 				<section id="headertopbar">
 					<div id="logo">
 						<a href="<c:url value="index.jsp" />" class="logoLink">
-							<img src="<c:url value="/ressources/images/logo-rop.png" />" alt="logo-rop" />
+							<img src="<c:url value="/ressources/images/logo-baos.png" />" alt="Logo" />
 						</a>
 					</div>
 					<div id="websiteTitle">
@@ -55,6 +55,7 @@
 		<section id="content">
 			<section id="mainwrapper">
 				<aside id="leftblock">
+					<c:import url="/ressources/jsp/renderSideMenus.jsp" />
 					<div class="leftcontent">
 						<h4 class="lefttitle">NJPS Home</h4>
 						<nav class="sidenav">
@@ -163,15 +164,16 @@
 					</div>
 				</aside>
 				<section id="mainblock">
-					<c:forEach var="page" items="${listeInclude}">
-						<c:import url="${page}" />
-					</c:forEach>
+					<c:import url="/ressources/jsp/renderAllMainContent.jsp" />
 				</section>
 			</section>
 			<footer id="footer">
 				<ul>
 					<c:forEach	var="module" items="${modules}">
 						<li><a href="<c:url value="/?m=${encryptor.encrypt(module)}" />"><c:out value="${module}" /></a></li>
+					</c:forEach>
+					<c:forEach	var="module" items="${adminModules}">
+						<li><a href="<c:url value="/admin?m=${encryptor.encrypt(module)}" />"><c:out value="${module}" /></a></li>
 					</c:forEach>
 				</ul>
 			</footer>

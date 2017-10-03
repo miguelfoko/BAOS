@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.joda.time.DateTime;
 
-import rop.miu.TesteurFiltrePrincipal;
+import rop.miu.ConfigManager;
 import rop.miu.beans.BaoAccessRight;
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoUser;
@@ -31,6 +31,7 @@ public class AdminServletModel extends HttpServlet {
 	protected IncludeManager includeManager;
 	protected String langTag;
 	protected BaoUser baoUser;
+	protected ConfigManager configManager;
 	private HttpServletRequest request;
        
     public AdminServletModel() {
@@ -42,10 +43,11 @@ public class AdminServletModel extends HttpServlet {
 		super.init(config);
 		languageManager = (ROPLanguageManager)config.getServletContext().getAttribute("languageManager");
 		encryptor = (ROPEncryptor)config.getServletContext().getAttribute("encryptor");
+		configManager = (ConfigManager)config.getServletContext().getAttribute("configManager");
 	}
 
 	public void returnRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	TesteurFiltrePrincipal testeur = new TesteurFiltrePrincipal();
+    	ConfigManager testeur = new ConfigManager();
     	request.getServletContext().getRequestDispatcher("/admin/templates/"+testeur.getDefaultAdminTemplate()+"/index.jsp").forward(request, response);
     }
 	
@@ -65,7 +67,7 @@ public class AdminServletModel extends HttpServlet {
 	
 	private void initRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		this.request = request;
-		includeManager = new IncludeManager(request);
+		includeManager = (IncludeManager)request.getAttribute("includeManager");
 		langTag = (String)request.getSession().getAttribute("tag");
 		baoUser = (BaoUser)request.getSession().getAttribute("baoUser");
 	}
@@ -135,23 +137,23 @@ public class AdminServletModel extends HttpServlet {
     }
 	
 	public void forwardToModule(HttpServletRequest request, HttpServletResponse response, String module) throws ServletException, IOException{
-		request.getServletContext().getRequestDispatcher("/Mod"+TesteurFiltrePrincipal.setFirstUppercase(module)).forward(request, response);
+		request.getServletContext().getRequestDispatcher("/Mod"+ConfigManager.setFirstUppercase(module)).forward(request, response);
 	}
 	
 	public void forward404(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		includeManager.resetInclude();
+		includeManager.resetIncludeList();
 		//Compléter par l'inclusion des fichiers correspondants
 		returnRequest(request, response);
 	}
 	
 	public void forward403(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		includeManager.resetInclude();
+		includeManager.resetIncludeList();
 		//Compléter par l'inclusion des fichiers correspondants
 		returnRequest(request, response);
 	}
 	
 	public void forward500(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		includeManager.resetInclude();
+		includeManager.resetIncludeList();
 		//Compléter par l'inclusion des fichiers correspondants
 		returnRequest(request, response);
 	}

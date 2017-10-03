@@ -28,10 +28,11 @@ import rop.miu.util.exceptions.ROPCryptographyException;
 
 public class FiltrePrincipal implements Filter {
 
-	private TesteurFiltrePrincipal testeur;
+	private ConfigManager configManager;
 	public final String REDIRECT404 = "/ressources/jsp/redirect404.jsp";
 	protected ROPLanguageManager languageManager;
 	protected ROPEncryptor encryptor;
+	private IncludeManager includeManager;
 	
     public FiltrePrincipal() {
     	
@@ -49,11 +50,10 @@ public class FiltrePrincipal implements Filter {
 		
 		this.init(request, response);
 		
-		testeur = new TesteurFiltrePrincipal();
-		String tag = (String)request.getSession().getAttribute("tag");
-		if(tag == null){
-			tag = testeur.getLangTags().get(0);
-			request.getSession().setAttribute("tag", tag);
+		String langTag = (String)request.getSession().getAttribute("tag");
+		if(langTag == null){
+			langTag = configManager.getLangTags().get(0);
+			request.getSession().setAttribute("tag", langTag);
 		}
 		String action = request.getParameter("l");
 		if(action != null){
@@ -72,14 +72,14 @@ public class FiltrePrincipal implements Filter {
 					value = null;
 				}
 			}
-			if(testeur.getLangTags().contains(value) && !tag.equals(value)){
-				tag = value;
-				request.getSession().setAttribute("tag", tag);
+			if(configManager.getLangTags().contains(value) && !langTag.equals(value)){
+				langTag = value;
+				request.getSession().setAttribute("tag", langTag);
 			}
 		}
 		try{
-			ArrayList<String> tags = testeur.getLangTags();
-			ArrayList<String> names = testeur.getLangNames();
+			ArrayList<String> tags = configManager.getLangTags();
+			ArrayList<String> names = configManager.getLangNames();
 			ArrayList<String> link = new ArrayList<String>();
 			for(int i = 0; i < tags.size(); i++){
 				link.add("<a href=\"index.jsp?l="+encryptor.encrypt("s")+"&v="+encryptor.encrypt(tags.get(i))+"\">"+names.get(i)+"</a>");
@@ -88,19 +88,23 @@ public class FiltrePrincipal implements Filter {
 			
 			String success = request.getParameter("s");
 			if(success != null)
-				request.setAttribute("systemSuccess", languageManager.getLanguageValue(encryptor.decrypt(success), tag));
+				includeManager.createSuccessStatus(languageManager.getLanguageValue(encryptor.decrypt(success), langTag));
 			
 			String error = request.getParameter("e");
 			if(error != null)
-				request.setAttribute("systemError", languageManager.getLanguageValue(encryptor.decrypt(error), tag));
+				includeManager.createErrorStatus(languageManager.getLanguageValue(encryptor.decrypt(error), langTag));
 		}catch(Exception e){
 			
 		}
 		
-		request.setAttribute("modules", testeur.getModules());
+		String contextPath = request.getContextPath();
+		String chemin = request.getRequestURI().substring(contextPath.length() );
+		if ((chemin.startsWith( "/ressources" )) || (chemin.startsWith( "/admin" )) || (chemin.startsWith( "/modules" )) || (chemin.startsWith( "/templates" ))) {
+			chain.doFilter( request, response );
+			return;
+		}
 		
-		String moduleName = request.getParameter("m"),
-			   contextPath = request.getContextPath();
+		String moduleName = request.getParameter("m");
 		if(moduleName != null){
 			try {
 				moduleName = encryptor.decrypt(moduleName);
@@ -108,23 +112,36 @@ public class FiltrePrincipal implements Filter {
 				moduleName = null;
 			}
 		}
-		String chemin = request.getRequestURI().substring(contextPath.length() );
-		if ((chemin.startsWith( "/ressources" )) || (chemin.startsWith( "/admin" )) || (chemin.startsWith( "/modules" )) || (chemin.startsWith( "/templates" ))) {
-			chain.doFilter( request, response );
-			return;
+		
+		/*request.setAttribute("modules", configManager.getModules());
+		int mid = includeManager.createSideMenu("Modules");
+		for(String mod : configManager.getModules()){
+			try {
+				includeManager.addMenuItem(mid, mod, "/?m="+encryptor.encrypt(mod));
+			} catch (ROPCryptographyException e) {
+				
+			}
 		}
+		request.setAttribute("adminModules", configManager.getAdminModules());
+		mid = includeManager.createSideMenu("Admin Modules");
+		for(String mod : configManager.getAdminModules()){
+			try {
+				includeManager.addMenuItem(mid, mod, "/admin?m="+encryptor.encrypt(mod));
+			} catch (ROPCryptographyException e) {
+				
+			}
+		}*/
 		
 		if((chemin.endsWith("/index.jsp") || chemin.length() <= 1) && (moduleName == null)){
-			request.getServletContext().getRequestDispatcher("/Mod"+TesteurFiltrePrincipal.setFirstUppercase(testeur.getDefaultModule())).forward(request, response);
+			request.getServletContext().getRequestDispatcher("/Mod"+ConfigManager.setFirstUppercase(configManager.getDefaultModule())).forward(request, response);
 			return;
 		}
-		if(testeur.moduleExist(moduleName))
-			request.getServletContext().getRequestDispatcher("/Mod"+TesteurFiltrePrincipal.setFirstUppercase(moduleName)).forward(request, response);
+		if(configManager.moduleExist(moduleName))
+			request.getServletContext().getRequestDispatcher("/Mod"+ConfigManager.setFirstUppercase(moduleName)).forward(request, response);
 		else{
-			IncludeManager includeManager = new IncludeManager(request);
 			includeManager.addJSP(REDIRECT404);
-			includeManager.setTitle(languageManager.getLanguageValue("404_title", tag));
-			request.getServletContext().getRequestDispatcher("/templates/"+testeur.getDefaultTemplate()+"/index.jsp").forward(request, response);
+			includeManager.setTitle(languageManager.getLanguageValue("404_title", langTag));
+			request.getServletContext().getRequestDispatcher("/templates/"+configManager.getDefaultTemplate()+"/index.jsp").forward(request, response);
 		}
 	}
 
@@ -141,6 +158,8 @@ public class FiltrePrincipal implements Filter {
 				}
 			}
 		}
+		includeManager = new IncludeManager(request);
+		request.setAttribute("includeManager", includeManager);
 	}
 
 	private void constructSessionWithCookie(String value, HttpServletRequest request, HttpServletResponse response) throws ROPApplException{
@@ -148,7 +167,7 @@ public class FiltrePrincipal implements Filter {
 			String baossrid = encryptor.decrypt(value);
 			int id = Integer.parseInt(baossrid);
 			BaoUser user = ROPUserDao.getUserById(id);
-			if(user != null){
+			if(user != null && user.getUserAccountState() != ROPConstants.STATE_DESACTIVATED && user.getUserAccountState() != ROPConstants.STATE_DELETED){
 				request.getSession().setAttribute("baoUser", user);
 				Cookie cook = new Cookie(ROPConstants.COOKIE_SESSION_ID_LABEL, encryptor.encrypt(user.getUserId()+""));
 				cook.setPath("/");
@@ -164,5 +183,6 @@ public class FiltrePrincipal implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		languageManager = (ROPLanguageManager)fConfig.getServletContext().getAttribute("languageManager");
 		encryptor = (ROPEncryptor)fConfig.getServletContext().getAttribute("encryptor");
+		configManager = (ConfigManager)fConfig.getServletContext().getAttribute("configManager");
 	}
 }

@@ -1,0 +1,4 @@
+#mod_auth_tab_profile .row{margin-top: 10px; margin-bottom: 10px;}
+#mod_auth_tab_profile legend{margin-top: 15px !important; margin-bottom: 5px !important;}
+#mod_auth_tab_profile > .row > div > .row:nth-child(1){margin-top: 25px !important;}
+#mod_auth_tab_profile > .row  img{border: 2px solid rgb(76, 175, 80); width: 130px; height: 130px; border-radius: 100%;}

@@ -47,6 +47,8 @@ public class BaoCourse implements Serializable {
     @Basic(optional = false)
     @Column(name = "course_name", nullable = false, length = 255)
     private String courseName;
+    @Column(name = "course_logo", length = 255)
+    private String courseLogo;
     @Basic(optional = false)
     @Column(name = "course_start_time", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -163,7 +165,15 @@ public class BaoCourse implements Serializable {
         this.courseState = courseState;
     }
 
-    public List<BaoTimetable> getBaoTimetableList() {
+    public String getCourseLogo() {
+		return courseLogo;
+	}
+
+	public void setCourseLogo(String courseLogo) {
+		this.courseLogo = courseLogo;
+	}
+
+	public List<BaoTimetable> getBaoTimetableList() {
         return baoTimetableList;
     }
 

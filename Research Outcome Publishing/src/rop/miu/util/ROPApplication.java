@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import rop.miu.TesteurFiltrePrincipal;
+import rop.miu.ConfigManager;
 
 
 public class ROPApplication implements ServletContextListener{
@@ -19,14 +19,17 @@ public class ROPApplication implements ServletContextListener{
 		ServletContext servletContext = event.getServletContext();
 		ROPLanguageManager lang = null;
 		ROPEncryptor encryptor = null;
+		ConfigManager conf = null;
 		try {
-			lang = new ROPLanguageManager((new TesteurFiltrePrincipal()).getLangTags());
+			lang = new ROPLanguageManager((new ConfigManager()).getLangTags());
 			encryptor = new ROPEncryptor();
+			conf = new ConfigManager();
 		} catch (Exception e) {
 			
 		}
 		servletContext.setAttribute("languageManager", lang);
 		servletContext.setAttribute("encryptor", encryptor);
+		servletContext.setAttribute("configManager", conf);
 	}
 
 }

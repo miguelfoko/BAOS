@@ -48,6 +48,8 @@ public class BaoLesson implements Serializable {
     @Basic(optional = false)
     @Column(name = "lesson_name", nullable = false, length = 255)
     private String lessonName;
+    @Column(name = "lesson_logo", length = 255)
+    private String lessonLogo;
     @Basic(optional = false)
     @Column(name = "lesson_start_time", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -155,7 +157,15 @@ public class BaoLesson implements Serializable {
         this.lessonCreationDate = lessonCreationDate;
     }
 
-    public String getLessonAttachment() {
+    public String getLessonLogo() {
+		return lessonLogo;
+	}
+
+	public void setLessonLogo(String lessonLogo) {
+		this.lessonLogo = lessonLogo;
+	}
+
+	public String getLessonAttachment() {
         return lessonAttachment;
     }
 
