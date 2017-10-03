@@ -30,8 +30,8 @@ public class ModJournal extends ServletModel {
 			request.setAttribute("journal_long_desc", languageManager.getLanguageValue("journal_long_desc", langTag));
 			request.setAttribute("journal_creation_cancel_button", languageManager.getLanguageValue("journal_creation_cancel_button", langTag));
 			request.setAttribute("journal_creation_submit_button", languageManager.getLanguageValue("journal_creation_submit_button", langTag));
-			includeManager.setTitle(languageManager.getLanguageValue("journal_title", langTag));
-			includeManager.addJSP("/modules/journal/login.jsp");
+			includeManager.setTitle(request, languageManager.getLanguageValue("journal_title", langTag));
+			includeManager.addJSP(request, "/modules/journal/login.jsp");
 			
 			returnRequest(request, response);
 		}

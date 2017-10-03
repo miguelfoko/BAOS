@@ -31,7 +31,7 @@
 					    </button>
 					    <ul class="dropdown-menu">
 					      <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> <c:out value="${applicationScope.languageManager.getLanguageValue('auth_home', sessionScope.tag)}" /></a></li>
-					      <li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_journals', sessionScope.tag)}" /></a></li>
+					      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}&action=${applicationScope.encryptor.encrypt('paperSubmission')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_journals', sessionScope.tag)}" /></a></li>
 		                  <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_learning', sessionScope.tag)}" /></a></li>
 		        		  <!-- <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}&action=${applicationScope.encryptor.encrypt('paperSubmission')}" />">Paper Submission</a></li> -->
 					      <li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>

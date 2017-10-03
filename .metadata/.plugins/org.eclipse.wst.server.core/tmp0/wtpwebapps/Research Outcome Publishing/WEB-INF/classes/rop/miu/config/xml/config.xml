@@ -3,16 +3,21 @@
 	<modules>
 	    <module>controlpanel</module>
 	    <module>authentication</module>
-	    <module>journal</module>
+	    <module>elearning</module>
+	    <module>publications</module>
+	    <module>adminJournal</module>
+	     <module>news</module>
 		<default>controlpanel</default>
 	</modules>
 	<adminmodules>
 	    <adminmodule>controlpanel</adminmodule>
-	    <admindefault>controlpanel</admindefault>
+	    <adminmodule>journal</adminmodule>
+	    <admindefault>journal</admindefault>
 	</adminmodules>
 	<templates>
 	    <template>miurop</template>
-	    <defaulttemplate>miurop</defaulttemplate>
+	    <template>pepper-grinder-baos</template>
+	    <defaulttemplate>pepper-grinder-baos</defaulttemplate>
 	</templates>
 	<admintemplates>
 	    <admintemplate>miuropadmin</admintemplate>
