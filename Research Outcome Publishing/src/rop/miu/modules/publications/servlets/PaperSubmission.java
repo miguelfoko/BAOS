@@ -455,7 +455,7 @@ public class PaperSubmission extends ServletModel {
 			
 			try{
 				upload = parser.uploadFile("attachments", uploadC);
-				if (upload != null) {
+				if (upload != null) {					
 					File fileDest=new File((getClass().getResource("/../.." + publiUtil.getPaperFolderUrl()).getFile()+upload.getUploadedFile().getName()).replace("%20", " "));
 					MIUIOUtilMethod.copyFile(upload.getUploadedFile(), fileDest);
 					paper.setPaperAttachment((getClass().getResource("/../.." + publiUtil.getPaperFolderUrl()).getFile()+upload.getUploadedFile().getName()).replace("%20", " "));

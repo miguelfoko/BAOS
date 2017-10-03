@@ -7,6 +7,8 @@
 	    <module>publications</module>
 	    <module>adminJournal</module>
 	     <module>news</module>
+	    <module>pages</module>
+	    <module>contactUs</module>
 		<default>controlpanel</default>
 	</modules>
 	<adminmodules>
