@@ -94,12 +94,12 @@ SUR UN LIEN CLIQUABLE</h1>
 	</a>
 	<p>
 	<FORM NAME="joe">
-		<INPUT TYPE="text" WIDTH="100" NAME="burns"
-			VALUE="Text For Picture One" editable="false">
+<!-- 		<INPUT TYPE="text" WIDTH="100" NAME="burns" -->
+<!-- 			VALUE="Text For Picture One" editable="false"> -->
 	</FORM>
 <H1>PRESENTATION DES AUTRES FONCTIONNALITES DU SITE</H1>
-<!-- 	<A HREF="JavaScript:slideshowBack()"> Back</A> <A -->
-<!-- 		HREF="JavaScript:slideshowUp()"> Next</A> -->
+	<A HREF="JavaScript:slideshowBack()"> Back</A> <A
+		HREF="JavaScript:slideshowUp()"> Next</A>
 </CENTER>
     </section>
     <br><br>
