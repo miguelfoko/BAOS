@@ -20,9 +20,20 @@ import rop.miu.beans.BaoUser;
 import rop.miu.beans.BaoVolumeOrIssue;
 import rop.miu.modules.ServletModel;
 import rop.miu.modules.publications.dao.ROPPublicationsDao;
+<<<<<<< HEAD
 import rop.miu.modules.publications.util.PublicationUtil;
 import rop.miu.util.ROPConstants;
 import rop.miu.util.exceptions.MIUIOException;
+=======
+import rop.miu.modules.publications.util.GuiAuthor;
+import rop.miu.modules.publications.util.GuiRefereeOrEditor;
+import rop.miu.modules.publications.util.GuiSubmission;
+import rop.miu.modules.publications.util.PublicationUtil;
+import rop.miu.util.IncludeManager;
+import rop.miu.util.ROPConstants;
+import rop.miu.util.exceptions.MIUIOException;
+import rop.miu.util.exceptions.ROPCryptographyException;
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 import rop.miu.util.exceptions.ROPDaoException;
 import rop.miu.util.io.MIUIOUtilMethod;
 import rop.miu.util.io.MIUMultipartFormParser;
@@ -39,6 +50,7 @@ public class PaperSubmission extends ServletModel {
      
     }
 
+<<<<<<< HEAD
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
@@ -93,13 +105,348 @@ public class PaperSubmission extends ServletModel {
     	}
 	}
 
+=======
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		super.doGet(request, response);
+		String subStep = null;
+		int sid;
+		ROPPublicationsDao dao = new ROPPublicationsDao();
+		try {
+			if(request.getParameter("pstep") != null)
+				subStep= encryptor.decrypt(request.getParameter("pstep"));
+			if(request.getParameter("sid") != null){
+				String p = encryptor.decrypt(request.getParameter("sid"));
+				sid = Integer.parseInt(p);
+			}else
+				sid = createSubmission(request);
+			request.setAttribute("mod_pub_submission_id", sid);
+    	} catch (Exception e) {
+    		subStep = null;
+    		sid = createSubmission(request);
+		}
+		
+		if(subStep == null || subStep.equals("select_journal")){
+    		String param = null;
+    		Integer journalOrConfId = null;
+    		try {
+    			if(request.getParameter("jocid") != null){
+    				param = encryptor.decrypt(request.getParameter("jocid"));
+    				journalOrConfId = Integer.parseInt(param);
+    			}
+	    	} catch (Exception e) {
+	    		journalOrConfId = null;
+			}
+    		
+    		if(journalOrConfId != null){
+    			BaoJournalOrConf journalOrConf = dao.getAJournalByID(journalOrConfId);
+    			setSubStepOne(sid, journalOrConf.getJournalOrConfType(), journalOrConf, request);
+    			if(getSubmission(sid, request).getAuthors() != null && getSubmission(sid, request).getAuthors().isEmpty())
+    				getSubmission(sid, request).addAuthor((getBaoUser(request).getUserSurname() == null ? "" : getBaoUser(request).getUserSurname() + " ") + getBaoUser(request).getUserName(), "", getBaoUser(request).getUserEmail(), true);
+    			request.setAttribute("mod_pub_authors", getSubmission(sid, request).getAuthors());
+    			request.setAttribute("mod_pub_gtu_selected", false);
+    			setIncludesForSubmission(request, 2);
+    			returnRequest(request, response);
+    			return;
+    		}
+    		
+    		List<BaoJournalOrConf> journalList = dao.getAllJournalOrConf();
+    		request.setAttribute("mod_pub_journal_list", journalList);
+    		String type;
+	    	if((type = getSubmission(sid, request).getPaperType()) != null)
+	    		request.setAttribute("mod_pub_paper_type", type);
+	    	
+	    	BaoJournalOrConf journalOrConf;
+	    	if((journalOrConf = getSubmission(sid, request).getJournalOrConf()) != null)
+	    		request.setAttribute("mod_pub_journal_or_conf", journalOrConf);
+    		
+			setIncludesForSubmission(request, 1);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_authors")){
+			request.setAttribute("mod_pub_authors", getSubmission(sid, request).getAuthors());
+			request.setAttribute("mod_pub_gtu_selected", getSubmission(sid, request).isGenTermOfUseAccepted());
+			setIncludesForSubmission(request, 2);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_referees_editors")){
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getProposedReviewerOrEditors());
+			setIncludesForSubmission(request, 3);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("exclude_referees_editors")){
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getExcludedReviewerOrEditors());
+			setIncludesForSubmission(request, 4);
+			returnRequest(request, response);
+			return;
+		}
+	}
+	
+	private void setIncludesForSubmission(HttpServletRequest request, int activeTab) throws ServletException, IOException {
+    	IncludeManager inclManager = getIncludeManager(request);
+    	if(activeTab == 1)
+    		inclManager.setTitle(request, languageManager.getLanguageValue("pub_paper_submission_process", getLangTag(request)) + " : " + languageManager.getLanguageValue("pub_process_step_1", getLangTag(request)));
+    	if(activeTab == 2)
+    		inclManager.setTitle(request, languageManager.getLanguageValue("pub_paper_submission_process", getLangTag(request)) + " : " + languageManager.getLanguageValue("pub_process_step_2", getLangTag(request)));
+    	if(activeTab == 3)
+    		inclManager.setTitle(request, languageManager.getLanguageValue("pub_paper_submission_process", getLangTag(request)) + " : " + languageManager.getLanguageValue("pub_process_step_3", getLangTag(request)));
+    	if(activeTab == 4)
+    		inclManager.setTitle(request, languageManager.getLanguageValue("pub_paper_submission_process", getLangTag(request)) + " : " + languageManager.getLanguageValue("pub_process_step_4", getLangTag(request)));
+    	if(activeTab == 5){
+    		inclManager.setTitle(request, languageManager.getLanguageValue("pub_paper_submission_process", getLangTag(request)) + " : " + languageManager.getLanguageValue("pub_process_step_5", getLangTag(request)));
+    		inclManager.addJS(request, "/ressources/tinymce/tinymce.min.js");
+    	}
+		inclManager.addJSP(request, "/modules/publications/submission.jsp");
+		request.setAttribute("mod_pub_step", activeTab);
+		inclManager.addCSS(request, "/modules/publications/css/publications.css");
+		inclManager.addJS(request, "/modules/publications/js/submission.js");
+		inclManager.addJS(request, "/modules/publications/js/ajax.js");
+		//setAuthenticationMenu(request);
+    }
+
+	@SuppressWarnings("unchecked")
+	private int createSubmission(HttpServletRequest request) {
+		ArrayList<GuiSubmission> submissionList = (ArrayList<GuiSubmission>)request.getSession().getAttribute("pub_submission_list");
+		if(submissionList == null){
+			submissionList = new ArrayList<GuiSubmission>();
+			request.getSession().setAttribute("pub_submission_list", submissionList);
+		}
+		int sid = submissionList.size();
+		submissionList.add(new GuiSubmission(sid));
+		return sid;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private ArrayList<GuiSubmission> getSubmissionList(HttpServletRequest request){
+		ArrayList<GuiSubmission> submissionList = (ArrayList<GuiSubmission>)request.getSession().getAttribute("pub_submission_list");
+		return submissionList;
+	}
+	
+	private GuiSubmission getSubmission(int sid, HttpServletRequest request){
+		return getSubmissionList(request).get(sid);
+	}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
+<<<<<<< HEAD
 		HttpSession sessionContext = request.getSession();
 		MIUMultipartFormParser parser = null;
 		//String paramSuppl="";
+=======
+		
+		String subStep = null;
+		int sid;
+		ROPPublicationsDao dao = new ROPPublicationsDao();
+		try {
+			if(request.getParameter("pstep") != null)
+				subStep= encryptor.decrypt(request.getParameter("pstep"));
+			if(request.getParameter("sid") != null){
+				String p = encryptor.decrypt(request.getParameter("sid"));
+				sid = Integer.parseInt(p);
+			}else
+				sid = createSubmission(request);
+			request.setAttribute("mod_pub_submission_id", sid);
+    	} catch (Exception e) {
+    		subStep = null;
+    		sid = createSubmission(request);
+		}
+		
+		if(subStep == null || subStep.equals("select_journal")){
+			String paperType = request.getParameter("paperType");
+			int jocid;
+			if(paperType.equals("Journal"))
+				jocid = Integer.parseInt(request.getParameter("journal"));
+			else
+				jocid = Integer.parseInt(request.getParameter("conference"));
+			BaoJournalOrConf journalOrConf = dao.getAJournalByID(jocid);
+			setSubStepOne(sid, journalOrConf.getJournalOrConfType(), journalOrConf, request);
+			if(getSubmission(sid, request).getAuthors() != null && getSubmission(sid, request).getAuthors().isEmpty())
+				getSubmission(sid, request).addAuthor((getBaoUser(request).getUserSurname() == null ? "" : getBaoUser(request).getUserSurname() + " ") + getBaoUser(request).getUserName(), "", getBaoUser(request).getUserEmail(), true);
+			request.setAttribute("mod_pub_authors", getSubmission(sid, request).getAuthors());
+			request.setAttribute("mod_pub_gtu_selected", getSubmission(sid, request).isGenTermOfUseAccepted());
+			setIncludesForSubmission(request, 2);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_author")){
+			String name = request.getParameter("name");
+			String[] tab = name.trim().split(" ");
+			name = ConfigManager.setFirstUppercaseAndRestLowercase(tab[0]);
+			for(int i = 1; i < tab.length; i++)
+				name += " "+ConfigManager.setFirstUppercaseAndRestLowercase(tab[i]);
+			String email = request.getParameter("email");
+			String institution = request.getParameter("institution");
+			String isPrincipal = request.getParameter("isPrincipal");
+			getSubmission(sid, request).addAuthor(name, institution, email, "on".equalsIgnoreCase(isPrincipal) ? true : false);
+			request.setAttribute("mod_pub_authors", getSubmission(sid, request).getAuthors());
+			request.getServletContext().getRequestDispatcher("/modules/publications/authors.jsp").forward(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("edit_author")){
+			String authorId = request.getParameter("authorId");
+			int aid = Integer.parseInt(authorId);
+			GuiAuthor author = getSubmission(sid, request).getAuthors().get(aid);
+			if(request.getParameter("markAsPrincipal") != null){
+				try{getSubmission(sid, request).getPrincipalAuthor().setPrincipal(false);}catch(Exception e){}
+				author.setPrincipal(true);
+			}
+			if(request.getParameter("delete") != null){
+				ArrayList<GuiAuthor> authors = getSubmission(sid, request).getAuthors();
+				authors.remove(aid);
+				for(int i = aid; i < authors.size(); i++)
+					authors.get(i).setAuthorId(i);
+				if(!authors.isEmpty() && getSubmission(sid, request).getPrincipalAuthor() == null)
+					authors.get(0).setPrincipal(true);
+			}
+			if(request.getParameter("markAsPrincipal") == null && request.getParameter("delete") == null){
+				String name = request.getParameter("name");
+				String[] tab = name.trim().split(" ");
+				name = ConfigManager.setFirstUppercaseAndRestLowercase(tab[0]);
+				for(int i = 1; i < tab.length; i++)
+					name += " "+ConfigManager.setFirstUppercaseAndRestLowercase(tab[i]);
+				String email = request.getParameter("email");
+				String institution = request.getParameter("institution");
+				String isPrincipal = request.getParameter("isPrincipal");
+				boolean princ = "on".equalsIgnoreCase(isPrincipal) ? true : false;
+				author.setName(name);
+				author.setEmail(email);
+				author.setInstitution(institution);
+				if(princ)
+					try{getSubmission(sid, request).getPrincipalAuthor().setPrincipal(false);}catch(Exception e){}
+				author.setPrincipal(princ);
+			}
+			request.setAttribute("mod_pub_authors", getSubmission(sid, request).getAuthors());
+			request.getServletContext().getRequestDispatcher("/modules/publications/authors.jsp").forward(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_proposed_referee")){
+			String name = request.getParameter("name");
+			String[] tab = name.trim().split(" ");
+			name = ConfigManager.setFirstUppercaseAndRestLowercase(tab[0]);
+			for(int i = 1; i < tab.length; i++)
+				name += " "+ConfigManager.setFirstUppercaseAndRestLowercase(tab[i]);
+			String email = request.getParameter("email");
+			String institution = request.getParameter("institution");
+			String motivation = request.getParameter("motivation");
+			getSubmission(sid, request).addProposedReviewerOrEditor(name, institution, email, motivation);
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getProposedReviewerOrEditors());
+			request.getServletContext().getRequestDispatcher("/modules/publications/referees.jsp").forward(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("edit_proposed_referee")){
+			String refereeId = request.getParameter("refereeId");
+			int aid = Integer.parseInt(refereeId);
+			GuiRefereeOrEditor referee = getSubmission(sid, request).getProposedReviewerOrEditors().get(aid);
+			if(request.getParameter("delete") != null){
+				ArrayList<GuiRefereeOrEditor> referees = getSubmission(sid, request).getProposedReviewerOrEditors();
+				referees.remove(aid);
+				for(int i = aid; i < referees.size(); i++)
+					referees.get(i).setRefereeId(i);
+			}
+			else{
+				String name = request.getParameter("name");
+				String[] tab = name.trim().split(" ");
+				name = ConfigManager.setFirstUppercaseAndRestLowercase(tab[0]);
+				for(int i = 1; i < tab.length; i++)
+					name += " "+ConfigManager.setFirstUppercaseAndRestLowercase(tab[i]);
+				String email = request.getParameter("email");
+				String institution = request.getParameter("institution");
+				String motivation = request.getParameter("motivation");
+				referee.setName(name);
+				referee.setEmail(email);
+				referee.setInstitution(institution);
+				referee.setMotivation(motivation);
+			}
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getProposedReviewerOrEditors());
+			request.getServletContext().getRequestDispatcher("/modules/publications/referees.jsp").forward(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_excluded_referee")){
+			String name = request.getParameter("name");
+			String[] tab = name.trim().split(" ");
+			name = ConfigManager.setFirstUppercaseAndRestLowercase(tab[0]);
+			for(int i = 1; i < tab.length; i++)
+				name += " "+ConfigManager.setFirstUppercaseAndRestLowercase(tab[i]);
+			String email = request.getParameter("email");
+			String institution = request.getParameter("institution");
+			String motivation = request.getParameter("motivation");
+			getSubmission(sid, request).addExcludedReviewerOrEditor(name, institution, email, motivation);
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getExcludedReviewerOrEditors());
+			request.getServletContext().getRequestDispatcher("/modules/publications/excl_referees.jsp").forward(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("edit_excluded_referee")){
+			String refereeId = request.getParameter("refereeId");
+			int aid = Integer.parseInt(refereeId);
+			GuiRefereeOrEditor referee = getSubmission(sid, request).getExcludedReviewerOrEditors().get(aid);
+			if(request.getParameter("delete") != null){
+				ArrayList<GuiRefereeOrEditor> referees = getSubmission(sid, request).getExcludedReviewerOrEditors();
+				referees.remove(aid);
+				for(int i = aid; i < referees.size(); i++)
+					referees.get(i).setRefereeId(i);
+			}
+			else{
+				String name = request.getParameter("name");
+				String[] tab = name.trim().split(" ");
+				name = ConfigManager.setFirstUppercaseAndRestLowercase(tab[0]);
+				for(int i = 1; i < tab.length; i++)
+					name += " "+ConfigManager.setFirstUppercaseAndRestLowercase(tab[i]);
+				String email = request.getParameter("email");
+				String institution = request.getParameter("institution");
+				String motivation = request.getParameter("motivation");
+				referee.setName(name);
+				referee.setEmail(email);
+				referee.setInstitution(institution);
+				referee.setMotivation(motivation);
+			}
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getExcludedReviewerOrEditors());
+			request.getServletContext().getRequestDispatcher("/modules/publications/excl_referees.jsp").forward(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_authors")){
+			getSubmission(sid, request).setGenTermOfUseAccepted(true);
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getProposedReviewerOrEditors());
+			setIncludesForSubmission(request, 3);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("add_referees_editors")){
+			request.setAttribute("mod_pub_referees", getSubmission(sid, request).getExcludedReviewerOrEditors());
+			setIncludesForSubmission(request, 4);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(subStep != null && subStep.equals("exclude_referees_editors")){
+			//Dernière étape
+			//request.setAttribute("mod_pub_referees", getSubmission(sid, request).getExcludedReviewerOrEditors());
+			setIncludesForSubmission(request, 5);
+			returnRequest(request, response);
+			return;
+		}
+		
+		
+		
+		HttpSession sessionContext = request.getSession();
+		MIUMultipartFormParser parser = null;
+		String paramSuppl="";
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		try {
 			parser = new MIUMultipartFormParser(request);
 			
@@ -107,7 +454,11 @@ public class PaperSubmission extends ServletModel {
 			e2.printStackTrace();
 		}
 		
+<<<<<<< HEAD
 		/*paramSuppl = request.getParameter("paramSuppl");
+=======
+		paramSuppl = request.getParameter("paramSuppl");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		System.out.println(paramSuppl);
 		
 		
@@ -116,15 +467,22 @@ public class PaperSubmission extends ServletModel {
 			request.getServletContext().getRequestDispatcher("/modules/publications/ajax.jsp").forward(request, response);
 			return;
 		}
+<<<<<<< HEAD
 		*/
+=======
+		
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		/*if(paramSuppl.equalsIgnoreCase("reviewerManagement")) {
 			
 			request.getServletContext().getRequestDispatcher("/modules/publications/ajax.jsp").forward(request, response);
 			return;
 		}*/
+<<<<<<< HEAD
 	
 		
 		ROPPublicationsDao dao = new ROPPublicationsDao();
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		
 		ArrayList<String > extensions = new ArrayList<String>();
 		extensions.add("pdf");
@@ -164,6 +522,13 @@ public class PaperSubmission extends ServletModel {
 						
 			paper.setPaperSubmissionDate(DateTime.now().toDate());
 			
+<<<<<<< HEAD
+=======
+			paperAuthor.setAuthorEmail(parser.getString("Authormail"));
+			paperAuthor.setAuthorInstitution(parser.getString("AuthorInstitution"));
+			
+			
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			//reviewers management
 			
 			/*int a = parser.getInteger("a");
@@ -176,7 +541,11 @@ public class PaperSubmission extends ServletModel {
 			
 			try{
 				upload = parser.uploadFile("attachments", uploadC);
+<<<<<<< HEAD
 				if (upload != null) {
+=======
+				if (upload != null) {					
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					File fileDest=new File((getClass().getResource("/../.." + publiUtil.getPaperFolderUrl()).getFile()+upload.getUploadedFile().getName()).replace("%20", " "));
 					MIUIOUtilMethod.copyFile(upload.getUploadedFile(), fileDest);
 					paper.setPaperAttachment((getClass().getResource("/../.." + publiUtil.getPaperFolderUrl()).getFile()+upload.getUploadedFile().getName()).replace("%20", " "));
@@ -215,6 +584,7 @@ public class PaperSubmission extends ServletModel {
 			request.setAttribute("ATTR_unreadPapers", unreadPapers);
 			request.setAttribute("ATTR_paperList", paperList);
 			request.setAttribute("ATTR_volumeOfJournal", volumesOfThisJournal);
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("publication_title", langTag));
 			includeManager.addJSP("/modules/publications/index.jsp");
 			includeManager.addCSS("/modules/publications/css/publications.css");
@@ -223,6 +593,16 @@ public class PaperSubmission extends ServletModel {
 			includeManager.addJS("/modules/publications/js/jquery-ui-1.8.13.custom.min.js");
 			includeManager.addJS("/modules/publications/js/jquery-1.2.3.min.js");
 			includeManager.addJS("/modules/publications/js/onglet.js");
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue("publication_title", langTag));
+			includeManager.addJSP(request, "/modules/publications/index.jsp");
+			includeManager.addCSS(request, "/modules/publications/css/publications.css");
+			
+			
+			includeManager.addJS(request, "/modules/publications/js/jquery-ui-1.8.13.custom.min.js");
+			includeManager.addJS(request, "/modules/publications/js/jquery-1.2.3.min.js");
+			includeManager.addJS(request, "/modules/publications/js/onglet.js");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			
 			returnRequest(request, response);
 			
@@ -233,6 +613,12 @@ public class PaperSubmission extends ServletModel {
 		
 		}
 		
+<<<<<<< HEAD
 
+=======
+		public void setSubStepOne(int sid, String paperType, BaoJournalOrConf journalOrConf, HttpServletRequest request){
+			getSubmission(sid, request).setSubStepOne(paperType, journalOrConf);
+		}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 }

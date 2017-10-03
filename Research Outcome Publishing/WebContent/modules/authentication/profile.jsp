@@ -33,7 +33,11 @@
 				<li class="col-md-2">
 					<a href="<c:out value="${notification_tab_url}" />" title="">
 						<c:out value="${applicationScope.languageManager.getLanguageValue('auth_notification', sessionScope.tag)}" />
+<<<<<<< HEAD
 						<span class="badge baos-notification-badge pgb-background-red">2</span>
+=======
+						<span class="badge baos-notification-badge pgb-background-red"></span>
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					</a>
 				</li>
 				<li class="col-md-2">
@@ -56,15 +60,26 @@
 									<c:when test="${baoUser.additionalInfoId.userAvatar != null || baoUser.additionalInfoId.userAvatarType == 'gravatar'}">
 										<c:choose>
 											<c:when test="${baoUser.additionalInfoId.userAvatarType == 'gravatar' || baoUser.additionalInfoId.userAvatarType == null}">
+<<<<<<< HEAD
 												<img src="https://www.gravatar.com/avatar/<c:out value="${applicationScope.encryptor.md5HexEmail(baoUser.userEmail)}?s=120" />" alt="Gravatar" />
 											</c:when>
 											<c:otherwise>
 												<img src="<c:url value="/ressources/images/avatars/${baoUser.additionalInfoId.userAvatar}" />" alt="Avatar" />
+=======
+												<img src="https://www.gravatar.com/avatar/<c:out value="${applicationScope.encryptor.md5HexEmail(baoUser.userEmail)}?s=120" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar', sessionScope.tag)}" />" />
+											</c:when>
+											<c:otherwise>
+												<img src="<c:url value="/ressources/images/avatars/${baoUser.additionalInfoId.userAvatar}" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar', sessionScope.tag)}" />" />
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:otherwise>
+<<<<<<< HEAD
 										<img src="<c:url value="/ressources/images/avatars/default.png" />" alt="Avatar" />
+=======
+										<img src="<c:url value="/ressources/images/avatars/default.png" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar', sessionScope.tag)}" />" />
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -293,6 +308,24 @@
 							<div class="form-group avatar_file_line <c:if test="${editProfileAvatarFileError != null}">has-error</c:if>" style="display:<c:out value="${(avatarType != null && avatarType.equals('gravatar')) || baoUser.additionalInfoId.userAvatarType == null || baoUser.additionalInfoId.userAvatarType.equals('gravatar') ? 'none' : 'block'};" />">
 								<label class="auth_label form-label" for="avatarFile"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar_file', sessionScope.tag)}" /></label>
 								<input type="file" name="avatarFile" id="avatarFile" class="auth_text_zone form-control" />
+<<<<<<< HEAD
+=======
+								<!--<div class="auth_image_editor row">
+									<div class="col-md-12">
+										<a class="btn btn-default file-btn">
+											<span><c:out value="${applicationScope.languageManager.getLanguageValue('auth_choose_file', sessionScope.tag)}" /></span>
+									        <input type="file" id="avatarFile" class="cropit-image-input form-control">
+								        </a>
+								        <div class="cropit-preview auth_img_preview"></div>
+							        </div>
+							        <div class="col-md-12">
+								        <div class="col-sm-7"><input type="range" class="cropit-image-zoom-input"></div>
+								        <button class="rotate-ccw col-sm-2 btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span></button>
+	      								<button class="rotate-cw col-sm-2 btn btn-default"><span class="glyphicon glyphicon-arrow-right"></span></button>
+      								</div>
+							        <input type="hidden" name="avatarFile" class="auth-hidden-image-data" />
+							   </div>-->
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 								<span class="help-block" id="avatarFileError"><c:out value="${editProfileConfirmPassError}" /></span>
 							</div>
 							<div class="form-group">
@@ -312,9 +345,16 @@
 								<label class="auth_label form-label" for="currentInstitution"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_current_institution', sessionScope.tag)}" /></label>
 								<input type="text" name="currentInstitution" id="currentInstitution" value="<c:out value="${param.currentInstitution != null ? param.currentInstitution : baoUser.additionalInfoId.userCurrentInstitution}" />" class="auth_text_zone form-control" placeholder="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_current_institution_holder', sessionScope.tag)}" />" />
 							</div>
+<<<<<<< HEAD
 							<div class="form-group">
 								<label class="auth_label form-label" for="phoneNumber"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_phone_number', sessionScope.tag)}" /></label>
 								<input type="tel" name="phoneNumber" id="phoneNumber" value="<c:out value="${param.phoneNumber != null ? param.phoneNumber : baoUser.additionalInfoId.userPhoneNumber}" />" class="auth_text_zone form-control" placeholder="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_phone_number_holder', sessionScope.tag)}" />" />
+=======
+							<div class="form-group <c:if test="${editProfilePhoneNumberError != null}">has-error</c:if>">
+								<label class="auth_label form-label" for="phoneNumber"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_phone_number', sessionScope.tag)}" /></label>
+								<input type="tel" name="phoneNumber" id="phoneNumber" value="<c:out value="${param.phoneNumber != null ? param.phoneNumber : baoUser.additionalInfoId.userPhoneNumber}" />" class="auth_text_zone form-control" placeholder="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_phone_number_holder', sessionScope.tag)}" />" />
+								<span class="help-block" id="phoneNumberError"><c:out value="${editProfilePhoneNumberError}" /></span>
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 							</div>
 							<div class="form-group">
 								<label class="auth_label form-label" for="facebookAccount"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_facebook_account', sessionScope.tag)}" /></label>

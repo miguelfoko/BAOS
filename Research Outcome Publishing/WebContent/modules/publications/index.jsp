@@ -21,8 +21,13 @@
 				<fieldset id="listOfJournals" onChange="activateAuthorManagement()">
 					<legend>aaaaa</legend>
 						<ol id="olPubli">
+<<<<<<< HEAD
 							<li id="liPubli"><label id="labelPubli">List of journals</label> <select name="journalList" id="listOfJournals">
 																							<option value='modPublicationDefaultJournal'>Select a journal</option>
+=======
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_list_of_journal', sessionScope.tag)}" /></label> <select name="journalList" id="listOfJournals">
+																							<option value='modPublicationDefaultJournal'><c:out value="${applicationScope.languageManager.getLanguageValue('pub_select_journal', sessionScope.tag)}" /></option>
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 															  	    						<c:forEach items="${Attr_journalList}" var="journal" begin="0">
 															  	     							<option value='<c:out value="${journal['journalOrConfName']}"/>'> <c:out value="${journal['journalOrConfName']}"/></option>
 															  	    						</c:forEach>
@@ -31,6 +36,7 @@
 				</fieldset>
 				
 				<fieldset id="authorManagement">
+<<<<<<< HEAD
 					<legend >Author management</legend>
 						<ol id="olPubli">
 							<li id="liPubli"><label id="labelPubli">Author name</label><input type="text"  name="AuthorName"/></li> 
@@ -40,18 +46,34 @@
 							<li><input type="hidden" value="<c:out value="${applicationScope.encryptor.encrypt('publications')}"/>" id="modEncryptedName" /></li>
 							<li><input type="hidden" value="<c:out value="${applicationScope.encryptor.encrypt('paperSubmission')}"/>" id="actionEncryptedName" /></li>
 							<li id="liPubli"><button type=submit class="authorManagement">Add another author</button></li>
+=======
+					<legend ><c:out value="${applicationScope.languageManager.getLanguageValue('pub_author_management', sessionScope.tag)}" /></legend>
+						<ol id="olPubli">
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_author_name', sessionScope.tag)}" /></label><input type="text"  name="AuthorName"/></li> 
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_author_institution', sessionScope.tag)}" /></label><input type="text"  name="AuthorInstitution" /></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_author_mail', sessionScope.tag)}" /></label><input type="email"  name="Authormail" /></li>
+							<!--  <li id="liPubli"><label id="labelPubli">Select if it is the com... author</label></li> -->
+							<li id="liPubli"><button type=submit class="authorManagement"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_add_another_author', sessionScope.tag)}" /></button></li>
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 						</ol>
 				</fieldset>
 				
 				<fieldset id="guideForAuthors">
+<<<<<<< HEAD
 					<legend>Guide for authors</legend>
 						<ol id="olPubli">
 							<li id="liPubli"><label id="labelPubli">Confirm</label></li> 
+=======
+					<legend><c:out value="${applicationScope.languageManager.getLanguageValue('pub_gide_for_authors', sessionScope.tag)}" /></legend>
+						<ol id="olPubli">
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_confirm', sessionScope.tag)}" /></label></li> 
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 						</ol>
 				</fieldset>
 				
 				
 				<fieldset id="suggestReviewer">
+<<<<<<< HEAD
 					<legend>Suggest reviewers (at least three)</legend>
 						<ol id="olPubli">
 							<li id="liPubli"><label id="labelPubli">First name</label><input type="text"  name="reviewer1Name" /></li> 
@@ -68,10 +90,29 @@
 					<legend>request an editor</legend>
 						<ol id="olPubli">
 							<li id="liPubli"><label id="labelPubli">Choose an editor</label></li> 
+=======
+					<legend><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_suggest_reviewer', sessionScope.tag)}" /></legend>
+						<ol id="olPubli">
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_rev_first_name', sessionScope.tag)}" /></label><input type="text"  name="reviewer1Name" /></li> 
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_rev_last_name', sessionScope.tag)}" /></label><input type="text"  name="reviewer1LastName" /></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_rev_academic_degree', sessionScope.tag)}" /></label><input type="email"  name="reviewer1AcademicDegree" /></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_rev_institution', sessionScope.tag)}" /></label><input type="email"  name="reviewer1Institution" /></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_rev_email', sessionScope.tag)}" /></label><input type="email"  name="reviewer1Email" /></li>
+							<!--  <li><input type="hidden" value="<c:out value="${applicationScope.encryptor.encrypt('publications')}"/>" id="modEncryptedName" /></li>-->
+							<!--<li><input type="hidden" value="<c:out value="${applicationScope.encryptor.encrypt('paperSubmission')}"/>" id="actionEncryptedName" /></li>-->
+							<li id="liPubli"><button type=submit class="reviewerManagement"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_add_reviewer', sessionScope.tag)}" /></button></li> 
+						</ol>
+				</fieldset>
+				<fieldset id="requestEditor">
+					<legend><c:out value="${applicationScope.languageManager.getLanguageValue('pub_request_editor', sessionScope.tag)}" /></legend>
+						<ol id="olPubli">
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_choose_editor', sessionScope.tag)}" /></label></li> 
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 						</ol>
 				</fieldset>
 				
 				<fieldset id="paperInformations">
+<<<<<<< HEAD
 					<legend>Paper informations</legend>
 					<ol id="olPubli">
 							<li id="liPubli"><label id="labelPubli">Highlight</label><textarea id="textareaPubli" name="paperHightlight" rows="2" cols="80" ></textarea></li>
@@ -85,6 +126,21 @@
 													
 							<li id="liPubli"><input id="inputPubli" type="hidden" name="volumeID" value="<c:out value="${volume_ID}" />" /></li>
 							<li id="liPubli"><button type=submit >Submit the paper</button></li>
+=======
+					<legend><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_informations', sessionScope.tag)}" /></legend>
+					<ol id="olPubli">
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_highlight', sessionScope.tag)}" /></label><textarea id="textareaPubli" name="paperHightlight" rows="2" cols="80" ></textarea></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_title', sessionScope.tag)}" /></label><textarea id="textareaPubli" name="paperTitle" rows="2" cols="80" ></textarea></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_abstract', sessionScope.tag)}" /></label><textarea id="textareaPubli" name="abstract" rows="2" cols="80" ></textarea> </li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_keywords', sessionScope.tag)}" /></label><textarea id="textareaPubli" name="keywords" rows="2" cols="80" tabindex="40"></textarea> </li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_pdf_file', sessionScope.tag)}" /></label><input id="inputPubli" type="file" name="attachments" /></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_latex_file', sessionScope.tag)}" /></label><input id="inputPubli" type="file" name="latexFile" value="Upload File"/></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_bibliography_file', sessionScope.tag)}" /></label><input id="inputPubli" type="file" name="biblioFile" /></li>
+							<li id="liPubli"><label id="labelPubli"><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_other_mentions', sessionScope.tag)}" /></label><textarea id="textareaPubli" name="otherMentions" rows="2" cols="80" tabindex="40"></textarea></li>
+													
+							<li id="liPubli"><input id="inputPubli" type="hidden" name="volumeID" value="<c:out value="${volume_ID}" />" /></li>
+							<li id="liPubli"><button type=submit ><c:out value="${applicationScope.languageManager.getLanguageValue('pub_paper_submit_paper', sessionScope.tag)}" /></button></li>
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					</ol>
 			</fieldset>
 		
@@ -122,13 +178,35 @@
 
 <c:if test="${action == 'articlesOfAJournal' }">
 	<c:out value="${ATTR_messagePubli }"/>
+<<<<<<< HEAD
 			
 		<c:forEach items="${ATTR_paperList}" var="paper" begin="0">
+=======
+	<div id="ongletsJournal">
+		<ul>
+			<li><a href="#homeJournal">Submit paper</a></li>
+			<li><a href="#viewArticles">View articles</a></li>
+			<li><a href="#guideForAuthors">Guide for authors</a></li>
+			<li><a href="#abstracting">Abstracting</a></li>
+			<li><a href="#track">Track your paper</a></li>
+		</ul>
+	
+	
+		<div id="homeJournal">
+			<c:out value="${journal['journalOrConfLongDesc']}"/><br />
+			<button type=submit><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}" />&action=${applicationScope.encryptor.encrypt('paperSubmission')}&journalID=<c:out value="${journalID}"/>">Submit your paper</a></button><br />
+			<button type=submit><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}" />&action=${applicationScope.encryptor.encrypt('userDashboard')}&id_journal=<c:out value="${journalID}"/>">View my Dashboard</a></button> 
+		</div>
+	
+		<div id="viewArticles">
+			<c:forEach items="${ATTR_paperList}" var="paper" begin="0">
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				<p>Paper Title : </p><c:out value="${paper['paperTitle']}"/>
 				<p>Paper Abstract : </p><c:out value="${paper['paperAbstract']}"/>
 				<p>Paper Keywords : </p><c:out value="${paper['paperKeywords']}"/>
 				<p>Paper Submission Date : </p><c:out value="${paper['paperSubmissionDate']}"/>
 				<p>Paper Validation Date : </p><c:out value="${paper['paperValidationDate']}"/>
+<<<<<<< HEAD
 		</c:forEach>
 	
 	<a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}" />&action=${applicationScope.encryptor.encrypt('paperSubmission')}&journalID=<c:out value="${journalID}"/>">Submit a paper in this journal</a> <br />
@@ -136,6 +214,24 @@
 	
 	<br />
 	
+=======
+			</c:forEach>
+	     </div>
+	
+		<div id="guideForAuthors">
+			Guide for authors
+		</div>
+	
+		<div id="abstracting">
+			Abstracting/indexing
+		</div>
+	
+		<div id="track">
+			Track your paper
+		</div>
+	
+	</div>
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	
 </c:if>
 

@@ -4,6 +4,10 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 #pgb-header-bar li a{color: #456045; font-size: 0.9em !important;}
 #pgb-header-bar .nav > li:hover > a, #pgb-header-bar .dropdown-menu > li:hover > a{color: rgb(76, 175, 80);}
 /*#pgb-header-bar li:hover a, #pgb-top-menu-more, #pgb-left-aside li:hover a{color: rgb(76, 175, 80);}*/
+<<<<<<< HEAD
+=======
+#pgb-left-aside .pgb-accordeon-item li:hover a{color: rgb(76, 175, 80);}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 #pgb-top-menu-more{padding: 15px; margin-top: -14px;}
 #pgb-top-menu-more .dropdown-toggle{color: white; font-weight: bold; padding: 12px; background-color: rgb(76, 175, 80); border: 1px solid #456045; text-transform: uppercase;}
 #pgb-top-menu-more .dropdown-menu{margin-top: -10px; margin-left: 15px; padding: 7px; padding-top: 15px; font-size: 1.01em;}
@@ -17,7 +21,11 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 .navbar-toggle .icon-bar{background-color: rgb(76, 175, 80) !important;}
 .navbar-toggle:hover .icon-bar, .navbar-toggle:focus .icon-bar{background-color: white !important;}
 .navbar-brand img{width: 100px; margin-top: -18px;}
+<<<<<<< HEAD
 #pgb-main-container{height: auto; padding-top: 20px;}
+=======
+#pgb-main-container{height: auto; padding-top: 20px; font-size: 0.9em;}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 .input-group-btn{font-size: 1.2em;}
 .pgb-clearer{clear: both;}
 .nav > li > a{padding: 15px 7px 15px 7px !important;}
@@ -32,6 +40,10 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 .btn-link{color: rgb(76, 175, 80) !important;}
 #pgb-left-aside{border: none; padding-top: 20px; padding-bottom: 10px;}
 #pgb-main-section{border: none; padding: 20px 5px 10px 5px;}
+<<<<<<< HEAD
+=======
+#pgb-main-section a{font-style: italic;}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 #pgb-right-aside{border: none; padding: 20px 5px 10px 5px;}
 #pgb-left-aside .panel-heading, #pgb-right-aside .panel-heading{height: 30px; padding: 5px 10px 5px 10px; box-shadow: none; background-color: none;}
 .panel-info{border-radius: 4px !important;}
@@ -60,6 +72,10 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 .pgb-baos-notification-badge-top{margin-top: -3px; margin-left: -7px; position: absolute !important; color: white !important}
 .required{color: red !important;}
 .btn-danger{color: white !important;}
+<<<<<<< HEAD
+=======
+.btn{text-shadow: none !important;}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 /*Shadow*/
 .pgb-both-corner-shadow, .pgb-left-corner-shadow, .pgb-right-corner-shadow{position: relative;}
@@ -71,5 +87,9 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 @media (max-width:1070px){.pgb-to-hide-1070{display: none !important;}}
 @media (max-width:970px){.pgb-to-hide-970{display: none !important;}}
 @media (max-width:870px){.pgb-to-hide-870{display: none !important;}}
+<<<<<<< HEAD
 @media (max-width:768px){#pgb-top-profile-dropdown{width:60px; height: 60px; margin-top: -10px; padding: 0px; margin-left: 15px;}}
+=======
+@media (max-width:768px){#pgb-top-profile-dropdown{width:60px; height: 60px; margin-top: -10px; padding: 0px; margin-left: 15px;} #pgb-top-menu-more .dropdown-menu, #pgb-top-profile-dropdown .dropdown-menu{margin-top: -10px; margin-left: -25px; padding: 7px; padding-top: 15px; font-size: 1.01em;} #pgb-search-nav-bar{margin-top: -20px !important;}}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 

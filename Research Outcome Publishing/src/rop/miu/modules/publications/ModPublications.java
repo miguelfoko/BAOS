@@ -44,7 +44,11 @@ public class ModPublications extends ServletModel {
 	    	try {
 	    		action = encryptor.decrypt(request.getParameter("action"));
 	    	} catch (ROPCryptographyException e) {
+<<<<<<< HEAD
 				e.printStackTrace();
+=======
+				
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}
 	    	
 	    	if (action.equalsIgnoreCase("registerTopic")) {
@@ -75,8 +79,12 @@ public class ModPublications extends ServletModel {
 				request.getServletContext().getRequestDispatcher("/SendMailForValidation").forward(request, response);
 	    	}
 	    	
+<<<<<<< HEAD
 	    		    	
     	}
+=======
+	   }
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
     	
     	else if (request.getParameter("action") == null && context != null) {
     		if (context.equalsIgnoreCase("registerTopic")) {
@@ -248,10 +256,17 @@ public class ModPublications extends ServletModel {
  }
     
     public void restoreContext (HttpServletRequest request, HttpServletResponse response){
+<<<<<<< HEAD
   		includeManager.setTitle(languageManager.getLanguageValue("publication_title", langTag));
 		includeManager.addJSP("/modules/publications/index.jsp");
 		includeManager.addCSS("/modules/publications/css/publications.css");
 		includeManager.addJS("/modules/publications/js/ajax.js");
+=======
+  		includeManager.setTitle(request, languageManager.getLanguageValue("publication_title", langTag));
+		includeManager.addJSP(request, "/modules/publications/index.jsp");
+		includeManager.addCSS(request, "/modules/publications/css/publications.css");
+		includeManager.addJS(request, "/modules/publications/js/ajax.js");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
     }
 
 

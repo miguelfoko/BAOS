@@ -8,12 +8,18 @@ import java.util.List;
 
 import rop.miu.beans.BaoCourse;
 import rop.miu.beans.BaoCourseTimetable;
+<<<<<<< HEAD
 import rop.miu.beans.BaoExamination;
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoIntervention;
 import rop.miu.beans.BaoLesson;
 import rop.miu.beans.BaoMonitorCourse;
+<<<<<<< HEAD
 import rop.miu.beans.BaoQuestion;
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 import rop.miu.beans.BaoStudentCourse;
 import rop.miu.beans.BaoTeacherCourse;
 import rop.miu.beans.BaoTimetable;
@@ -50,6 +56,7 @@ public class ROPElearningDao {
 		return ROPCrudDao.saveOrUpdate(baoLesson);
 	}
 
+<<<<<<< HEAD
 	public static Object saveNewQuestionCourse(BaoQuestion question) throws ROPDaoException {
 		// TODO Auto-generated method stub
 		return ROPCrudDao.saveOrUpdate(question);
@@ -60,6 +67,8 @@ public class ROPElearningDao {
 		return ROPCrudDao.saveOrUpdate(examination);
 	}
 
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	public static void updateLesson(BaoLesson baoLesson) throws ROPDaoException {
 		ROPCrudDao.update(baoLesson);
 	}
@@ -376,12 +385,15 @@ public class ROPElearningDao {
 		// TODO Auto-generated method stub
 		ROPCrudDao.update(parent);
 	}
+<<<<<<< HEAD
 
 	public static List<BaoCourse> getAllCoursesToSubscribe(BaoUser baoU) {
 		return null;
 		// TODO Auto-generated method stub
 	}
 
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	
 	
 }

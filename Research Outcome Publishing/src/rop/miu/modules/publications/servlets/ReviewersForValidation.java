@@ -13,6 +13,10 @@ import rop.miu.beans.BaoReviewOrEditionContract;
 import rop.miu.beans.BaoUser;
 import rop.miu.modules.ServletModel;
 import rop.miu.modules.publications.dao.ROPPublicationsDao;
+<<<<<<< HEAD
+=======
+import rop.miu.util.exceptions.ROPCryptographyException;
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 
 public class ReviewersForValidation extends ServletModel {
@@ -24,13 +28,20 @@ public class ReviewersForValidation extends ServletModel {
     }
 
 
+<<<<<<< HEAD
 	@Override
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		HttpSession sessionContext = request.getSession();
 		    	
 		ROPPublicationsDao dao = new ROPPublicationsDao();
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		int journalID=-1;
 		try{
 			journalID = (Integer)sessionContext.getAttribute("journalID");
@@ -40,6 +51,15 @@ public class ReviewersForValidation extends ServletModel {
 		}
 		
 		List<BaoReviewOrEditionContract> reviewcontract = dao.getAllReviewersForAJournal(journalID);
+<<<<<<< HEAD
+=======
+		try {
+			System.out.println(encryptor.encrypt(encryptor.encrypt(("mdemaya"))));
+		} catch (ROPCryptographyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		ArrayList<BaoUser> reviewers = new ArrayList<BaoUser>();
 		for (BaoReviewOrEditionContract r: reviewcontract) {
 			reviewers.add(r.getUserIdContractCreator());
@@ -51,6 +71,7 @@ public class ReviewersForValidation extends ServletModel {
     	    	
 		request.setAttribute("action", "printreviewersforvalidation");
 		request.setAttribute("id_papier", request.getParameter("id_papier"));
+<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("publication_title", langTag));
 		includeManager.addJSP("/modules/publications/index.jsp");
 		includeManager.addCSS("/modules/publications/css/publications.css");
@@ -58,6 +79,14 @@ public class ReviewersForValidation extends ServletModel {
 	}
 
 	@Override
+=======
+		includeManager.setTitle(request, languageManager.getLanguageValue("publication_title", langTag));
+		includeManager.addJSP(request, "/modules/publications/index.jsp");
+		includeManager.addCSS(request, "/modules/publications/css/publications.css");
+		returnRequest(request, response);
+	}
+
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
 	}

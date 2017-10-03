@@ -20,12 +20,18 @@ import rop.miu.beans.BaoAdditionalInfo;
 import rop.miu.beans.BaoCourse;
 import rop.miu.beans.BaoCourseTimetable;
 import rop.miu.beans.BaoCourseTimetablePK;
+<<<<<<< HEAD
 import rop.miu.beans.BaoExamination;
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoIntervention;
 import rop.miu.beans.BaoLesson;
 import rop.miu.beans.BaoMonitorCourse;
+<<<<<<< HEAD
 import rop.miu.beans.BaoQuestion;
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 import rop.miu.beans.BaoStudentCourse;
 import rop.miu.beans.BaoTeacherCourse;
 import rop.miu.beans.BaoTeacherCoursePK;
@@ -75,7 +81,11 @@ public class ModElearning extends ServletModel {
 			request.setAttribute("el_monitor_course", languageManager
 					.getLanguageValue("el_monitor_course", langTag));
 
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"elearning", langTag));
 
 			doCourse(request, response);
@@ -84,38 +94,59 @@ public class ModElearning extends ServletModel {
 			return;
 		}
 		if (option.equals("createCourse")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_create_course", langTag));
 			Date d = Calendar.getInstance().getTime();
 			String dateToday = getDateString(d);
 			request.getSession().setAttribute("dateToday", dateToday);
+<<<<<<< HEAD
 			includeManager.addJSP("/modules/elearning/createCourse.jsp");
+=======
+			includeManager.addJSP(request, "/modules/elearning/createCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			chooseMenu(request, response, 0);
 			this.returnRequest(request, response);
 			return;
 		}
 
 		if (option.equals("taughtCourse")) {
+<<<<<<< HEAD
 			includeManager.addJSP("/modules/elearning/myCourses.jsp");
+=======
+			includeManager.addJSP(request, "/modules/elearning/myCourses.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			doCourseTaught(request, response);
 			chooseMenu(request, response, 0);
 			this.returnRequest(request, response);
 			return;
 		}
 		if (option.equals("directedCourse")) {
+<<<<<<< HEAD
 			includeManager.addJSP("/modules/elearning/myCourses.jsp");
+=======
+			includeManager.addJSP(request, "/modules/elearning/myCourses.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			doCourseDirected(request, response);
 			chooseMenu(request, response, 0);
 			this.returnRequest(request, response);
 			return;
 		}
 		if (option.equals("followedCourse")) {
+<<<<<<< HEAD
 			includeManager.addJSP("/modules/elearning/myCourses.jsp");
+=======
+			includeManager.addJSP(request, "/modules/elearning/myCourses.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			doCourseFollowed(request, response);
 			chooseMenu(request, response, 0);
 			this.returnRequest(request, response);
 			return;
 		}
+<<<<<<< HEAD
 
 		if (option.equals("getCourseToSubscribe")) {
 
@@ -139,6 +170,10 @@ public class ModElearning extends ServletModel {
 
 		if (option.equals("subscribeCourse")) {
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+		if (option.equals("subscribeCourse")) {
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_subscribe_course", langTag));
 
 			String courseId = null;
@@ -152,12 +187,20 @@ public class ModElearning extends ServletModel {
 			BaoCourse baoCourse = ROPElearningDao.getCourseById(Integer
 					.parseInt(courseId));
 
+<<<<<<< HEAD
 			if (isConnected()) {
+=======
+			if (isConnected(request)) {
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				BaoUser baoU = (BaoUser) request.getSession().getAttribute(
 						"baoUser");
 				request.getSession().setAttribute("currentCourse", baoCourse);
 				request.getSession().setAttribute("baoUser", baoU);
+<<<<<<< HEAD
 				includeManager.addJSP("/modules/elearning/payCourse.jsp");
+=======
+				includeManager.addJSP(request, "/modules/elearning/payCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				this.returnRequest(request, response);
 				return;
 			} else {
@@ -168,38 +211,64 @@ public class ModElearning extends ServletModel {
 
 		}
 		if (option.equals("timetableCourse")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_timetable_course", langTag));
 			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
 					"currentCourse");
 			request.getSession().setAttribute("currentCourse", course);
+<<<<<<< HEAD
 			includeManager.addJSP("/modules/elearning/timetableCourse.jsp");
+=======
+			includeManager.addJSP(request, "/modules/elearning/timetableCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			chooseMenu(request, response, 1);
 			this.returnRequest(request, response);
 			return;
 
 		}
 		if (option.equals("monitorCourse")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_monitor_course", langTag));
 			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
 					"currentCourse");
 			request.getSession().setAttribute("currentCourse", course);
+<<<<<<< HEAD
 			includeManager.addJS("/modules/elearning/js/util.js");
 			includeManager.addJSP("/modules/elearning/monitorCourse.jsp");
+=======
+			includeManager.addJS(request, "/modules/elearning/js/util.js");
+			includeManager.addJSP(request, "/modules/elearning/monitorCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			chooseMenu(request, response, 1);
 			this.returnRequest(request, response);
 			return;
 
 		}
 		if (option.equals("monitorCourseNew")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_monitor_course", langTag));
 			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
 					"currentCourse");
 			request.getSession().setAttribute("currentCourse", course);
+<<<<<<< HEAD
 			includeManager.addJS("/modules/elearning/js/util.js");
 			includeManager.addJSP("/modules/elearning/monitorCourseNew.jsp");
+=======
+			includeManager.addJS(request, "/modules/elearning/js/util.js");
+			includeManager.addJSP(request, "/modules/elearning/monitorCourseNew.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			chooseMenu(request, response, 1);
 			this.returnRequest(request, response);
 			return;
@@ -207,7 +276,11 @@ public class ModElearning extends ServletModel {
 		}
 		if (option.equals("ajaxMonitorCourse")) {
 			System.out.println("ajaxMonitorCourse");
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_monitor_course", langTag));
 			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
 					"currentCourse");
@@ -228,14 +301,23 @@ public class ModElearning extends ServletModel {
 			dataEmail = dataEmail + "</div>";
 			System.out.println(dataEmail);
 			response.getWriter().println(dataEmail);
+<<<<<<< HEAD
 			includeManager.addJS("/modules/elearning/js/util.js");
 			includeManager.addJSP("/modules/elearning/monitorCourse.jsp");
+=======
+			includeManager.addJS(request, "/modules/elearning/js/util.js");
+			includeManager.addJSP(request, "/modules/elearning/monitorCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			this.returnRequest(request, response);
 			return;
 
 		}
 		if (option.equals("viewCourse")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_view_course", langTag));
 			String courseId = null;
 			try {
@@ -254,7 +336,11 @@ public class ModElearning extends ServletModel {
 		}
 
 		if (option.equals("lessonCourse")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_lesson_course", langTag));
 			System.out.println("lessonCourse");
 			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
@@ -264,8 +350,13 @@ public class ModElearning extends ServletModel {
 			Date d = course.getCourseStartTime();
 			String dateToday = getDateString(d);
 			request.getSession().setAttribute("dateToday", dateToday);
+<<<<<<< HEAD
 			includeManager.addJS("/modules/elearning/js/util.js");
 			includeManager.addJSP("/modules/elearning/lessonCourse.jsp");
+=======
+			includeManager.addJS(request, "/modules/elearning/js/util.js");
+			includeManager.addJSP(request, "/modules/elearning/lessonCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			chooseMenu(request, response, 1);
 			this.returnRequest(request, response);
 			return;
@@ -273,7 +364,11 @@ public class ModElearning extends ServletModel {
 		}
 
 		if (option.equals("viewLesson")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_view_lesson", langTag));
 			String lessonId = null;
 			try {
@@ -290,7 +385,11 @@ public class ModElearning extends ServletModel {
 					"currentCourse");
 			BaoLesson lesson = ROPElearningDao.getLessonById(lessonID);
 			System.out.println(lesson.toString());
+<<<<<<< HEAD
 			chooseMenu(request, response, 2);
+=======
+			chooseMenu(request, response, 1);
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			doViewLesson(request, response, course, lesson);
 			return;
 		}
@@ -312,6 +411,7 @@ public class ModElearning extends ServletModel {
 			}
 			doInterventionCourseLike(request, response, baoUser, course,
 					lesson, Integer.parseInt(id));
+<<<<<<< HEAD
 			chooseMenu(request, response, 2);
 			doViewLesson(request, response, course, lesson);
 
@@ -339,6 +439,11 @@ public class ModElearning extends ServletModel {
 			chooseMenu(request, response, 1);
 			this.returnRequest(request, response);
 			return;
+=======
+			chooseMenu(request, response, 1);
+			doViewLesson(request, response, course, lesson);
+
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}
 
 	}
@@ -357,13 +462,21 @@ public class ModElearning extends ServletModel {
 		}
 
 		if (option.equals("CreateCourse")) {
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue(
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"elearning", langTag));
 			doCreateCourse(request, response);
 			Date d = Calendar.getInstance().getTime();
 			String dateToday = getDateString(d);
 			request.getSession().setAttribute("dateToday", dateToday);
+<<<<<<< HEAD
 			includeManager.addJSP("/modules/elearning/createCourse.jsp");
+=======
+			includeManager.addJSP(request, "/modules/elearning/createCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			chooseMenu(request, response, 0);
 			this.returnRequest(request, response);
 			return;
@@ -412,7 +525,11 @@ public class ModElearning extends ServletModel {
 			BaoLesson lesson = (BaoLesson) request.getSession().getAttribute(
 					"currentLesson");
 			doInterventionCourse(request, response, course, lesson, -1);
+<<<<<<< HEAD
 			chooseMenu(request, response, 2);
+=======
+			chooseMenu(request, response, 1);
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			doViewLesson(request, response, course, lesson);
 
 		}
@@ -431,7 +548,11 @@ public class ModElearning extends ServletModel {
 			}
 			doInterventionCourse(request, response, course, lesson,
 					Integer.parseInt(id));
+<<<<<<< HEAD
 			chooseMenu(request, response, 2);
+=======
+			chooseMenu(request, response, 1);
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			doViewLesson(request, response, course, lesson);
 
 		}
@@ -442,6 +563,7 @@ public class ModElearning extends ServletModel {
 			chooseMenu(request, response, 0);
 			doViewCourseByOthers(request, response, course);
 		}
+<<<<<<< HEAD
 		if (option.equals("QuestionCourse")) {
 			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
 					"currentCourse");
@@ -531,6 +653,8 @@ public class ModElearning extends ServletModel {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 	}
 
@@ -552,8 +676,13 @@ public class ModElearning extends ServletModel {
 		request.getSession().setAttribute("monitorCourse", monitorCourse);
 		request.getSession().setAttribute("timetableCourse", timetableCourse);
 		request.getSession().setAttribute("teacherCourse", teacherCourse);
+<<<<<<< HEAD
 		includeManager.addJS("/modules/elearning/js/util.js");
 		includeManager.addJSP("/modules/elearning/viewCourseByOthers.jsp");
+=======
+		includeManager.addJS(request, "/modules/elearning/js/util.js");
+		includeManager.addJSP(request, "/modules/elearning/viewCourseByOthers.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		this.returnRequest(request, response);
 		return;
 
@@ -592,8 +721,13 @@ public class ModElearning extends ServletModel {
 				listOfIntervention);
 		request.getSession().setAttribute("listOfInterventionSize",
 				listOfIntervention.size());
+<<<<<<< HEAD
 		includeManager.addJS("/modules/elearning/js/util.js");
 		includeManager.addJSP("/modules/elearning/viewLesson.jsp");
+=======
+		includeManager.addJS(request, "/modules/elearning/js/util.js");
+		includeManager.addJSP(request, "/modules/elearning/viewLesson.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		this.returnRequest(request, response);
 		return;
 
@@ -635,8 +769,12 @@ public class ModElearning extends ServletModel {
 			BaoLesson lesson, int interventionID) {
 		// TODO Auto-generated method stub
 		System.out.println(interventionID);
+<<<<<<< HEAD
 		BaoIntervention intervention = ROPElearningDao
 				.getInterventionById(interventionID);
+=======
+		BaoIntervention intervention = ROPElearningDao.getInterventionById(interventionID);
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		String likes = intervention.getInterventionLike();
 		String[] like = likes.split("_");
 		boolean contain = false;
@@ -775,15 +913,79 @@ public class ModElearning extends ServletModel {
 
 	void doCourse(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+<<<<<<< HEAD
 		List<BaoCourse> userCourse = ROPElearningDao.getAllCourses();
 
 		request.getSession().setAttribute("userCourse", userCourse);
 		includeManager.addJSP("/modules/elearning/index.jsp");
+=======
+		// if (isConnected(request)) {
+		// BaoUser baoU = (BaoUser) request.getSession().getAttribute(
+		// "baoUser");
+		// int baouId = baoU.getUserId();
+		// List<BaoGroup> userGroups = ROPElearningDao
+		// .getUserGroupsById(baouId);
+		// boolean isTeacher = false;
+		// for (BaoGroup bg : userGroups) {
+		// if (((BaoGroup) bg).getGroupName().equalsIgnoreCase("Teacher")) {
+		// isTeacher = true;
+		// }
+		// }
+		//
+		// if (isTeacher) {
+		// List<BaoCourse> userCourse = ROPElearningDao
+		// .getTeacherCourseById(baouId);
+		//
+		// request.getSession().setAttribute("userCourse", userCourse);
+		// request.getSession().setAttribute("userCourseSize",
+		// userCourse.size());
+		// request.getSession().setAttribute("baoUser", baoUser);
+		// request.getSession().setAttribute("isTeacher", true);
+		// Date d = Calendar.getInstance().getTime();
+		// String dateToday = getDateString(d);
+		// request.getSession().setAttribute("dateToday", dateToday);
+		// includeManager.addJS(request, "/modules/elearning/js/util.js");
+		// includeManager.addJSP(request, "/modules/elearning/index.jsp");
+		// } else {
+		// List<BaoCourse> monitorCourse = ROPElearningDao
+		// .getCourseOfMonitorById(baouId);
+		// List<BaoCourse> studentCourse = ROPElearningDao
+		// .getCourseOfMonitorById(baouId);
+		// System.out.println(monitorCourse.toString());
+		// List<BaoCourse> userCourse = ROPElearningDao.getAllCourses();
+		//
+		// request.getSession().setAttribute("userCourse", userCourse);
+		// request.getSession().setAttribute("userCourseSize",
+		// userCourse.size());
+		// request.getSession().setAttribute("monitorCourse",
+		// monitorCourse);
+		// request.getSession().setAttribute("monitorCourseSize",
+		// monitorCourse.size());
+		// request.getSession().setAttribute("studentCourse",
+		// studentCourse);
+		// request.getSession().setAttribute("studentCourseSize",
+		// studentCourse.size());
+		// request.getSession().setAttribute("baoUser", baoUser);
+		// request.getSession().setAttribute("isTeacher", false);
+		// includeManager.addJSP(request, "/modules/elearning/index.jsp");
+		// }
+		//
+		// } else {
+		// request.getSession().setAttribute("baoUser", null);
+		List<BaoCourse> userCourse = ROPElearningDao.getAllCourses();
+
+		request.getSession().setAttribute("userCourse", userCourse);
+		includeManager.addJSP(request, "/modules/elearning/index.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 
 	void doViewCourse(HttpServletRequest request, HttpServletResponse response,
 			String courseId) throws ServletException, IOException {
+<<<<<<< HEAD
 		if (isConnected()) {
+=======
+		if (isConnected(request)) {
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			BaoUser baoU = (BaoUser) request.getSession().getAttribute(
 					"baoUser");
 			int baouId = baoU.getUserId();
@@ -820,7 +1022,11 @@ public class ModElearning extends ServletModel {
 						monitorCourse.size());
 				request.getSession().setAttribute("baoUser", baoUser);
 				request.getSession().setAttribute("currentCourse", course);
+<<<<<<< HEAD
 				includeManager.addJSP("/modules/elearning/viewCourse.jsp");
+=======
+				includeManager.addJSP(request, "/modules/elearning/viewCourse.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				this.returnRequest(request, response);
 			} else {
 				forward403(request, response);
@@ -1029,6 +1235,7 @@ public class ModElearning extends ServletModel {
 
 	}
 
+<<<<<<< HEAD
 	public void setElearningMenu() {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
@@ -1039,11 +1246,26 @@ public class ModElearning extends ServletModel {
 			includeManager.addMenuItem(id, languageManager.getLanguageValue(
 					"el_subscribe_course", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("subscribeCourse"), "bell");
+=======
+	public void setElearningMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager.createSideMenu(request, languageManager
+					.getLanguageValue("el_elearning_menu", langTag), "user");
+			includeManager.addMenuItem(request, id,
+					languageManager.getLanguageValue("el_all_course", langTag),
+					firstLinkPart + "&o=" + encryptor.encrypt("createCourse"),
+					"user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_subscribe_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("viewCourse"), "bell");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		} catch (ROPCryptographyException e) {
 
 		}
 	}
 
+<<<<<<< HEAD
 	public void setTeacherMenu() {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
@@ -1062,6 +1284,26 @@ public class ModElearning extends ServletModel {
 					"el_course_directed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("directedCourse"), "edit");
 			includeManager.addMenuItem(id, languageManager.getLanguageValue(
+=======
+	public void setTeacherMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager.createSideMenu(request, languageManager
+					.getLanguageValue("el_elearning_menu", langTag), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_create_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("createCourse"), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_subscribe_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("viewCourse"), "bell");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_course_taught", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("taughtCourse"), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_course_directed", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("directedCourse"), "edit");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_course_followed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("followedCourse"), "bell");
 
@@ -1070,6 +1312,7 @@ public class ModElearning extends ServletModel {
 		}
 	}
 
+<<<<<<< HEAD
 	public void setTeacherLessonMenu() {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
@@ -1107,12 +1350,44 @@ public class ModElearning extends ServletModel {
 					.addMenuItem(id, languageManager.getLanguageValue(
 							"el_exam_course", langTag), firstLinkPart + "&o="
 							+ encryptor.encrypt("examCourse"), "bell");
+=======
+	public void setTeacherCourseMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager.createSideMenu(request, languageManager
+					.getLanguageValue("el_elearning_menu", langTag), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_create_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("createCourse"), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_subscribe_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("viewCourse"), "bell");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_course_taught", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("taughtCourse"), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_course_directed", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("directedCourse"), "edit");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_course_followed", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("followedCourse"), "bell");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_timetable_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("timetableCourse"), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_monitor_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("monitorCourse"), "edit");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_lesson_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("lessonCourse"), "bell");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 		} catch (ROPCryptographyException e) {
 
 		}
 	}
 
+<<<<<<< HEAD
 	public void setStudentMenu() {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
@@ -1122,12 +1397,24 @@ public class ModElearning extends ServletModel {
 					"el_subscribe_course", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("viewCourse"), "bell");
 			includeManager.addMenuItem(id, languageManager.getLanguageValue(
+=======
+	public void setStudentMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager.createSideMenu(request, languageManager
+					.getLanguageValue("el_elearning_menu", langTag), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_subscribe_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("viewCourse"), "bell");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_course_followed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("followedCourse"), "bell");
 		} catch (ROPCryptographyException e) {
 		}
 	}
 
+<<<<<<< HEAD
 	public void setMonitorMenu() {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
@@ -1140,6 +1427,20 @@ public class ModElearning extends ServletModel {
 					"el_course_directed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("directedCourse"), "edit");
 			includeManager.addMenuItem(id, languageManager.getLanguageValue(
+=======
+	public void setMonitorMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager.createSideMenu(request, languageManager
+					.getLanguageValue("el_elearning_menu", langTag), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_subscribe_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("viewCourse"), "bell");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_course_directed", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("directedCourse"), "edit");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_course_followed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("followedCourse"), "bell");
 
@@ -1148,6 +1449,7 @@ public class ModElearning extends ServletModel {
 		}
 	}
 
+<<<<<<< HEAD
 	public void setElearningGuidesMenu() {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
@@ -1161,6 +1463,21 @@ public class ModElearning extends ServletModel {
 					"el_guide_monitor", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("guideMonitor"), "edit");
 			includeManager.addMenuItem(id, languageManager.getLanguageValue(
+=======
+	public void setElearningGuidesMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager.createSideMenu(request, 
+					languageManager.getLanguageValue("el_guide_menu", langTag),
+					"user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_guide_teacher", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("guideTeacher"), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_guide_monitor", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("guideMonitor"), "edit");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					"el_guide_student", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("guideStudent"), "bell");
 		} catch (ROPCryptographyException e) {
@@ -1171,7 +1488,11 @@ public class ModElearning extends ServletModel {
 	private void chooseMenu(HttpServletRequest request,
 			HttpServletResponse response, int teacherMenu)
 			throws ServletException, IOException {
+<<<<<<< HEAD
 		if (isConnected()) {
+=======
+		if (isConnected(request)) {
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			BaoUser baoU = (BaoUser) request.getSession().getAttribute(
 					"baoUser");
 			int baouId = baoU.getUserId();
@@ -1185,6 +1506,7 @@ public class ModElearning extends ServletModel {
 			}
 			if (isTeacher) {
 				if (teacherMenu == 0) {
+<<<<<<< HEAD
 					setTeacherMenu();
 				} else if (teacherMenu == 1) {
 					setTeacherCourseMenu();
@@ -1193,10 +1515,16 @@ public class ModElearning extends ServletModel {
 					setTeacherLessonMenu();
 					setTeacherCourseMenu();
 					setTeacherMenu();
+=======
+					setTeacherMenu(request);
+				} else if (teacherMenu == 1) {
+					setTeacherCourseMenu(request);
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				}
 			} else {
 				List<BaoCourse> monitorCourse = ROPElearningDao
 						.getCourseOfMonitorById(baouId);
+<<<<<<< HEAD
 				System.out.println(monitorCourse.toString());
 				List<BaoCourse> studentCourse = ROPElearningDao
 						.getCourseOfStudentById(baouId);
@@ -1215,6 +1543,23 @@ public class ModElearning extends ServletModel {
 		}
 
 		setElearningGuidesMenu();
+=======
+				List<BaoCourse> studentCourse = ROPElearningDao
+						.getCourseOfStudentById(baouId);
+				if (monitorCourse != null) {
+					setMonitorMenu(request);
+				} else if (studentCourse != null) {
+					setStudentMenu(request);
+				} else {
+					setElearningMenu(request);
+				}
+			}
+		} else {
+			setElearningMenu(request);
+		}
+
+		setElearningGuidesMenu(request);
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 
 }

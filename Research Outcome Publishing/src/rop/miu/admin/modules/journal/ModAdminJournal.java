@@ -33,7 +33,11 @@ public class ModAdminJournal extends AdminServletModel {
 			forward500(request, response);
 			return;
 		}
+<<<<<<< HEAD
 		if(isConnected()){
+=======
+		if(isConnected(request)){
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			//			if(isAccessGranted(ROPConstants.ADMIN_ACCESS)){
 			if(option==null||option.equals("login")){
 				indexJournalParameter(request);
@@ -155,10 +159,17 @@ public class ModAdminJournal extends AdminServletModel {
 					return;
 				}
 				if(option1==null){
+<<<<<<< HEAD
 					includeManager.addCSS("/admin/modules/journal/inc/style.css");
 					includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 					includeManager.setTitle(languageManager.getLanguageValue("journal_home_page", langTag));
 					includeManager.addJSP("/modules/authentication/login.jsp");
+=======
+					includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+					includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+					includeManager.setTitle(request, languageManager.getLanguageValue("journal_home_page", langTag));
+					includeManager.addJSP(request, "/modules/authentication/login.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				}else
 					if(option1.equals("formCreate")){
 						createJournalForm(request);
@@ -176,10 +187,17 @@ public class ModAdminJournal extends AdminServletModel {
 									update2JournalForm(request);//To remove
 			}
 			else{
+<<<<<<< HEAD
 				includeManager.addCSS("/admin/modules/journal/inc/style.css");
 				includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 				includeManager.setTitle(languageManager.getLanguageValue("journal_home_page", langTag));
 				includeManager.addJSP("/modules/authentication/login.jsp");
+=======
+				includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+				includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+				includeManager.setTitle(request, languageManager.getLanguageValue("journal_home_page", langTag));
+				includeManager.addJSP(request, "/modules/authentication/login.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}
 		}
 		returnRequest(request, response);
@@ -191,6 +209,7 @@ public class ModAdminJournal extends AdminServletModel {
 	}
 
 	private void updateJournalParameter(HttpServletRequest request){
+<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
@@ -213,30 +232,75 @@ public class ModAdminJournal extends AdminServletModel {
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
+=======
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/updateJournal.jsp");
+	}
+	private void indexJournalParameter(HttpServletRequest request){
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_home_page", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/login.jsp");
+	}
+	private void createJournalParameter(HttpServletRequest request){
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_creation_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/createJournal.jsp");
+	}
+	private void deleteJournalParameter(HttpServletRequest request){
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfJournalParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllJournalOrConf("Journal");
 		request.setAttribute("baoJournalOrConf", baoJournalOrConf);
+<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_list_of_journal_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/listOfJournal.jsp");
+=======
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_list_of_journal_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/listOfJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfConfParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllJournalOrConf("Conference");
 		request.setAttribute("baoJournalOrConf", baoJournalOrConf);
+<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_list_of_conf_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/listOfConf.jsp");
+=======
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_list_of_conf_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/listOfConf.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfTrashParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllTrashedJournalOrConf((short)3);
 		request.setAttribute("baoJournalOrConf", baoJournalOrConf);
+<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_trash_list_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/trashList.jsp");
+=======
+		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
+		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_trash_list_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/trashList.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void createJournalForm(HttpServletRequest request){
 		Integer journalOrConfId=new Integer(22);
@@ -265,8 +329,13 @@ public class ModAdminJournal extends AdminServletModel {
 				re.printStackTrace();
 			}
 		}
+<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("journal_creation_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/createJournal.jsp");
+=======
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_creation_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/createJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 
 	private void updateJournalForm(HttpServletRequest request){
@@ -282,14 +351,24 @@ public class ModAdminJournal extends AdminServletModel {
 			request.setAttribute("journalId",  baoJournalOrConf.getJournalOrConfId());
 			request.setAttribute("journalShortDescription", baoJournalOrConf.getJournalOrConfShortDesc());
 			request.setAttribute("journalDescription", baoJournalOrConf.getJournalOrConfLongDesc());
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
 			includeManager.addJSP("/admin/modules/journal/updateJournal2.jsp");
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
+			includeManager.addJSP(request, "/admin/modules/journal/updateJournal2.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}else{
 			request.setAttribute("journalOrConfName", journalOrConfName);
 			request.setAttribute("journalOrConfState", journalOrConfState);
 			request.setAttribute("message", languageManager.getLanguageValue("journal_update_error", langTag));
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
 			includeManager.addJSP("/admin/modules/journal/updateJournal.jsp");
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
+			includeManager.addJSP(request, "/admin/modules/journal/updateJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}
 	}
 	private void update2JournalForm(HttpServletRequest request){
@@ -314,8 +393,13 @@ public class ModAdminJournal extends AdminServletModel {
 		}
 
 		request.setAttribute("resultOfUpdate", "Update success");
+<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/updateJournal.jsp");
+=======
+		includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
+		includeManager.addJSP(request, "/admin/modules/journal/updateJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 
 	private void deleteJournalForm(HttpServletRequest request){
@@ -332,6 +416,7 @@ public class ModAdminJournal extends AdminServletModel {
 					e.printStackTrace();
 				}
 				request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_succes_message", langTag));
+<<<<<<< HEAD
 				includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 				includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
 			}
@@ -339,12 +424,26 @@ public class ModAdminJournal extends AdminServletModel {
 				request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_error_message", langTag));
 				includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 				includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
+=======
+				includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
+				includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
+			}
+			else{
+				request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_error_message", langTag));
+				includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
+				includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}
 
 		}else{
 			request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_error_message", langTag));
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 			includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
+			includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}
 	}
 	@Override
@@ -356,7 +455,11 @@ public class ModAdminJournal extends AdminServletModel {
 			request.getSession().removeAttribute("c");
 			return;
 		}
+<<<<<<< HEAD
 		if(isConnected()){
+=======
+		if(isConnected(request)){
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			String formulaire = null;
 			try{
 				String parOpt = request.getParameter("formulaire");

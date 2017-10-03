@@ -1,8 +1,16 @@
 package rop.miu.util;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class GuiMenuItem {
+=======
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class GuiMenuItem implements Serializable{
+	private static final long serialVersionUID = 1L;
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	private int menuItemId;
 	private String menuItemName;
 	private String menuItemLink;

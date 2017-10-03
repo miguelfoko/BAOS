@@ -26,7 +26,10 @@ public class UserDashBoard extends ServletModel {
        
     }
 
+<<<<<<< HEAD
 	@Override
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		HttpSession journalInSession = request.getSession();
@@ -57,17 +60,29 @@ public class UserDashBoard extends ServletModel {
 		request.setAttribute("ATTR_unreadPapers", unreadPapers);
 		request.setAttribute("ATTR_volumeOfJournal", volumesOfThisJournal);
 		request.setAttribute("ATTR_reviewersList", reviewers);
+<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("publication_title", langTag));
 		includeManager.addJSP("/modules/publications/index.jsp");
 		includeManager.addCSS("/modules/publications/css/publications.css");
 		includeManager.addJS("/modules/publications/js/jquery-ui-1.8.13.custom.min.js");
 		includeManager.addJS("/modules/publications/js/jquery-1.2.3.min.js");
 		includeManager.addJS("/modules/publications/js/onglet.js");
+=======
+		includeManager.setTitle(request, languageManager.getLanguageValue("publication_title", langTag));
+		includeManager.addJSP(request, "/modules/publications/index.jsp");
+		includeManager.addCSS(request, "/modules/publications/css/publications.css");
+		includeManager.addJS(request, "/modules/publications/js/jquery-ui-1.8.13.custom.min.js");
+		includeManager.addJS(request, "/modules/publications/js/jquery-1.2.3.min.js");
+		includeManager.addJS(request, "/modules/publications/js/onglet.js");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		returnRequest(request, response);
 	}
 
 	
+<<<<<<< HEAD
 	@Override
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
 	}

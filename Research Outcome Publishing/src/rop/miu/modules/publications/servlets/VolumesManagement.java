@@ -23,13 +23,20 @@ public class VolumesManagement extends ServletModel {
     }
 
 
+<<<<<<< HEAD
 	@Override
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		HttpSession sessionContext = request.getSession();
 		
 	    
+<<<<<<< HEAD
 	    if (!isConnected()){
+=======
+	    if (!isConnected(request)){
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	    	//sauvegarder le contexte
 	    	sessionContext.setAttribute("context", "printvolumes");
 	    	sessionContext.setAttribute("volumeID", request.getParameter("id_volume"));
@@ -54,9 +61,15 @@ public class VolumesManagement extends ServletModel {
 			request.setAttribute("ATTR_volumeList", volumeList);
 			
 			request.setAttribute("action", "printvolumes");
+<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("publication_title", langTag));
 			includeManager.addJSP("/modules/publications/index.jsp");
 			includeManager.addCSS("/modules/publications/css/publications.css");
+=======
+			includeManager.setTitle(request, languageManager.getLanguageValue("publication_title", langTag));
+			includeManager.addJSP(request, "/modules/publications/index.jsp");
+			includeManager.addCSS(request, "/modules/publications/css/publications.css");
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			returnRequest(request, response);
 	    }
 		
@@ -67,7 +80,10 @@ public class VolumesManagement extends ServletModel {
 	}
 
 
+<<<<<<< HEAD
 	@Override
+=======
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
 	}

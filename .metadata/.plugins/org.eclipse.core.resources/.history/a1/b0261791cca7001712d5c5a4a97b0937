@@ -1,0 +1,1 @@
+<h1><c:out value="${applicationScope.languageManager.getLanguageValue('auth_page_under_construction', sessionScope.tag)}" /></h1>

@@ -8,7 +8,11 @@ $(document).ready(function(){
 			'dataType' : 'html',
 			'success' : function(data){
 				if(data != null && data.trim() != ""){
+<<<<<<< HEAD
 					$('#email').addClass('textZoneError');
+=======
+					$('#email').removeClass('textZoneError').addClass('textZoneError');
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					$('#form-email-group').removeClass('has-error').addClass('has-error');
 				}else{
 					$('#email').removeClass('textZoneError');
@@ -30,7 +34,11 @@ $(document).ready(function(){
 			'dataType' : 'html',
 			'success' : function(data){
 				if(data != null && data.trim() != ""){
+<<<<<<< HEAD
 					$('#login').addClass('textZoneError');
+=======
+					$('#login').removeClass('textZoneError').addClass('textZoneError');
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					$('#form-login-group').removeClass('has-error').addClass('has-error');
 				}else{
 					$('#login').removeClass('textZoneError');
@@ -52,7 +60,11 @@ $(document).ready(function(){
 			'dataType' : 'html',
 			'success' : function(data){
 				if(data != null && data.trim() != ""){
+<<<<<<< HEAD
 					$('#pass').addClass('textZoneError');
+=======
+					$('#pass').removeClass('textZoneError').addClass('textZoneError');
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					$('#form-pass-group').removeClass('has-error').addClass('has-error');
 				}else{
 					$('#pass').removeClass('textZoneError');
@@ -71,7 +83,11 @@ $(document).ready(function(){
 		var pass = $('#pass').val();
 		var mess = '';
 		if(confirmPass !== pass){
+<<<<<<< HEAD
 			$('#confirmPass').addClass('textZoneError');
+=======
+			$('#confirmPass').removeClass('textZoneError').addClass('textZoneError');
+>>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			$('#form-confirm-pass-group').removeClass('has-error').addClass('has-error');
 			mess = $('#wrongConfirmPass').val();
 		}else{

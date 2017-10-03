@@ -1,94 +1,168 @@
-@CHARSET "ISO-8859-1";
-#cmdBox{
-	margin: 5px 5px 20px 5px;
-	padding: 5px 0px;
-}
-.cmd{
-	display: block;
-	margin: 10px 50px 10px 0px;
-	float: left;
-}
-.cmd:hover .cmdCircle, .cmd:hover .cmdTitle{
-	border-color: #D69A2B;
-}
-.cmd:hover .cmdCircle{
-	background-color: rgba(100, 100, 100, 0.1);
-}
-.clr{
-	clear: both;
-}
-.cmdGroupTitle{
-	margin: 0px 0px 5px 0px;
-}
-.cmdCircle{
-	border: solid rgba(35, 150, 100, 1);
-	position: relative;
-	z-index: 1;
-	width: 88px;
-	height: 88px;
-	border-radius: 100%;
-	display: inline-block;
-	border-width: 0.3em;
-	box-sizing: border-box;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	background-color: rgba(35, 150, 100, 0.1);
+body {
+	font-family: 'Open Sans', sans-serif;
+    color: #5A5A5A;
+    font-weight: 400;
+    font-size: 18px;
 }
 
-.cmdTitle{
-	display: block;
-	width: 88px;
-	text-align: center;
-	border-top: 0.2em solid rgba(35, 150, 100, 1);
-	/*border-bottom: 0.1em solid rgba(35, 150, 100, 1);*/
-	border-radius: 15px;
-	font-size: 0.9em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bolder;
+	color: #444;
 }
 
-.acc_type_icon{
-	background-image: url("../images/icon-48-newcategory.png");
+.primary-btn {
+	color: #056367;
+	background-color: #fff;
 }
 
-.acc_admin_icon{
-	background-image: url("../images/icon-48-cpanel.png");
+.hero-unit {
+	height: 100vh;
+	width: 100%;
+	background: #ff9a7c;
+	background: -moz-linear-gradient(top, #ff9a7c 0%, #3b6db7 77%);
+	background: -webkit-linear-gradient(top, #ff9a7c 0%,#3b6db7 77%);
+	background: linear-gradient(to bottom, #ff9a7c 0%,#3b6db7 77%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9a7c', endColorstr='#3b6db7',GradientType=0 );
+	display: table;
 }
 
-.man_usr_icon{
-	background-image: url("../images/icon-48-user.png");
+.box-container {
+	width: 556px;
+    height: 479px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    margin-top: 8%;
 }
 
-.con_acc_icon{
-	background-image: url("../images/icon-48-contacts.png");
+.primary-text {
+	color: #ffd092;
 }
 
-.deb_acc_icon{
-	background-image: url("../images/icon-48-revert.png");
+.secondary-text {
+	color: #ff9a7c;
+	font-size: 21px;
 }
 
-.cred_acc_icon{
-	background-image: url("../images/icon-48-article-add.png");
+.primary-btn {
+	background-color: #ffd092;
 }
 
-.del_acc_icon{
-	background-image: url("../images/icon-48-trash.png");
+.white-btn {
+	background-color: #fff;
+	color: #056367;
 }
 
-.trans_icon{
-	background-image: url("../images/icon-48-move.png");
+table tbody tr:last-child {
+	border-bottom: 0;
 }
 
-.val_op_icon{
-	background-image: url("../images/icon-48-apply.png");
+.button {
+	position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 73px;
+    font-size: 28px;
+    color: #626262;
+    border: 3px solid #626262;
+    display: inline-block;
+    width: 190px;
+    margin: 0 auto;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.acc_icon{
-	background-image: url("../images/icon-48-category.png");
+.button:hover {
+	border-color: #ff9a7c;
+	color: #ff9a7c;
 }
 
-.cre_acc_icon{
-	background-image: url("../images/icon-48-contacts-categories.png");
+section {
+	padding-top: 30px;
+	background: #F7F7F7;
+	background: -moz-linear-gradient(top, #F7F7F7 0%, #fff 37%);
+	background: -webkit-linear-gradient(top, #F7F7F7 0%,#fff 37%);
+	background: linear-gradient(to bottom, #F7F7F7 0%,#fff 37%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F7F7F7', endColorstr='#fff',GradientType=0 );
+	padding-bottom: 30px;
+
 }
 
-.add_usr_icon{
-	background-image: url("../images/icon-48-user-add.png");
+.what-is-this {
+	background: #292929 !important;
+	font-size: 22px;
+	min-height: 100vh;
+	display: table;
+	width: 100%;
+}
+
+.content-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.what-is-this img {
+	margin: 0 auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -69px;
+    opacity: 0.2;
+    transition-duration: 1s;
+}
+
+.what-is-this img:hover {
+	opacity: 0.3;
+}
+
+.highlight-text {
+	background: #FFF;
+}
+
+.gray-section {
+	background: #F5F2F0;
+	background: -moz-linear-gradient(top, #F5F2F0 0%, #fff 77%);
+	background: -webkit-linear-gradient(top, #F5F2F0 0%,#fff 77%);
+	background: linear-gradient(to bottom, #F5F2F0 0%,#fff 77%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F5F2F0', endColorstr='#fff',GradientType=0 );
+}
+
+#slideshow {
+  margin: 80px auto;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#slideshow1 {
+  margin: 80px auto;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#slideshow > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}
+
+#slideshow1 > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
 }
