@@ -7,7 +7,6 @@ INDEX VERSION 1.126+F:\Workspace\Projets Git\BAOS\.metadata\.plugins\org.eclipse
 1963987571.index
 801899934.index
 1361949723.index
-3880906921.index
 1648981086.index
 228835845.index
 2943510518.index
