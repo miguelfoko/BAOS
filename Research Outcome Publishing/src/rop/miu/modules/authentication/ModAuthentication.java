@@ -15,11 +15,11 @@ import rop.miu.ConfigManager;
 import rop.miu.beans.BaoAdditionalInfo;
 import rop.miu.beans.BaoEmailAccount;
 import rop.miu.beans.BaoEmailTemplate;
+import rop.miu.beans.BaoNotification;
 import rop.miu.beans.BaoUser;
 import rop.miu.dao.ROPCrudDao;
 import rop.miu.dao.ROPUserDao;
 import rop.miu.modules.ServletModel;
-import rop.miu.util.GuiStatus;
 import rop.miu.util.IncludeManager;
 import rop.miu.util.ROPConstants;
 import rop.miu.util.exceptions.ROPCryptographyException;
@@ -71,6 +71,14 @@ public class ModAuthentication extends ServletModel {
 		setAuthenticationLogoutMenu(request);
     }
     
+    private void setIncludeForResetPassword(HttpServletRequest request) throws ServletException, IOException {
+    	IncludeManager inclManager = getIncludeManager(request);
+    	inclManager.setTitle(request, languageManager.getLanguageValue("auth_reset_password_title", getLangTag(request)));
+		inclManager.addJSP(request, "/modules/authentication/reset_pwd.jsp");
+		inclManager.addCSS(request, "/modules/authentication/css/style.css");
+		setAuthenticationLogoutMenu(request);
+    }
+    
     private void setIncludeForRegister(HttpServletRequest request) throws ServletException, IOException {
     	IncludeManager inclManager = getIncludeManager(request);
     	inclManager.setTitle(request, languageManager.getLanguageValue("register_title", getLangTag(request)));
@@ -116,7 +124,8 @@ public class ModAuthentication extends ServletModel {
 		}
 		
 		if(option.equals("reset_password")){
-			
+			setIncludeForResetPassword(request);
+			returnRequest(request, response);
 			return;
 		}
 		
@@ -154,6 +163,26 @@ public class ModAuthentication extends ServletModel {
 			return;
 		}
 		
+		if(option.equals("unread-notifications")){
+			int unreadNotificationNum = 0;
+			if(isConnected(request)){
+				unreadNotificationNum = ROPUserDao.getUnreadNotificationNum(getBaoUser(request));
+			}
+			request.setAttribute("unreadNotificationNum", unreadNotificationNum);
+			request.getServletContext().getRequestDispatcher("/modules/authentication/unread-notification.jsp").forward(request, response);
+			return;
+		}
+		
+		if(option.equals("read-notifications")){
+			if(isConnected(request)){
+				try {
+					ROPUserDao.readNotifications(getBaoUser(request).getUserId());
+				} catch (ROPDaoException e) {
+				}
+			}
+			return;
+		}
+		
 		if(option.matches("validate-[0-9]{1,}")){
 			int userId = Integer.parseInt(option.split("-")[1]);
 			try {
@@ -184,6 +213,8 @@ public class ModAuthentication extends ServletModel {
 		}
 		
 		if(option.startsWith("notification")){
+			ArrayList<BaoNotification> list = ROPUserDao.getAllNotifications(getBaoUser(request));
+			request.setAttribute("notificationList", list);
 			if(option.endsWith("ajax")){
 				request.getServletContext().getRequestDispatcher("/modules/authentication/notification.jsp").forward(request, response);
 				return;
@@ -346,9 +377,10 @@ public class ModAuthentication extends ServletModel {
 				ROPUserDao.assignGroupToUser(ROPConstants.DEFAULT_USER_GROUP, user);
 				sendConfirmEmail(user, request);
 				
-				setBaoUser(request, user);
+				//setBaoUser(request, user);
 				inclManager.createSuccessStatus(request, languageManager.getLanguageValue("register_success", getLangTag(request)));
-				setIncludesForProfile(request, 1);
+				//setIncludesForProfile(request, 1);
+				setIncludeForLogin(request);
 				returnRequest(request, response);
 				return;
 			}catch(Exception e){
@@ -524,7 +556,7 @@ public class ModAuthentication extends ServletModel {
         	mc = ROPConstants.setParam("login", user.getUserLogin(), mc);
         	mc = ROPConstants.setParam("password", languageManager.getLanguageValue("pass_you_specified", getLangTag(request)), mc);
         	try{
-        		mc = ROPConstants.setParam("confirm_url", contextBaseUrl+"/?m="+encryptor.encrypt("authentication")+"o="+encryptor.encrypt("validate-"+user.getUserId()), mc);
+        		mc = ROPConstants.setParam("confirm_url", contextBaseUrl+"/index.jsp?m="+encryptor.encrypt("authentication")+"&o="+encryptor.encrypt("validate-"+user.getUserId()), mc);
         	}catch(Exception ex){
         		
         	}

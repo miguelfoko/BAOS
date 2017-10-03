@@ -33,7 +33,7 @@
 				<li class="col-md-2">
 					<a href="<c:out value="${notification_tab_url}" />" title="">
 						<c:out value="${applicationScope.languageManager.getLanguageValue('auth_notification', sessionScope.tag)}" />
-						<span class="badge baos-notification-badge pgb-background-red">2</span>
+						<span class="badge baos-notification-badge pgb-background-red"></span>
 					</a>
 				</li>
 				<li class="col-md-2">
@@ -292,8 +292,8 @@
 							</div>
 							<div class="form-group avatar_file_line <c:if test="${editProfileAvatarFileError != null}">has-error</c:if>" style="display:<c:out value="${(avatarType != null && avatarType.equals('gravatar')) || baoUser.additionalInfoId.userAvatarType == null || baoUser.additionalInfoId.userAvatarType.equals('gravatar') ? 'none' : 'block'};" />">
 								<label class="auth_label form-label" for="avatarFile"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar_file', sessionScope.tag)}" /></label>
-								<!--<input type="file" name="avatarFile" id="avatarFile" class="auth_text_zone form-control" />-->
-								<div class="auth_image_editor row">
+								<input type="file" name="avatarFile" id="avatarFile" class="auth_text_zone form-control" />
+								<!--<div class="auth_image_editor row">
 									<div class="col-md-12">
 										<a class="btn btn-default file-btn">
 											<span><c:out value="${applicationScope.languageManager.getLanguageValue('auth_choose_file', sessionScope.tag)}" /></span>
@@ -307,7 +307,7 @@
 	      								<button class="rotate-cw col-sm-2 btn btn-default"><span class="glyphicon glyphicon-arrow-right"></span></button>
       								</div>
 							        <input type="hidden" name="avatarFile" class="auth-hidden-image-data" />
-							   </div>
+							   </div>-->
 								<span class="help-block" id="avatarFileError"><c:out value="${editProfileConfirmPassError}" /></span>
 							</div>
 							<div class="form-group">

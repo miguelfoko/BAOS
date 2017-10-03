@@ -1,12 +1,14 @@
 package rop.miu.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import rop.miu.beans.BaoAdditionalInfo;
 import rop.miu.beans.BaoEmailAccount;
 import rop.miu.beans.BaoEmailTemplate;
 import rop.miu.beans.BaoGroup;
+import rop.miu.beans.BaoNotification;
 import rop.miu.beans.BaoUser;
 import rop.miu.util.ROPConstants;
 import rop.miu.util.exceptions.ROPDaoException;
@@ -21,13 +23,13 @@ public class ROPUserDao {
 	}
 
 	public static BaoUser getValidUserByEmailAndPassword(String email, String pass) {
-		String req = "SELECT u FROM BaoUser u WHERE u.userEmail = ? AND u.userPassword = ? AND u.userAccountState != ? AND u.userAccountState != ?";
-		return (BaoUser) ROPCrudDao.selectSingleElement(req, email, pass, ROPConstants.STATE_DELETED, ROPConstants.STATE_DESACTIVATED);
+		String req = "SELECT u FROM BaoUser u WHERE u.userEmail = ? AND u.userPassword = ? AND u.userAccountState != ? AND u.userAccountState != ? AND u.userAccountState != ?";
+		return (BaoUser) ROPCrudDao.selectSingleElement(req, email, pass, ROPConstants.STATE_DELETED, ROPConstants.STATE_DESACTIVATED, ROPConstants.STATE_WAITING_VALIDATION);
 	}
 	
 	public static BaoUser getValidUserByLoginAndPassword(String login, String pass) {
-		String req = "SELECT u FROM BaoUser u WHERE u.userLogin = ? AND u.userPassword = ? AND u.userAccountState != ? AND u.userAccountState != ?";
-		return (BaoUser) ROPCrudDao.selectSingleElement(req, login, pass, ROPConstants.STATE_DELETED, ROPConstants.STATE_DESACTIVATED);
+		String req = "SELECT u FROM BaoUser u WHERE u.userLogin = ? AND u.userPassword = ? AND u.userAccountState != ? AND u.userAccountState != ? AND u.userAccountState != ?";
+		return (BaoUser) ROPCrudDao.selectSingleElement(req, login, pass, ROPConstants.STATE_DELETED, ROPConstants.STATE_DESACTIVATED, ROPConstants.STATE_WAITING_VALIDATION);
 	}
 	
 	public static BaoUser getUserByEmail(String email) {
@@ -107,7 +109,29 @@ public class ROPUserDao {
 	}
 
 	public static int activateUser(int userId) throws ROPDaoException {
-		String req = "UPDATE bao_user SET user_account_state = ?";
-		return ROPCrudDao.executeInsUpdDelCreSQLQuery(req, ROPConstants.STATE_ACTIVATED);
+		String req = "UPDATE bao_user SET user_account_state = ? WHERE user_id = ?";
+		return ROPCrudDao.executeInsUpdDelCreSQLQuery(req, ROPConstants.STATE_ACTIVATED, userId);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static int getUnreadNotificationNum(BaoUser baoUser) {
+		String req = "SELECT notif FROM BaoNotification notif WHERE notif.userId = ? AND notif.notificationState = ?";
+		List<Object> l = ROPCrudDao.selectManyElements(req, baoUser, ROPConstants.STATE_UNREAD);
+		return l.size();
+	}
+
+	@SuppressWarnings("unchecked")
+	public static ArrayList<BaoNotification> getAllNotifications(BaoUser baoUser) {
+		String req = "SELECT notif FROM BaoNotification notif WHERE notif.userId = ? ORDER BY notif.notificationId DESC";
+		List<Object> l = ROPCrudDao.selectManyElements(req, baoUser);
+		ArrayList<BaoNotification> list = new ArrayList<BaoNotification>();
+		for(Object o : l)
+			list.add((BaoNotification)o);
+		return list;
+	}
+	
+	public static int readNotifications(int userId) throws ROPDaoException {
+		String req = "UPDATE bao_notification SET notification_state = ?, notification_reception_date = ? WHERE user_id = ?";
+		return ROPCrudDao.executeInsUpdDelCreSQLQuery(req, ROPConstants.STATE_READ, new Date(), userId);
 	}
 }

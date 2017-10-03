@@ -1,0 +1,28 @@
+<c:choose>
+	<c:when test="${notificationList == null || empty notificationList}">
+		<div class="row">
+			<h4><c:out value="${applicationScope.languageManager.getLanguageValue('auth_no_notification', sessionScope.tag)}" /></h4>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<c:forEach items="${notificationList}" var="notif">
+			<div class="row">
+				<c:choose>
+					<c:when test="${notif.notificationLink != null}">
+						<a class="col-md-12" href="index.jsp?<c:url value="${notif.notificationLink}" />">
+							<div class="col-md-11"><h4><c:out value="${notif.notificationTitle}" /></h4></div>
+							<div class="col-md-1"><span><c:out value="${notif.notificationDate}" /></span></div>
+							<div class="col-md-12"><p><c:out value="${notif.notificationMessage}" /></p></div>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<div class="col-md-11"><h4><c:out value="${notif.notificationTitle}" /></h4></div>
+						<div class="col-md-1"><span><c:out value="${notif.notificationDate}" /></span></div>
+						<div class="col-md-12"><p><c:out value="${notif.notificationMessage}" /></p></div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</c:forEach>
+	</c:otherwise>
+</c:choose>
+<h1>Notification</h1>
