@@ -6,7 +6,11 @@
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/baos_database</property>
     <property name="hibernate.connection.username">postgres</property>
+<<<<<<< HEAD
     <property name="hibernate.connection.password">admin</property>
+=======
+    <property name="hibernate.connection.password">foko</property>
+>>>>>>> 259b74f994b045ae70f0176ec5cd33e21e919488
     
     <mapping class="rop.miu.beans.BaoAccessCoupon"></mapping>
     <mapping class="rop.miu.beans.BaoAccessRight"></mapping>

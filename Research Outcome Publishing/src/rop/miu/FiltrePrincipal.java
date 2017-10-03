@@ -119,19 +119,19 @@ public class FiltrePrincipal implements Filter {
 		}
 		
 		/*request.setAttribute("modules", configManager.getModules());
-		int mid = includeManager.createSideMenu("Modules");
+		int mid = includeManager.createSideMenu(request,"Modules");
 		for(String mod : configManager.getModules()){
 			try {
-				includeManager.addMenuItem(mid, mod, "/?m="+encryptor.encrypt(mod));
+				includeManager.addMenuItem(request, mid, mod, "/?m="+encryptor.encrypt(mod));
 			} catch (ROPCryptographyException e) {
 				
 			}
 		}
 		request.setAttribute("adminModules", configManager.getAdminModules());
-		mid = includeManager.createSideMenu("Admin Modules");
+		mid = includeManager.createSideMenu(request,"Admin Modules");
 		for(String mod : configManager.getAdminModules()){
 			try {
-				includeManager.addMenuItem(mid, mod, "/admin?m="+encryptor.encrypt(mod));
+				includeManager.addMenuItem(request,mid, mod, "/admin?m="+encryptor.encrypt(mod));
 			} catch (ROPCryptographyException e) {
 				
 			}

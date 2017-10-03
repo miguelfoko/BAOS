@@ -53,6 +53,9 @@
 		            </button>
 		          </span>        
 		        </div>
+		        <input type="hidden" id="modAuthenticationEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('authentication')}" />" />
+				<input type="hidden" id="actionUnreadEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('unread-notifications')}" />" />
+				<input type="hidden" id="actionReadEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('read-notifications')}" />" />
 		      </form>
 		      <c:choose>
 			      <c:when test="${baoUser == null}">
@@ -81,12 +84,12 @@
 									</c:otherwise>
 								</c:choose>
 								<span class="caret pgb-profile-avatar-caret"></span>
-								<span class="badge baos-notification-badge pgb-baos-notification-badge-top pgb-background-red">2</span>
+								<span class="badge baos-notification-badge pgb-baos-notification-badge-top pgb-background-red"></span>
 						    </button>
 						    <ul class="dropdown-menu">
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('profile')}"><c:out value="${applicationScope.languageManager.getLanguageValue('profile_title', sessionScope.tag)}" /></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('edit-profile')}"><c:out value="${applicationScope.languageManager.getLanguageValue('edit_profile', sessionScope.tag)}" /></a></li>
-						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('notification')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_notification', sessionScope.tag)}" /> <span class="badge baos-notification-badge pgb-baos-notification-badge-menu pgb-background-red">2</span></a></li>
+						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('notification')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_notification', sessionScope.tag)}" /> <span class="badge baos-notification-badge pgb-baos-notification-badge-menu pgb-background-red"></span></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('research')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_research_summary', sessionScope.tag)}" /></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('courses')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_courses_summary', sessionScope.tag)}" /></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('logout')}"><c:out value="${applicationScope.languageManager.getLanguageValue('logout_title', sessionScope.tag)}" /></a></li>
