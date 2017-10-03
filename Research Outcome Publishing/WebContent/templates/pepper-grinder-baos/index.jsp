@@ -143,16 +143,64 @@
 			<div id="pgb-footer-top-row" class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="col-md-3">
-						Bloc 1
+						<div class="row">
+							<div class="col-md-12">
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('cu_contact_us', sessionScope.tag)}" /></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('email')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_email', sessionScope.tag)}" /></a></li>
+						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('telephone')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_telephone', sessionScope.tag)}" /></a></li>
+						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('developpers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_developpers', sessionScope.tag)}" /></a></li>
+						      		<li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
+			                  	</ul>
+					    	</div>
+						</div>
+						
 					</div>
 					<div class="col-md-3">
-						Bloc 2
+						<div class="row">
+							<div class="col-md-12">
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_authors', sessionScope.tag)}" /></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForAutors')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_authors', sessionScope.tag)}" /></a></li>
+			                  	</ul>
+					    	</div>
+						</div>
 					</div>
 					<div class="col-md-3">
-						Bloc 3
+						<div class="row">
+							<div class="col-md-12">
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_teachers', sessionScope.tag)}" /></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForTeachers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_teachers', sessionScope.tag)}" /></a></li>
+			                  	</ul>
+					    	</div>
+						</div>
 					</div>
 					<div class="col-md-3">
-						Bloc 4
+						<div class="row">
+							<div class="col-md-12">
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_students', sessionScope.tag)}" /></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForStudents')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_students', sessionScope.tag)}" /></a></li>
+			                  	</ul>
+					    	</div>
+						</div>
 					</div>
 				</div>
 			</div>

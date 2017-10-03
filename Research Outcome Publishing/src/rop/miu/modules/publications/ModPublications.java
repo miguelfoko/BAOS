@@ -44,7 +44,7 @@ public class ModPublications extends ServletModel {
 	    	try {
 	    		action = encryptor.decrypt(request.getParameter("action"));
 	    	} catch (ROPCryptographyException e) {
-				e.printStackTrace();
+				
 			}
 	    	
 	    	if (action.equalsIgnoreCase("registerTopic")) {
