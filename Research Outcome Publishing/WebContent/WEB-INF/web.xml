@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Research Outcome Publishing</display-name>
   <session-config>
-      <session-timeout>0</session-timeout>
+    <session-timeout>0</session-timeout>
   </session-config>
   <listener>
     <listener-class>rop.miu.util.ROPApplication</listener-class>
@@ -55,14 +55,6 @@
     <servlet-name>ModAuthentication</servlet-name>
     <url-pattern>/ModAuthentication</url-pattern>
   </servlet-mapping>
-<!--   <servlet> -->
-<!--     <servlet-name>ModAdminJournal</servlet-name> -->
-<!--     <servlet-class>rop.miu.admin.modules.journal.ModAdminJournal</servlet-class> -->
-<!--   </servlet> -->
-<!--   <servlet-mapping> -->
-<!--     <servlet-name>ModAdminJournal</servlet-name> -->
-<!--     <url-pattern>/ModAdminJournal</url-pattern> -->
-<!--   </servlet-mapping> -->
   <servlet>
     <servlet-name>ModAdminJournal</servlet-name>
     <servlet-class>rop.miu.modules.journal.ModAdminJournal</servlet-class>
@@ -151,7 +143,7 @@
     <servlet-name>PrintVolumes</servlet-name>
     <url-pattern>/PrintVolumes</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>SendMailForValidation</servlet-name>
     <servlet-class>rop.miu.modules.publications.servlets.SendMailForValidation</servlet-class>
   </servlet>
@@ -166,5 +158,21 @@
   <servlet-mapping>
     <servlet-name>ModNews</servlet-name>
     <url-pattern>/ModNews</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModPages</servlet-name>
+    <servlet-class>rop.miu.modules.pages.ModPages</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModPages</servlet-name>
+    <url-pattern>/ModPages</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModContactUs</servlet-name>
+    <servlet-class>rop.miu.modules.contactUs.ModContactUs</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModContactUs</servlet-name>
+    <url-pattern>/ModContactUs</url-pattern>
   </servlet-mapping>
 </web-app>

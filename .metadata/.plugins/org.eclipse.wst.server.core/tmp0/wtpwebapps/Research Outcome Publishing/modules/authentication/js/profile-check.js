@@ -148,5 +148,5 @@ $(document).ready(function(){
 			$('.avatar_file_line').fadeOut(250);
 	});
 	
-	$('.auth_image_editor').cropit();
+	//$('.auth_image_editor').cropit();
 });
