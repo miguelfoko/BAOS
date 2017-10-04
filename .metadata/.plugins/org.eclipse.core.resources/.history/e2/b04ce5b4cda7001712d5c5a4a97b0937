@@ -1,4 +1,0 @@
-<div class="row text-center">
-	<img class="col-md-12" alt="" width="100%" src="<c:url value="/ressources/images/maintenance-baos.png" />" />
-	<h3 class="col-md-12"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_page_under_construction', sessionScope.tag)}" /></h3>
-</div>
