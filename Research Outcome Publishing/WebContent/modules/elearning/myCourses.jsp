@@ -30,7 +30,7 @@
 				<c:forEach items="${monitorCourse}" var="uC">
 					<p>
 						<a
-							href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewCourseByOthers')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
+							href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewCourse')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
 								value="${uC['courseName']}" /></a>
 					</p>
 				</c:forEach>
@@ -55,8 +55,11 @@
 				<c:forEach items="${studentCourse}" var="uC">
 					<p>
 						<a
-							href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewCourseByOthers')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
+							href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewCourse')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
 								value="${uC['courseName']}" /></a>
+						<a
+							href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewExams')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
+								value="${applicationScope.languageManager.getLanguageValue('el_write', sessionScope.tag)}" /></a>
 					</p>
 				</c:forEach>
 			</c:when>
