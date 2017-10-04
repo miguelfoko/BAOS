@@ -27,7 +27,6 @@ import rop.miu.modules.publications.util.PublicationUtil;
 import rop.miu.util.IncludeManager;
 import rop.miu.util.ROPConstants;
 import rop.miu.util.exceptions.MIUIOException;
-import rop.miu.util.exceptions.ROPCryptographyException;
 import rop.miu.util.exceptions.ROPDaoException;
 import rop.miu.util.io.MIUIOUtilMethod;
 import rop.miu.util.io.MIUMultipartFormParser;
@@ -479,7 +478,6 @@ public class PaperSubmission extends ServletModel {
 			String message="";
 			
 			try {
-				System.out.println(paper);
 				dao.savePaper(paper,paperAuthor);
 				message = "success";
 			} catch (ROPDaoException e) {

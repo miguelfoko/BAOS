@@ -34,14 +34,14 @@
 					      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_journals', sessionScope.tag)}" /></a></li>
 		                  <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_learning', sessionScope.tag)}" /></a></li>
 		        		  <!-- <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}&action=${applicationScope.encryptor.encrypt('paperSubmission')}" />">Paper Submission</a></li> -->
-					      <li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
+					      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('aboutUs')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
 					    </ul>
 				  	</div>
 		        </li>
 		        <li class="pgb-to-hide-870"><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> <c:out value="${applicationScope.languageManager.getLanguageValue('auth_home', sessionScope.tag)}" /></a></li>
 			    <li class="pgb-to-hide-970"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_journals', sessionScope.tag)}" /></a></li>
 			    <li class="pgb-to-hide-1070"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_learning', sessionScope.tag)}" /></a></li>
-	            <li class="pgb-to-hide-1200"><a href=""><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
+	            <li class="pgb-to-hide-1200"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('aboutUs')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
 	            <!-- <li class="pgb-to-hide-1200"><a href="#">News</a></li> -->
 		      </ul>
 		      <form id="pgb-search-nav-bar" class="navbar-form navbar-right">
@@ -150,11 +150,15 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('email')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_email', sessionScope.tag)}" /></a></li>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('telephone')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_telephone', sessionScope.tag)}" /></a></li>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('developpers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_developpers', sessionScope.tag)}" /></a></li>
-						      		<li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
+								<ul class="list-group">
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('aboutUs')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('ourContacts')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_contacts', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('email')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_email', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('terms')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_terms', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('privacy')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_privacy', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('siteMap')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_site_map', sessionScope.tag)}" /></a></li>
+						      		<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('developpers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_developpers', sessionScope.tag)}" /></a></li>
+						      		
 			                  	</ul>
 					    	</div>
 						</div>
@@ -163,13 +167,15 @@
 					<div class="col-md-3">
 						<div class="row">
 							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_authors', sessionScope.tag)}" /></h4>
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_researchers', sessionScope.tag)}" /></h4>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForAutors')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_authors', sessionScope.tag)}" /></a></li>
+								<ul class="list-group">
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}" />&action=${applicationScope.encryptor.encrypt('articlesOfAJournal')}&id_journal=${journal['journalOrConfId']}"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_submit', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('findBooks')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_find_books', sessionScope.tag)}" /></a></li>
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForAutors')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_authors', sessionScope.tag)}" /></a></li>
 			                  	</ul>
 					    	</div>
 						</div>
@@ -177,13 +183,16 @@
 					<div class="col-md-3">
 						<div class="row">
 							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_teachers', sessionScope.tag)}" /></h4>
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_elearning', sessionScope.tag)}" /></h4>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForTeachers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_teachers', sessionScope.tag)}" /></a></li>
+								<ul class="list-group">								
+									<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('aboutELearning')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_about_elearning', sessionScope.tag)}" /></a></li>
+						      		<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForTeachers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_teachers', sessionScope.tag)}" /></a></li>
+						      		<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForMonitors')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_monitors', sessionScope.tag)}" /></a></li>
+						      		<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForStudents')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_students', sessionScope.tag)}" /></a></li>
 			                  	</ul>
 					    	</div>
 						</div>
@@ -191,16 +200,34 @@
 					<div class="col-md-3">
 						<div class="row">
 							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_students', sessionScope.tag)}" /></h4>
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_help_and_support', sessionScope.tag)}" /></h4>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForStudents')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_students', sessionScope.tag)}" /></a></li>
+								<ul class="list-group">
+						      		<li class="list-group-item"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('helpAndSupport')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_help_and_support_question', sessionScope.tag)}" /></a></li>
 			                  	</ul>
 					    	</div>
 						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_follow_baos', sessionScope.tag)}" /></h4>
+							</div>
+						</div>
+									
+						
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="btn-group">
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/facebook.png" />" alt="Facebook"  width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/linkedin.png" />" alt="Linkedin" width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/twitter.png" />" alt="Twitter" width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/youtube.png" />" alt="Youtube" width="30px" height="30px" /></a>
+						</div>
+					</div>
+				</div>
+						
 					</div>
 				</div>
 			</div>

@@ -26,7 +26,7 @@ public class GetAllArticlesOfAJournal extends ServletModel {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		HttpSession journalInSession = request.getSession();
+		/*HttpSession journalInSession = request.getSession();
 		
 		int journalID=-1;
 		
@@ -54,6 +54,9 @@ public class GetAllArticlesOfAJournal extends ServletModel {
 		includeManager.addJS(request, "/modules/publications/js/jquery-ui-1.8.13.custom.min.js");
 		includeManager.addJS(request, "/modules/publications/js/jquery-1.2.3.min.js");
 		includeManager.addJS(request, "/modules/publications/js/onglet.js");
+		returnRequest(request, response);*/
+		
+		includeManager.addJSP(request, "/modules/publications/underConstruction.jsp");
 		returnRequest(request, response);
 	}
 
@@ -61,13 +64,16 @@ public class GetAllArticlesOfAJournal extends ServletModel {
 		super.doPost(request, response);
 		
 		
-		request.setAttribute("action", "articlesOfAJournal");
+		/*request.setAttribute("action", "articlesOfAJournal");
 		includeManager.setTitle(request, languageManager.getLanguageValue("publication_title", langTag));
 		includeManager.addJSP(request, "/modules/publications/index.jsp");
 		includeManager.addCSS(request, "/modules/publications/css/publications.css");
 		includeManager.addJS(request, "/modules/publications/js/jquery-ui-1.8.13.custom.min.js");
 		includeManager.addJS(request, "/modules/publications/js/jquery-1.2.3.min.js");
 		includeManager.addJS(request, "/modules/publications/js/onglets.js");
+		returnRequest(request, response);*/
+		
+		includeManager.addJSP(request, "/modules/publications/underConstruction.jsp");
 		returnRequest(request, response);
 	}
 

@@ -175,4 +175,12 @@
     <servlet-name>ModContactUs</servlet-name>
     <url-pattern>/ModContactUs</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ModPayment</servlet-name>
+    <servlet-class>rop.miu.modules.contactUs.ModPayment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModPayment</servlet-name>
+    <url-pattern>/ModPayment</url-pattern>
+  </servlet-mapping>
 </web-app>

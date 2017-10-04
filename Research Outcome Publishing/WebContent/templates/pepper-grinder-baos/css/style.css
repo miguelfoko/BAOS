@@ -71,6 +71,9 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 .pgb-both-corner-shadow:before, .pgb-left-corner-shadow:before{left: 5px; transform: rotate(-3deg);}
 .pgb-both-corner-shadow:after, .pgb-right-corner-shadow:after{transform: rotate(3deg); right: 5px; left: auto;}
 
+#pgb-footer-top-row .list-group .list-group-item{border:none; background-color:transparent; margin-left:-10px !important;}
+#pgb-footer-top-row .btn-group{border:none; background-color:transparent; margin-left:-30px !important;}
+
 @media (max-width:1200px){.pgb-to-hide-1200{display: none !important;}}
 @media (max-width:1070px){.pgb-to-hide-1070{display: none !important;}}
 @media (max-width:970px){.pgb-to-hide-970{display: none !important;}}

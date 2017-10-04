@@ -1,6 +1,0 @@
-div#home_slideshow{width: 100%; height: auto; border-radius: 2px; /*box-shadow: 0px 0px 2px 2px rgba(29, 134, 59, 0.1);*/}
-.control-legend{text-transform: uppercase; font-weight: bold; font-size: 1.3em;}
-.control-green{color: rgb(76, 175, 80) !important;}
-.image-and-desc div img{width: 80px;}
-.image-and-desc .col-md-8{padding: 0px 10px 0px 10px;}
-.desc-row{margin-top: 10px; margin-bottom: 40px; font-size: 1.1em;}

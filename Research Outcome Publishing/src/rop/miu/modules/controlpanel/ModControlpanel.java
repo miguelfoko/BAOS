@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import rop.miu.modules.ServletModel;
+import rop.miu.util.exceptions.ROPCryptographyException;
 
 public class ModControlpanel extends ServletModel {
 	private static final long serialVersionUID = 1L;
@@ -28,6 +29,7 @@ public class ModControlpanel extends ServletModel {
 		getIncludeManager(request).addCSS(request, "/modules/controlpanel/css/style.css");
 		getIncludeManager(request).addJS(request, "/ressources/miu_slideshow/js/miu_slideshow.js");
 		getIncludeManager(request).addJS(request, "/modules/controlpanel/js/util.js");
+
 		
 		this.returnRequest(request, response);
 		return;
@@ -36,5 +38,24 @@ public class ModControlpanel extends ServletModel {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
+	}
+	public void controlPanelMenu(HttpServletRequest request){
+		int id=includeManager.createSideMenu(request, languageManager.getLanguageValue("journal_or_conf_menu_title", langTag));
+		try {
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_create_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("create"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_update_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("update"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_delete_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("delete"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_list_of_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfJournal"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_list_of_conf", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfConf"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_trash_list", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("trashList"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_review_creation", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("createReviewCondition"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_volume_creation", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("createVolume"));
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_volume_list", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfVolume"));
+
+			//includeManager.addMenuSubItem(id, id2, "Test 2", "#");
+		} catch (ROPCryptographyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
