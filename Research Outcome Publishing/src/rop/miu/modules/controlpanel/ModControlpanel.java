@@ -19,11 +19,24 @@ public class ModControlpanel extends ServletModel {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
+<<<<<<< HEAD
 		controlPanelMenu(request);
 		includeManager.setTitle(request, languageManager.getLanguageValue("control_panel", langTag));
 		includeManager.addJSP(request, "/modules/controlpanel/index.jsp");
 		includeManager.addCSS(request, "/modules/controlpanel/css/style.css");
 		includeManager.addJS(request, "/modules/controlpanel/js/util.js");
+=======
+		
+		getIncludeManager(request).setTitle(request, languageManager.getLanguageValue("control_panel", langTag));
+		getIncludeManager(request).addJSP(request, "/modules/controlpanel/slide.jsp");
+		getIncludeManager(request).addJSP(request, "/modules/controlpanel/baos_learning.jsp");
+		getIncludeManager(request).addJSP(request, "/modules/controlpanel/baos_publishing.jsp");
+		getIncludeManager(request).addJSP(request, "/modules/controlpanel/baos_community.jsp");
+		getIncludeManager(request).addCSS(request, "/ressources/miu_slideshow/themes/default/css/miu_slideshow.css");
+		getIncludeManager(request).addCSS(request, "/modules/controlpanel/css/style.css");
+		getIncludeManager(request).addJS(request, "/ressources/miu_slideshow/js/miu_slideshow.js");
+		getIncludeManager(request).addJS(request, "/modules/controlpanel/js/util.js");
+>>>>>>> 8dd851048c6e70797b20b83ae8201f6cdc09b191
 		
 		this.returnRequest(request, response);
 		return;

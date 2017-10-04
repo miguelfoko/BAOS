@@ -1,0 +1,3 @@
+<div class="row">
+	<legend><c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning', sessionScope.tag)}" /></legend>
+</div>

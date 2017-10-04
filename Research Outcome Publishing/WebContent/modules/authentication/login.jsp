@@ -35,7 +35,7 @@
 				<div class="row">
 					<div class="form-group col-md-12">
 						<c:if test="${loginError != null}">
-							<a href="" class="forgottenPwd btn btn-danger"><c:out value="${applicationScope.languageManager.getLanguageValue('forgotten_pwd', sessionScope.tag)}" /></a>
+							<a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('reset_password')}" />" class="forgottenPwd btn btn-danger"><c:out value="${applicationScope.languageManager.getLanguageValue('forgotten_pwd', sessionScope.tag)}" /></a>
 						</c:if>
 						<a class="baosButton btn btn-default" href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('register')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('create_account', sessionScope.tag)}" /></a>
 					</div>

@@ -108,9 +108,9 @@ public class ROPUserDao {
 		return (BaoEmailTemplate) ROPCrudDao.selectSingleElement(req, name);
 	}
 
-	public static int activateUser(int userId) throws ROPDaoException {
-		String req = "UPDATE bao_user SET user_account_state = ? WHERE user_id = ?";
-		return ROPCrudDao.executeInsUpdDelCreSQLQuery(req, ROPConstants.STATE_ACTIVATED, userId);
+	public static int validateUser(int userId) throws ROPDaoException {
+		String req = "UPDATE bao_user SET user_account_state = ? WHERE user_id = ? AND user_account_state = ?";
+		return ROPCrudDao.executeInsUpdDelCreSQLQuery(req, ROPConstants.STATE_ACTIVATED, userId, ROPConstants.STATE_WAITING_VALIDATION);
 	}
 
 	@SuppressWarnings("unchecked")
