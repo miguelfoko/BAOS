@@ -1,15 +1,11 @@
 $(document).ready(function(){
-	$('.cmd').bind('mouseover', function(){
-		$(this)
-			.find('.cmdCircle')
-			.stop()
-			.animate({'border-width' : '0.1em'}, 200);
-	});
-	
-	$('.cmd').bind('mouseout', function(){
-		$(this)
-			.find('.cmdCircle')
-			.stop()
-			.animate({'border-width' : '0.3em'}, 200);
+	var v = MIUSlideshow({
+		element : "#home_slideshow",
+		height : "350px",
+		showControlPanel : true,
+		effect : "",
+		animate : true,
+		duration : 10000,
+		autoHideArrows : true
 	});
 });

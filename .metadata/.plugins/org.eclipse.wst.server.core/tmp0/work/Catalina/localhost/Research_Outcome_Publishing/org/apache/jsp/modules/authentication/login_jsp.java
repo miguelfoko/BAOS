@@ -213,7 +213,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("\r\n");
         out.write("\t\t\t\t\t\t<a class=\"baosButton btn btn-default\" href=\"");
-        if (_jspx_meth_c_005furl_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
+        if (_jspx_meth_c_005furl_005f2(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
           return true;
         out.write('"');
         out.write('>');
@@ -613,7 +613,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<a href=\"\" class=\"forgottenPwd btn btn-danger\">");
+        out.write("\t\t\t\t\t\t\t<a href=\"");
+        if (_jspx_meth_c_005furl_005f1(_jspx_th_c_005fif_005f5, _jspx_page_context))
+          return true;
+        out.write("\" class=\"forgottenPwd btn btn-danger\">");
         if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fif_005f5, _jspx_page_context))
           return true;
         out.write("</a>\r\n");
@@ -631,6 +634,25 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
+  private boolean _jspx_meth_c_005furl_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f5, javax.servlet.jsp.PageContext _jspx_page_context)
+          throws java.lang.Throwable {
+    javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
+    javax.servlet.jsp.JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f5);
+    // /modules/authentication/login.jsp(38,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('reset_password')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
+    if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fout_005f10(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f5, javax.servlet.jsp.PageContext _jspx_page_context)
           throws java.lang.Throwable {
     javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
@@ -639,7 +661,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f5);
-    // /modules/authentication/login.jsp(38,54) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /modules/authentication/login.jsp(38,197) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${applicationScope.languageManager.getLanguageValue('forgotten_pwd', sessionScope.tag)}", java.lang.Object.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f10 = _jspx_th_c_005fout_005f10.doStartTag();
     if (_jspx_th_c_005fout_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -650,22 +672,22 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, javax.servlet.jsp.PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005furl_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, javax.servlet.jsp.PageContext _jspx_page_context)
           throws java.lang.Throwable {
     javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
     javax.servlet.jsp.JspWriter out = _jspx_page_context.getOut();
     //  c:url
-    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
-    _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
     // /modules/authentication/login.jsp(40,50) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('register')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
-    if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
+    _jspx_th_c_005furl_005f2.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('register')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
+    if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
     return false;
   }
 
@@ -701,7 +723,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\r\n");
         out.write("\t\t<a class=\"btn btn-danger\" href=\"");
-        if (_jspx_meth_c_005furl_005f2(_jspx_th_c_005fotherwise_005f0, _jspx_page_context))
+        if (_jspx_meth_c_005furl_005f3(_jspx_th_c_005fotherwise_005f0, _jspx_page_context))
           return true;
         out.write('"');
         out.write('>');
@@ -722,22 +744,22 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fotherwise_005f0, javax.servlet.jsp.PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005furl_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fotherwise_005f0, javax.servlet.jsp.PageContext _jspx_page_context)
           throws java.lang.Throwable {
     javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
     javax.servlet.jsp.JspWriter out = _jspx_page_context.getOut();
     //  c:url
-    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
-    _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f0);
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f0);
     // /modules/authentication/login.jsp(47,34) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f2.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('logout')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
-    if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
+    _jspx_th_c_005furl_005f3.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('logout')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
+    if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f3);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f3);
     return false;
   }
 

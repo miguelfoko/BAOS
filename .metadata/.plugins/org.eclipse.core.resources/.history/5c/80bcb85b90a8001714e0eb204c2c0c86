@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-12">
+		<legend class="control-legend control-green"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning', sessionScope.tag)}" /></legend>
+	</div>
+	<div class="col-md-12 text-center desc-row">
+		<c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning_desc', sessionScope.tag)}" escapeXml="false" />
+	</div>
+	<div class="col-md-12 text-center desc-row">
+		<div class="col-md-6 image-and-desc">
+			<div class="col-md-4"><img src="<c:url value="/modules/controlpanel/images/diversity.png" />" alt="" /></div>
+			<div class="col-md-8"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning_diversity', sessionScope.tag)}" escapeXml="false" /></div>
+		</div>
+		<div class="col-md-6 image-and-desc">
+			<div class="col-md-4"><img src="<c:url value="/modules/controlpanel/images/accessibility.png" />" alt="" /></div>
+			<div class="col-md-8"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning_accessibility', sessionScope.tag)}" escapeXml="false" /></div>
+		</div>
+	</div>
+	<div class="col-md-12 text-center desc-row">
+		<div class="col-md-6 image-and-desc">
+			<div class="col-md-8"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning_capability', sessionScope.tag)}" escapeXml="false" /></div>
+			<div class="col-md-4"><img src="<c:url value="/modules/controlpanel/images/capability.jpg" />" alt="" /></div>
+		</div>
+		<div class="col-md-6 image-and-desc">
+			<div class="col-md-8"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_baos_learning_assistance', sessionScope.tag)}" escapeXml="false" /></div>
+			<div class="col-md-4"><img src="<c:url value="/modules/controlpanel/images/assistance.jpg" />" alt="" /></div>
+		</div>
+	</div>
+</div>

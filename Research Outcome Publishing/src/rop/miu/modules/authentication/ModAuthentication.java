@@ -186,7 +186,7 @@ public class ModAuthentication extends ServletModel {
 		if(option.matches("validate-[0-9]{1,}")){
 			int userId = Integer.parseInt(option.split("-")[1]);
 			try {
-				ROPUserDao.activateUser(userId);
+				ROPUserDao.validateUser(userId);
 				inclManager.createSuccessStatus(request, languageManager.getLanguageValue("email_confirmed", getLangTag(request)));
 			}catch (ROPDaoException e) {
 				inclManager.createErrorStatus(request, languageManager.getLanguageValue("email_confirmError", getLangTag(request)));

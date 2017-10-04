@@ -2728,3 +2728,838 @@ java.lang.IllegalArgumentException
 
 !ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 03:04:38.826
 !MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+!SESSION 2017-10-03 20:11:24.910 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product -data F:\Workspace\Projets Git\BAOS -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.equinox.ds 4 0 2017-10-03 20:11:30.457
+!MESSAGE Exception occurred while creating new instance of component Component[
+	name = AnalyzationAndRenderService
+	activate = activate
+	deactivate = deactivate
+	modified = 
+	configuration-policy = optional
+	factory = null
+	autoenable = true
+	immediate = false
+	implementation = javadocasumlviewer.services.AnalyzationAndRenderServiceImpl
+	state = Unsatisfied
+	properties = 
+	serviceFactory = false
+	serviceInterface = [javadocasumlviewer.services.AnalyzationAndRenderService]
+	references = null
+	located in bundle = JavaDocAsUmlViewer_0.2.2 [1101]
+] 
+!STACK 0
+java.lang.IllegalStateException: Workbench has not been created yet.
+	at org.eclipse.ui.PlatformUI.getWorkbench(PlatformUI.java:92)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.hookMainEditorWindowChanges(AnalyzationAndRenderServiceImpl.java:678)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.<init>(AnalyzationAndRenderServiceImpl.java:211)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponent.createInstance(ServiceComponent.java:493)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.createInstance(ServiceComponentProp.java:270)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:331)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.ServiceReg.getService(ServiceReg.java:53)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse$1.run(ServiceUse.java:141)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse.getService(ServiceUse.java:139)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:468)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.getService(ServiceRegistry.java:467)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.getService(BundleContextImpl.java:594)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.getService(InstanceProcess.java:730)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.getMethod(ComponentReference.java:119)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.bind(ComponentReference.java:331)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bindReference(ServiceComponentProp.java:430)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bind(ServiceComponentProp.java:218)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:343)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:197)
+	at org.eclipse.equinox.internal.ds.Resolver.getEligible(Resolver.java:343)
+	at org.eclipse.equinox.internal.ds.SCRManager.serviceChanged(SCRManager.java:222)
+	at org.eclipse.osgi.internal.serviceregistry.FilteredServiceListener.serviceChanged(FilteredServiceListener.java:107)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.dispatchEvent(BundleContextImpl.java:861)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEventPrivileged(ServiceRegistry.java:819)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEvent(ServiceRegistry.java:771)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.register(ServiceRegistrationImpl.java:130)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.registerService(ServiceRegistry.java:214)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.registerService(BundleContextImpl.java:433)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.registerService(InstanceProcess.java:536)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:260)
+	at org.eclipse.equinox.internal.ds.Resolver.buildNewlySatisfied(Resolver.java:473)
+	at org.eclipse.equinox.internal.ds.Resolver.enableComponents(Resolver.java:217)
+	at org.eclipse.equinox.internal.ds.SCRManager.performWork(SCRManager.java:816)
+	at org.eclipse.equinox.internal.ds.SCRManager$QueuedJob.dispatch(SCRManager.java:783)
+	at org.eclipse.equinox.internal.ds.WorkThread.run(WorkThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.equinox.ds 4 0 2017-10-03 20:11:30.519
+!MESSAGE Exception occurred while creating new instance of component Component[
+	name = AnalyzationAndRenderService
+	activate = activate
+	deactivate = deactivate
+	modified = 
+	configuration-policy = optional
+	factory = null
+	autoenable = true
+	immediate = false
+	implementation = javadocasumlviewer.services.AnalyzationAndRenderServiceImpl
+	state = Unsatisfied
+	properties = 
+	serviceFactory = false
+	serviceInterface = [javadocasumlviewer.services.AnalyzationAndRenderService]
+	references = null
+	located in bundle = JavaDocAsUmlViewer_0.2.2 [1101]
+] 
+!STACK 0
+java.lang.IllegalStateException: Workbench has not been created yet.
+	at org.eclipse.ui.PlatformUI.getWorkbench(PlatformUI.java:92)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.hookMainEditorWindowChanges(AnalyzationAndRenderServiceImpl.java:678)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.<init>(AnalyzationAndRenderServiceImpl.java:211)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponent.createInstance(ServiceComponent.java:493)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.createInstance(ServiceComponentProp.java:270)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:331)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.ServiceReg.getService(ServiceReg.java:53)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse$1.run(ServiceUse.java:141)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse.getService(ServiceUse.java:139)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:468)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.getService(ServiceRegistry.java:467)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.getService(BundleContextImpl.java:594)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.getService(InstanceProcess.java:730)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.getMethod(ComponentReference.java:119)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.bind(ComponentReference.java:331)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bindReference(ServiceComponentProp.java:430)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bind(ServiceComponentProp.java:218)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:343)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:197)
+	at org.eclipse.equinox.internal.ds.Resolver.getEligible(Resolver.java:343)
+	at org.eclipse.equinox.internal.ds.SCRManager.serviceChanged(SCRManager.java:222)
+	at org.eclipse.osgi.internal.serviceregistry.FilteredServiceListener.serviceChanged(FilteredServiceListener.java:107)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.dispatchEvent(BundleContextImpl.java:861)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEventPrivileged(ServiceRegistry.java:819)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEvent(ServiceRegistry.java:771)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.register(ServiceRegistrationImpl.java:130)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.registerService(ServiceRegistry.java:214)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.registerService(BundleContextImpl.java:433)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.registerService(InstanceProcess.java:536)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:260)
+	at org.eclipse.equinox.internal.ds.Resolver.buildNewlySatisfied(Resolver.java:473)
+	at org.eclipse.equinox.internal.ds.Resolver.enableComponents(Resolver.java:217)
+	at org.eclipse.equinox.internal.ds.SCRManager.performWork(SCRManager.java:816)
+	at org.eclipse.equinox.internal.ds.SCRManager$QueuedJob.dispatch(SCRManager.java:783)
+	at org.eclipse.equinox.internal.ds.WorkThread.run(WorkThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.osgi 4 0 2017-10-03 20:11:30.535
+!MESSAGE An unexpected runtime error has occurred.
+!STACK 0
+org.osgi.service.component.ComponentException: Exception occurred while creating new instance of component Component[
+	name = AnalyzationAndRenderService
+	activate = activate
+	deactivate = deactivate
+	modified = 
+	configuration-policy = optional
+	factory = null
+	autoenable = true
+	immediate = false
+	implementation = javadocasumlviewer.services.AnalyzationAndRenderServiceImpl
+	state = Unsatisfied
+	properties = 
+	serviceFactory = false
+	serviceInterface = [javadocasumlviewer.services.AnalyzationAndRenderService]
+	references = null
+	located in bundle = JavaDocAsUmlViewer_0.2.2 [1101]
+] 
+	at org.eclipse.equinox.internal.ds.model.ServiceComponent.createInstance(ServiceComponent.java:495)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.createInstance(ServiceComponentProp.java:270)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:331)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.ServiceReg.getService(ServiceReg.java:53)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse$1.run(ServiceUse.java:141)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse.getService(ServiceUse.java:139)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:468)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.getService(ServiceRegistry.java:467)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.getService(BundleContextImpl.java:594)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.getService(InstanceProcess.java:730)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.getMethod(ComponentReference.java:119)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.bind(ComponentReference.java:331)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bindReference(ServiceComponentProp.java:430)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bind(ServiceComponentProp.java:218)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:343)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:197)
+	at org.eclipse.equinox.internal.ds.Resolver.getEligible(Resolver.java:343)
+	at org.eclipse.equinox.internal.ds.SCRManager.serviceChanged(SCRManager.java:222)
+	at org.eclipse.osgi.internal.serviceregistry.FilteredServiceListener.serviceChanged(FilteredServiceListener.java:107)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.dispatchEvent(BundleContextImpl.java:861)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEventPrivileged(ServiceRegistry.java:819)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEvent(ServiceRegistry.java:771)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.register(ServiceRegistrationImpl.java:130)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.registerService(ServiceRegistry.java:214)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.registerService(BundleContextImpl.java:433)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.registerService(InstanceProcess.java:536)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:260)
+	at org.eclipse.equinox.internal.ds.Resolver.buildNewlySatisfied(Resolver.java:473)
+	at org.eclipse.equinox.internal.ds.Resolver.enableComponents(Resolver.java:217)
+	at org.eclipse.equinox.internal.ds.SCRManager.performWork(SCRManager.java:816)
+	at org.eclipse.equinox.internal.ds.SCRManager$QueuedJob.dispatch(SCRManager.java:783)
+	at org.eclipse.equinox.internal.ds.WorkThread.run(WorkThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Workbench has not been created yet.
+	at org.eclipse.ui.PlatformUI.getWorkbench(PlatformUI.java:92)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.hookMainEditorWindowChanges(AnalyzationAndRenderServiceImpl.java:678)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.<init>(AnalyzationAndRenderServiceImpl.java:211)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponent.createInstance(ServiceComponent.java:493)
+	... 37 more
+
+!ENTRY JavaDocAsUmlViewer 4 0 2017-10-03 20:11:30.582
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.ServiceException: Exception in org.eclipse.equinox.internal.ds.ServiceReg.getService()
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse.getService(ServiceUse.java:151)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:468)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.getService(ServiceRegistry.java:467)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.getService(BundleContextImpl.java:594)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.getService(InstanceProcess.java:730)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.getMethod(ComponentReference.java:119)
+	at org.eclipse.equinox.internal.ds.model.ComponentReference.bind(ComponentReference.java:331)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bindReference(ServiceComponentProp.java:430)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.bind(ServiceComponentProp.java:218)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:343)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:197)
+	at org.eclipse.equinox.internal.ds.Resolver.getEligible(Resolver.java:343)
+	at org.eclipse.equinox.internal.ds.SCRManager.serviceChanged(SCRManager.java:222)
+	at org.eclipse.osgi.internal.serviceregistry.FilteredServiceListener.serviceChanged(FilteredServiceListener.java:107)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.dispatchEvent(BundleContextImpl.java:861)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEventPrivileged(ServiceRegistry.java:819)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.publishServiceEvent(ServiceRegistry.java:771)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.register(ServiceRegistrationImpl.java:130)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.registerService(ServiceRegistry.java:214)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.registerService(BundleContextImpl.java:433)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.registerService(InstanceProcess.java:536)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponents(InstanceProcess.java:260)
+	at org.eclipse.equinox.internal.ds.Resolver.buildNewlySatisfied(Resolver.java:473)
+	at org.eclipse.equinox.internal.ds.Resolver.enableComponents(Resolver.java:217)
+	at org.eclipse.equinox.internal.ds.SCRManager.performWork(SCRManager.java:816)
+	at org.eclipse.equinox.internal.ds.SCRManager$QueuedJob.dispatch(SCRManager.java:783)
+	at org.eclipse.equinox.internal.ds.WorkThread.run(WorkThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.osgi.service.component.ComponentException: Exception occurred while creating new instance of component Component[
+	name = AnalyzationAndRenderService
+	activate = activate
+	deactivate = deactivate
+	modified = 
+	configuration-policy = optional
+	factory = null
+	autoenable = true
+	immediate = false
+	implementation = javadocasumlviewer.services.AnalyzationAndRenderServiceImpl
+	state = Unsatisfied
+	properties = 
+	serviceFactory = false
+	serviceInterface = [javadocasumlviewer.services.AnalyzationAndRenderService]
+	references = null
+	located in bundle = JavaDocAsUmlViewer_0.2.2 [1101]
+] 
+	at org.eclipse.equinox.internal.ds.model.ServiceComponent.createInstance(ServiceComponent.java:495)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.createInstance(ServiceComponentProp.java:270)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponentProp.build(ServiceComponentProp.java:331)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:620)
+	at org.eclipse.equinox.internal.ds.ServiceReg.getService(ServiceReg.java:53)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse$1.run(ServiceUse.java:141)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceUse.getService(ServiceUse.java:139)
+	... 30 more
+Caused by: java.lang.IllegalStateException: Workbench has not been created yet.
+	at org.eclipse.ui.PlatformUI.getWorkbench(PlatformUI.java:92)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.hookMainEditorWindowChanges(AnalyzationAndRenderServiceImpl.java:678)
+	at javadocasumlviewer.services.AnalyzationAndRenderServiceImpl.<init>(AnalyzationAndRenderServiceImpl.java:211)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.eclipse.equinox.internal.ds.model.ServiceComponent.createInstance(ServiceComponent.java:493)
+	... 37 more
+
+!ENTRY JavaDocAsUmlViewer 2 0 2017-10-03 20:11:30.613
+!MESSAGE [SCR] Could not get the service object relevant to the reference. One possible reason is a circularity problem. Another possible reason is that BundleContext.getService() returns null.
+	Details:
+	Problematic reference = Reference[name = AnalyzationAndRenderService, interface = javadocasumlviewer.services.AnalyzationAndRenderService, policy = static, cardinality = 1..1, target = null, bind = setAnalyzationAndRenderService, unbind = unsetAnalyzationAndRenderService]
+	of service component = Activator Consumer
+	component implementation class = javadocasumlviewer.Activator
+	located in bundle with symbolic name = JavaDocAsUmlViewer
+	bundle location = reference:file:plugins/JavaDocAsUmlViewer_0.2.2.jar
+
+!ENTRY JavaDocAsUmlViewer 2 0 2017-10-03 20:11:30.629
+!MESSAGE [SCR] ComponentReference.bind(): bind method 'setAnalyzationAndRenderService' is not found or it is not accessible!
+	Details:
+	Problematic reference = Reference[name = AnalyzationAndRenderService, interface = javadocasumlviewer.services.AnalyzationAndRenderService, policy = static, cardinality = 1..1, target = null, bind = setAnalyzationAndRenderService, unbind = unsetAnalyzationAndRenderService]
+	of service component = Activator Consumer
+	component implementation class = javadocasumlviewer.Activator
+	located in bundle with symbolic name = JavaDocAsUmlViewer
+	bundle location = reference:file:plugins/JavaDocAsUmlViewer_0.2.2.jar
+
+!ENTRY org.eclipse.equinox.ds 4 0 2017-10-03 20:11:30.644
+!MESSAGE Could not bind a reference of component Activator Consumer. The reference is: Reference[name = AnalyzationAndRenderService, interface = javadocasumlviewer.services.AnalyzationAndRenderService, policy = static, cardinality = 1..1, target = null, bind = setAnalyzationAndRenderService, unbind = unsetAnalyzationAndRenderService]
+
+!ENTRY org.eclipse.equinox.ds 4 0 2017-10-03 20:11:30.676
+!MESSAGE Could not bind a reference of component Activator Consumer. The reference is: Reference[name = AnalyzationAndRenderService, interface = javadocasumlviewer.services.AnalyzationAndRenderService, policy = static, cardinality = 1..1, target = null, bind = setAnalyzationAndRenderService, unbind = unsetAnalyzationAndRenderService]
+
+!ENTRY org.eclipse.jface 2 0 2017-10-03 20:11:56.161
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:11:56.161
+!MESSAGE A conflict occurred for SHIFT+DEL:
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.datatools.sqltools.result.removeAllInstances,Remove All Visible Results,
+		,
+		Category(org.eclipse.datatools.sqltools.result.category,SQL Results View,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@10b64cc,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.graphiti.ui.internal.action.RemoveAction,Remove,
+		Remove selected Pictogram Elements,
+		Category(org.eclipse.graphiti.ui.Graphiti_Category,Edit,Graphiti Diagram Editor,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1ce792e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.cut,Cut,
+		Cut the selection to the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@60827a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-10-03 20:13:29.605
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Ndadji Maxime'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.apache.ivyde.eclipse 1 0 2017-10-03 20:13:38.558
+!MESSAGE starting IvyDE plugin
+
+!ENTRY org.apache.ivyde.eclipse 1 0 2017-10-03 20:13:38.605
+!MESSAGE IvyDE plugin started
+
+!ENTRY com.yattasolutions.umllab 2 0 2017-10-03 20:13:41.168
+!MESSAGE Unable to configure UML constraint validation
+!STACK 0
+java.lang.ClassNotFoundException: Unable to load synthetic subclass of com.yattasolutions.umllab.validation.f
+	at com.yattasolutions.umllab.validation.a.R(SourceFile:123)
+	at com.yattasolutions.umllab.validation.f.<clinit>(SourceFile:40)
+	at com.yattasolutions.obf.op.a.earlyStartup(SourceFile:17)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2412)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.UnsupportedClassVersionError: com/yattasolutions/umllab/validation/f__Gen_Configurable has been compiled by a more recent version of the Java Runtime (class file version 0.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at com.yattasolutions.umllab.validation.a$1.ads(SourceFile:109)
+	at com.yattasolutions.umllab.validation.a$1.findClass(SourceFile:91)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.yattasolutions.umllab.validation.a.R(SourceFile:119)
+	... 7 more
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2017-10-03 20:15:42.267
+!MESSAGE No valid Android XML Editor Delegate found for file /Research Outcome Publishing/src/rop/miu/dao/dao.cfg.rop.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2017-10-03 20:16:28.504
+!MESSAGE No projects found for [F:\Workspace\Projets Git\BAOS\Research Outcome Publishing\src\rop\miu\dao\dao.cfg.rop.xml]
+
+!ENTRY org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.toggle.comment,Toggle Comment,
+		Toggle comment the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1cd1f67,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.toggle.comment,Toggle Comment,
+		Toggle Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@11b19cf,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_RIGHT:
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@14f79a7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1a1f778,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_DOWN:
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@7d3279,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@a6631b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_UP:
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.previous.member,Go to Previous Member,
+		Move the caret to the previous member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@19a1be5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.previousSibling,Previous Sibling,
+		Go to Previous Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1ffd148,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_UP:
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@b313d6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@c9b52f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+F:
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.format,Format,
+		Format the selected text,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@43caa6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.document,Format,
+		Format selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1cbae55,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+P:
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.matching.bracket,Go to Matching Bracket,
+		Moves the cursor to the matching bracket,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@120caed,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.goto.matching.bracket,Matching Character,
+		Go to Matching Character,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@7dcaad,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+O:
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.show.outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@7eb95f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.quick_outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1f3125,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.graphiti.ui.internal.action.SaveImageAction,Export Diagram,
+		Export Diagram,
+		Category(org.eclipse.graphiti.ui.Graphiti_Category,Edit,Graphiti Diagram Editor,true),
+		org.eclipse.ui.internal.MakeHandlersGo@b1d2fa,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+/:
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.add.block.comment,Add Block Comment,
+		Enclose the selection with a block comment,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1eb1f23,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.add.block.comment,Add Block Comment,
+		Add Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1862408,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+I:
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.indent,Correct Indentation,
+		Corrects the indentation of the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@9af700,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.active.elements,Format Active Elements,
+		Format active elements,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@414ffc,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+\:
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.remove.block.comment,Remove Block Comment,
+		Remove the block comment enclosing the selection,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1897daf,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.remove.block.comment,Remove Block Comment,
+		Remove Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@19d42e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_LEFT:
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1e54c66,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@b5da12,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:16:34.738
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_DOWN:
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.next.member,Go to Next Member,
+		Move the caret to the next member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@46453e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.nextSibling,Next Sibling,
+		Go to Next Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@4d23fa,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 20:38:47.641
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 20:39:48.597
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 20:53:59.303
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.jface 2 0 2017-10-03 20:59:20.839
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 20:59:20.839
+!MESSAGE A conflict occurred for F3:
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.wst.jsdt.ui.edit.text.java.open.editor,Open Declaration,
+		Open an editor on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@4368ad,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.jsdt.ui.javascriptViewScope,,,system)
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.open.editor,Open Declaration,
+		Open an editor on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@83c9c9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.open.file.from.source,Open Selection,
+		Open an editor on the selected link,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@15100f1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+
+!ENTRY org.eclipse.jface.text 4 0 2017-10-03 20:59:35.481
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.CompilationUnitScope.connectTypeHierarchy(CompilationUnitScope.java:669)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.CompilationUnitScope.connectTypeHierarchy(CompilationUnitScope.java:674)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.completeTypeBindings(LookupEnvironment.java:387)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.completeTypeBindings(LookupEnvironment.java:443)
+	at org.eclipse.wst.jsdt.internal.core.CompilationUnitProblemFinder.accept(CompilationUnitProblemFinder.java:174)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.askForBinding(LookupEnvironment.java:279)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:132)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.getType(LookupEnvironment.java:766)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.getResolvedType(LookupEnvironment.java:720)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.Scope.getJavaLangString(Scope.java:1745)
+	at org.eclipse.wst.jsdt.core.dom.DefaultBindingResolver.resolveExpressionType(DefaultBindingResolver.java:604)
+	at org.eclipse.wst.jsdt.core.dom.Expression.resolveTypeBinding(Expression.java:111)
+	at org.eclipse.wst.jsdt.internal.corext.refactoring.nls.NLSHintHelper.getAccessorClassReference(NLSHintHelper.java:97)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.NLSStringHover.getHoverInfo(NLSStringHover.java:96)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getHoverInfo2(AbstractJavaEditorTextHover.java:95)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:147)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:00:29.858
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:01:10.095
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.jface.text 4 0 2017-10-03 21:05:56.983
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.CompilationUnitScope.connectTypeHierarchy(CompilationUnitScope.java:669)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.CompilationUnitScope.connectTypeHierarchy(CompilationUnitScope.java:674)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.completeTypeBindings(LookupEnvironment.java:387)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.completeTypeBindings(LookupEnvironment.java:443)
+	at org.eclipse.wst.jsdt.internal.core.CompilationUnitProblemFinder.accept(CompilationUnitProblemFinder.java:174)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.askForBinding(LookupEnvironment.java:279)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:132)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.getType(LookupEnvironment.java:766)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.getResolvedType(LookupEnvironment.java:720)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.Scope.getJavaLangString(Scope.java:1745)
+	at org.eclipse.wst.jsdt.core.dom.DefaultBindingResolver.resolveExpressionType(DefaultBindingResolver.java:604)
+	at org.eclipse.wst.jsdt.core.dom.Expression.resolveTypeBinding(Expression.java:111)
+	at org.eclipse.wst.jsdt.internal.corext.refactoring.nls.NLSHintHelper.getAccessorClassReference(NLSHintHelper.java:97)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.NLSStringHover.getHoverInfo(NLSStringHover.java:96)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getHoverInfo2(AbstractJavaEditorTextHover.java:95)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:147)
+	at org.eclipse.wst.jsdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:06:57.580
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:07:28.128
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:08:36.444
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:09:36.072
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:10:17.027
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:10:56.560
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:11:16.123
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.jface 2 0 2017-10-03 21:12:28.970
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 21:12:28.970
+!MESSAGE A conflict occurred for ALT+SHIFT+V:
+Binding(ALT+SHIFT+V,
+	ParameterizedCommand(Command(org.eclipse.wst.jsdt.ui.edit.text.java.move.element,Move - Refactoring ,
+		Move the selected element to a new location,
+		Category(org.eclipse.wst.jsdt.ui.category.refactoring,Refactor - JavaScript,JavaScript Refactoring Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@6f21c9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.jsdt.ui.javascriptViewScope,,,system)
+Binding(ALT+SHIFT+V,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.move.element,Move - Refactoring ,
+		Move the selected element to a new location,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@c1a880,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+V,
+	ParameterizedCommand(Command(org.eclipse.jst.jsp.ui.refactor.move,Move,
+		Move a Java Element to another package,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@bf9122,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jst.jsp.ui.structured.text.editor.jsp.scope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-10-03 21:12:28.970
+!MESSAGE A conflict occurred for ALT+SHIFT+R:
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.wst.jsdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.wst.jsdt.ui.category.refactoring,Refactor - JavaScript,JavaScript Refactoring Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1fbe2ce,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.jsdt.ui.javascriptViewScope,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1578694,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.jst.jsp.ui.refactor.rename,Rename,
+		Rename a Java Element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@700eba,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jst.jsp.ui.structured.text.editor.jsp.scope,,,system)
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:12:41.799
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:13:06.238
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:13:46.068
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:14:10.600
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:14:41.383
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:15:25.604
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:16:15.075
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:16:53.967
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:17:04.640
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:17:54.876
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:18:16.721
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 21:18:35.863
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2017-10-03 22:02:13.339
+!MESSAGE There should only ever be one match for a constructor search but found 3 when looking for e. Using the first match.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2017-10-04 05:49:04.293
+!MESSAGE Server Tomcat v7.0 Server at localhost failed to start.
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-10-04 05:50:01.659
+!MESSAGE Several ports (8005, 8080, 8009) required by Tomcat v7.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
