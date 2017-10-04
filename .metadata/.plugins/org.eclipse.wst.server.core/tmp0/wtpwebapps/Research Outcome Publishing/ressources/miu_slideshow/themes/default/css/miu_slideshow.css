@@ -1,7 +1,0 @@
-div.slide_viewport{width: 100%; border-radius: 2px; overflow: hidden; background: none; z-index: 900;}
-div.slide_control{position: absolute; width: 32px; z-index: 1000;}
-div.slide_helper{display: inline-block; vertical-align: middle; height: 100%; width: 1px;}
-a.slide_control_link{display: inline-block; vertical-align: middle; width: 26px; height: 27px; margin: auto;}
-a.left_control{background: url("../images/flex_nav.png") no-repeat 0% 50%;}
-a.right_control{background: url("../images/flex_nav.png") no-repeat -30px 50%;}
-div.slide{z-index: 900 !important; overflow: hidden;}
