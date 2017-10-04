@@ -14,12 +14,6 @@ import rop.miu.modules.pages.util.CreateMenu;
 import rop.miu.util.ROPEncryptor;
 import rop.miu.util.exceptions.ROPCryptographyException;
 
-
-<<<<<<< HEAD
-
-=======
-//@WebServlet("/ModPages")
->>>>>>> 332b124a7a0661eeba10e10264d17cea5082051e
 public class ModPages extends ServletModel {
 	private static final long serialVersionUID = 1L;
        
