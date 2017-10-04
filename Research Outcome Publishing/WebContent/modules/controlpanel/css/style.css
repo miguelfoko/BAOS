@@ -1,9 +1,14 @@
 div#home_slideshow{width: 100%; height: auto; border-radius: 2px; /*box-shadow: 0px 0px 2px 2px rgba(29, 134, 59, 0.1);*/}
 .control-legend{text-transform: uppercase; font-weight: bold; font-size: 1.3em;}
 .control-green{color: rgb(76, 135, 80) !important;}
+.image-and-desc{margin-top: 20px; margin-bottom: 20px;}
 .image-and-desc div img{width: 80px;}
 .image-and-desc div{padding: 0px 10px 0px 10px;}
 .image-and-desc .col-md-8{margin-top: -15px; font-size: 0.9em;}
 .desc-row{margin-top: 10px; margin-bottom: 40px;}
 .get-started-row{margin-top: -20px !important; margin-bottom: 10px !important;}
-.cover-button-left{position: absolute; left: 170px; bottom: 80px;}
+.cover-button-left{display: inline-block; margin-top: -80px; margin-left: 15%;}
+.cover-button-left button, .cover-button-right-top button{text-transform: uppercase !important; font-size: 1.2em;}
+.cover-button-right-top{display: inline-block; margin-top: -400px; margin-left: 78%;}
+.cover-desc{display: inline-block; font-size: 1.1em; padding: 30px; text-align: right; overflow: hidden; position: relative; height: 100px; width: 100%; background-color: rgba(75, 115, 52, 0.2); border-radius: 0px 0px 5px 5px; margin-bottom: 0px; z-index: 1000 !important; color: green;}
+.cover-desc + a img{margin-top: -100px !important;}

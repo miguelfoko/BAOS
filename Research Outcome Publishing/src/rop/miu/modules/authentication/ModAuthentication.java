@@ -3,6 +3,8 @@ package rop.miu.modules.authentication;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -544,7 +546,7 @@ public class ModAuthentication extends ServletModel {
 		final GsonBuilder builder = new GsonBuilder();
         final Gson gson = builder.create();
         
-        BaoEmailTemplate template = ROPUserDao.getEmailTemplateByName("default_template");
+        BaoEmailTemplate template = ROPUserDao.getEmailTemplateByName("antwort_single_column");
         String content = "";
         if(template != null && template.getEmailTemplateState() == ROPConstants.STATE_ACTIVATED){
         	content = template.getEmailTemplateContent();
@@ -562,6 +564,7 @@ public class ModAuthentication extends ServletModel {
         	}
         	content = ROPConstants.setParam("main_content", mc, content);
         	content = ROPConstants.setParam("content_blocks", "", content);
+        	content = ROPConstants.setParam("year", (Calendar.getInstance().get(Calendar.YEAR))+"", content);
         }else{
         	
         }

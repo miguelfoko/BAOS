@@ -68,7 +68,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
 
       out.write("<div class=\"row\">\r\n");
       out.write("\t<div class=\"col-md-12\">\r\n");
-      out.write("\t\t<legend class=\"control-legend control-green\"><span class=\"glyphicon glyphicon-book\"></span> ");
+      out.write("\t\t<legend class=\"control-legend control-green\"><span class=\"glyphicon glyphicon-education\"></span> ");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
       out.write("</legend>\r\n");
@@ -81,7 +81,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\t</div>\r\n");
       out.write("\t<div class=\"col-md-12 desc-row\">\r\n");
       out.write("\t\t<div class=\"col-md-4 image-and-desc\">\r\n");
-      out.write("\t\t\t<div class=\"col-md-4\"><img src=\"");
+      out.write("\t\t\t<div class=\"col-md-4 text-center\"><img src=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
       out.write("\" alt=\"\" /></div>\r\n");
@@ -91,7 +91,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div class=\"col-md-4 image-and-desc\">\r\n");
-      out.write("\t\t\t<div class=\"col-md-4\"><img src=\"");
+      out.write("\t\t\t<div class=\"col-md-4 text-center\"><img src=\"");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
       out.write("\" alt=\"\" /></div>\r\n");
@@ -101,7 +101,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div class=\"col-md-4 image-and-desc\">\r\n");
-      out.write("\t\t\t<div class=\"col-md-4\"><img src=\"");
+      out.write("\t\t\t<div class=\"col-md-4 text-center\"><img src=\"");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
       out.write("\" alt=\"\" /></div>\r\n");
@@ -111,26 +111,14 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
-      out.write("\t<!-- <div class=\"col-md-12 text-center desc-row\">\r\n");
-      out.write("\t\t<div class=\"col-md-6 image-and-desc\">\r\n");
-      out.write("\t\t\t<div class=\"col-md-4\"><img src=\"");
-      if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
-        return;
-      out.write("\" alt=\"\" /></div>\r\n");
-      out.write("\t\t\t<div class=\"col-md-8\">");
-      if (_jspx_meth_c_005fout_005f5(_jspx_page_context))
-        return;
-      out.write("</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t</div> -->\r\n");
       out.write("\t<div class=\"col-md-12 pull-right desc-row get-started-row\">\r\n");
       out.write("\t\t<div class=\"col-md-2 col-md-offset-10\"><a href=\"");
-      if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
+      if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
       out.write("\"><button class=\"baosButton btn btn-success\">");
-      if (_jspx_meth_c_005fout_005f6(_jspx_page_context))
+      if (_jspx_meth_c_005fout_005f5(_jspx_page_context))
         return;
-      out.write("</button></a></div>\r\n");
+      out.write(" <span class=\"glyphicon glyphicon-menu-right\"></span></button></a></div>\r\n");
       out.write("\t</div>\r\n");
       out.write("</div>");
     } catch (java.lang.Throwable t) {
@@ -153,7 +141,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(3,94) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /modules/controlpanel/baos_learning.jsp(3,99) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${applicationScope.languageManager.getLanguageValue('auth_baos_learning', sessionScope.tag)}", java.lang.Object.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -193,7 +181,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f0.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(10,35) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /modules/controlpanel/baos_learning.jsp(10,47) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f0.setValue("/modules/controlpanel/images/diversity.png");
     int _jspx_eval_c_005furl_005f0 = _jspx_th_c_005furl_005f0.doStartTag();
     if (_jspx_th_c_005furl_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -233,7 +221,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f1.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(14,35) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /modules/controlpanel/baos_learning.jsp(14,47) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f1.setValue("/modules/controlpanel/images/accessibility.png");
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -273,7 +261,7 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(18,35) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /modules/controlpanel/baos_learning.jsp(18,47) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f2.setValue("/modules/controlpanel/images/capability.jpg");
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -313,8 +301,8 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(24,35) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f3.setValue("/modules/controlpanel/images/assistance.jpg");
+    // /modules/controlpanel/baos_learning.jsp(23,50) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f3.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f3);
@@ -329,57 +317,17 @@ public final class baos_005flearning_jsp extends org.apache.jasper.runtime.HttpJ
     javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
     javax.servlet.jsp.JspWriter out = _jspx_page_context.getOut();
     //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f5.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(25,25) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${applicationScope.languageManager.getLanguageValue('auth_baos_learning_assistance', sessionScope.tag)}", java.lang.Object.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-    // /modules/controlpanel/baos_learning.jsp(25,25) name = escapeXml type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f5.setEscapeXml(false);
+    // /modules/controlpanel/baos_learning.jsp(23,175) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${applicationScope.languageManager.getLanguageValue('get_started', sessionScope.tag)}", java.lang.Object.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f5 = _jspx_th_c_005fout_005f5.doStartTag();
     if (_jspx_th_c_005fout_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.reuse(_jspx_th_c_005fout_005f5);
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f5);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.reuse(_jspx_th_c_005fout_005f5);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005furl_005f4(javax.servlet.jsp.PageContext _jspx_page_context)
-          throws java.lang.Throwable {
-    javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
-    javax.servlet.jsp.JspWriter out = _jspx_page_context.getOut();
-    //  c:url
-    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f4 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
-    _jspx_th_c_005furl_005f4.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f4.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(29,50) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f4.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005furl_005f4 = _jspx_th_c_005furl_005f4.doStartTag();
-    if (_jspx_th_c_005furl_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f4);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f4);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fout_005f6(javax.servlet.jsp.PageContext _jspx_page_context)
-          throws java.lang.Throwable {
-    javax.servlet.jsp.PageContext pageContext = _jspx_page_context;
-    javax.servlet.jsp.JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f6.setParent(null);
-    // /modules/controlpanel/baos_learning.jsp(29,175) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${applicationScope.languageManager.getLanguageValue('get_started', sessionScope.tag)}", java.lang.Object.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
-    if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f5);
     return false;
   }
 }
