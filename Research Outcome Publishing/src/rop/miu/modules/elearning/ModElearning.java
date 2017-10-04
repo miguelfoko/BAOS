@@ -20,10 +20,12 @@ import rop.miu.beans.BaoAdditionalInfo;
 import rop.miu.beans.BaoCourse;
 import rop.miu.beans.BaoCourseTimetable;
 import rop.miu.beans.BaoCourseTimetablePK;
+import rop.miu.beans.BaoExamination;
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoIntervention;
 import rop.miu.beans.BaoLesson;
 import rop.miu.beans.BaoMonitorCourse;
+import rop.miu.beans.BaoQuestion;
 import rop.miu.beans.BaoStudentCourse;
 import rop.miu.beans.BaoTeacherCourse;
 import rop.miu.beans.BaoTeacherCoursePK;
@@ -114,6 +116,28 @@ public class ModElearning extends ServletModel {
 			this.returnRequest(request, response);
 			return;
 		}
+
+		if (option.equals("getCourseToSubscribe")) {
+
+			if (isConnected(request)) {
+				BaoUser baoU = (BaoUser) request.getSession().getAttribute(
+						"baoUser");
+				List<BaoCourse> userCourse = ROPElearningDao
+						.getAllCoursesToSubscribe(baoU);
+				request.getSession().setAttribute("userCourse", userCourse);
+				includeManager
+						.addJSP(request, "/modules/elearning/courseToSubscribe.jsp");
+				chooseMenu(request, response, 0);
+				this.returnRequest(request, response);
+				return;
+			} else {
+				requestAuthentication(request, response, "elearning");
+				return;
+
+			}
+
+		}
+
 		if (option.equals("subscribeCourse")) {
 			includeManager.setTitle(request, languageManager.getLanguageValue(
 					"el_subscribe_course", langTag));
@@ -135,6 +159,7 @@ public class ModElearning extends ServletModel {
 				request.getSession().setAttribute("currentCourse", baoCourse);
 				request.getSession().setAttribute("baoUser", baoU);
 				includeManager.addJSP(request, "/modules/elearning/payCourse.jsp");
+				chooseMenu(request, response, 0);
 				this.returnRequest(request, response);
 				return;
 			} else {
@@ -267,7 +292,7 @@ public class ModElearning extends ServletModel {
 					"currentCourse");
 			BaoLesson lesson = ROPElearningDao.getLessonById(lessonID);
 			System.out.println(lesson.toString());
-			chooseMenu(request, response, 1);
+			chooseMenu(request, response, 2);
 			doViewLesson(request, response, course, lesson);
 			return;
 		}
@@ -289,8 +314,98 @@ public class ModElearning extends ServletModel {
 			}
 			doInterventionCourseLike(request, response, baoUser, course,
 					lesson, Integer.parseInt(id));
-			chooseMenu(request, response, 1);
+			chooseMenu(request, response, 2);
 			doViewLesson(request, response, course, lesson);
+
+		}
+
+		if (option.equals("questionCourse")) {
+			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
+					"currentCourse");
+			BaoLesson lesson = (BaoLesson) request.getSession().getAttribute(
+					"currentLesson");
+			request.getSession().setAttribute("currentCourse", course);
+			request.getSession().setAttribute("currentLesson", lesson);
+			includeManager.addJS(request, "/modules/elearning/js/util.js");
+			includeManager.addJSP(request, "/modules/elearning/questionCourse.jsp");
+			chooseMenu(request, response, 1);
+			this.returnRequest(request, response);
+			return;
+		}
+
+		if (option.equals("examCourse")) {
+			Date d = Calendar.getInstance().getTime();
+			String dateToday = getDateString(d);
+			request.getSession().setAttribute("dateToday", dateToday);
+			includeManager.addJSP(request, "/modules/elearning/examCourse.jsp");
+			chooseMenu(request, response, 1);
+			this.returnRequest(request, response);
+			return;
+		}
+
+		if (option.equals("viewExams")) {
+			String courseId = null;
+			try {
+				String parOpt = request.getParameter("d");
+				if (parOpt != null)
+					courseId = encryptor.decrypt(parOpt);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			BaoCourse course = ROPElearningDao.getCourseById(Integer
+					.parseInt(courseId));
+			List<BaoExamination> examinationCourse = ROPElearningDao
+					.getExaminationByCourse(course);
+			request.getSession().setAttribute("examinationCourse",
+					examinationCourse);
+			includeManager.addJSP(request, "/modules/elearning/examinationCourse.jsp");
+			chooseMenu(request, response, 0);
+			this.returnRequest(request, response);
+			return;
+
+		}
+
+		if (option.equals("examSheet")) {
+			String examId = null;
+			try {
+				String parOpt = request.getParameter("d");
+				if (parOpt != null)
+					examId = encryptor.decrypt(parOpt);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			BaoExamination exam = ROPElearningDao.getExaminationById(Integer
+					.parseInt(examId));
+			Date start = exam.getExaminationStartTime();
+			Date end = exam.getExaminationEndTime();
+			Date today = new Date();
+			boolean isExamPassed = false;
+			boolean isExamOpened = false;
+			if ((getDate(getDateString(today)))
+					.after(getDate(getDateString(start)))) {
+				isExamOpened = true;
+			}
+			if ((getDate(getDateString(today)))
+					.after(getDate(getDateString(end)))) {
+				isExamPassed = true;
+			}
+			if (isExamOpened && !isExamPassed) {
+				List<BaoQuestion> questions = ROPElearningDao
+						.getQuestionByLevel(exam
+								.getExaminationDifficultyLevel());
+				if(questions.size()>exam.getExaminationNumberOfQuestion()){
+					request.getSession().setAttribute("questions", questions);
+				}
+
+				request.getSession().setAttribute("questions", questions);
+			}
+			request.getSession().setAttribute("isExamPassed", isExamPassed);
+			request.getSession().setAttribute("isExamOpened", isExamOpened);
+			request.getSession().setAttribute("examination", exam);
+			includeManager.addJSP(request, "/modules/elearning/examinationSheet.jsp");
+			chooseMenu(request, response, 0);
+			this.returnRequest(request, response);
+			return;
 
 		}
 
@@ -365,7 +480,7 @@ public class ModElearning extends ServletModel {
 			BaoLesson lesson = (BaoLesson) request.getSession().getAttribute(
 					"currentLesson");
 			doInterventionCourse(request, response, course, lesson, -1);
-			chooseMenu(request, response, 1);
+			chooseMenu(request, response, 2);
 			doViewLesson(request, response, course, lesson);
 
 		}
@@ -384,7 +499,7 @@ public class ModElearning extends ServletModel {
 			}
 			doInterventionCourse(request, response, course, lesson,
 					Integer.parseInt(id));
-			chooseMenu(request, response, 1);
+			chooseMenu(request, response, 2);
 			doViewLesson(request, response, course, lesson);
 
 		}
@@ -394,6 +509,95 @@ public class ModElearning extends ServletModel {
 			doSubscribeCourse(request, response, course);
 			chooseMenu(request, response, 0);
 			doViewCourseByOthers(request, response, course);
+		}
+		if (option.equals("QuestionCourse")) {
+			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
+					"currentCourse");
+			BaoLesson lesson = (BaoLesson) request.getSession().getAttribute(
+					"currentLesson");
+			doQuestionCourse(request, response, course, lesson);
+			chooseMenu(request, response, 2);
+			doViewLesson(request, response, course, lesson);
+
+		}
+
+		if (option.equals("ExamCourse")) {
+			BaoCourse course = (BaoCourse) request.getSession().getAttribute(
+					"currentCourse");
+			doExamCourse(request, response, course);
+			chooseMenu(request, response, 1);
+			doViewCourseByOthers(request, response, course);
+		}
+
+	}
+
+	private void doExamCourse(HttpServletRequest request,
+			HttpServletResponse response, BaoCourse course) {
+		// TODO Auto-generated method stub
+
+		String name = request.getParameter("name");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		String length = request.getParameter("length");
+		String plength = request.getParameter("plength");
+		String level = request.getParameter("level");
+		String number = request.getParameter("number");
+		String mark = request.getParameter("mark");
+		String admis = request.getParameter("admis");
+		String result = request.getParameter("result");
+		String desc = request.getParameter("desc");
+
+		BaoExamination examination = new BaoExamination();
+		examination.setCourseId(course);
+		examination.setExaminationName(name);
+		examination.setExaminationStartTime(getDate(start));
+		examination.setExaminationEndTime(getDate(end));
+		examination.setExaminationDifficultyLevel(Float.parseFloat(level));
+		examination.setExaminationNumberOfQuestion(Short.parseShort(number));
+		examination.setExaminationQuestionMark(mark);
+		examination.setExaminationDuration(Float.parseFloat(length));
+		examination.setExaminationPauseDuration(Float.parseFloat(plength));
+		examination.setExaminationMinAdmissionLevel(Float.parseFloat(admis));
+		examination.setExaminationResultPublishDelay(getDate(result));
+		examination.setExaminationDesc(desc);
+
+		try {
+			ROPElearningDao.saveNewExaminationCourse(examination);
+		} catch (ROPDaoException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	private void doQuestionCourse(HttpServletRequest request,
+			HttpServletResponse response, BaoCourse course, BaoLesson lesson) {
+		// TODO Auto-generated method stub
+
+		String content = request.getParameter("contenu");
+		String proposal = request.getParameter("proposal");
+		String answer = request.getParameter("answer");
+		String level = request.getParameter("level");
+		String forexam = request.getParameter("forexam");
+		String justify = request.getParameter("justify");
+		String justification = request.getParameter("justification");
+
+		BaoQuestion question = new BaoQuestion();
+		question.setLessonId(lesson);
+		question.setQuestionAnswerProposals(proposal);
+		question.setQuestionAnswer(Short.parseShort(answer));
+		question.setQuestionContent(content);
+		question.setQuestionDifficultyLevel(Integer.parseInt(level));
+		question.setQuestionIsOnlyForExam(Boolean.parseBoolean(forexam));
+		question.setQuestionIsJustificationRequired(Boolean
+				.parseBoolean(justify));
+		question.setQuestionJustification(justification);
+
+		try {
+			ROPElearningDao.saveNewQuestionCourse(question);
+		} catch (ROPDaoException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -499,7 +703,8 @@ public class ModElearning extends ServletModel {
 			BaoLesson lesson, int interventionID) {
 		// TODO Auto-generated method stub
 		System.out.println(interventionID);
-		BaoIntervention intervention = ROPElearningDao.getInterventionById(interventionID);
+		BaoIntervention intervention = ROPElearningDao
+				.getInterventionById(interventionID);
 		String likes = intervention.getInterventionLike();
 		String[] like = likes.split("_");
 		boolean contain = false;
@@ -638,59 +843,6 @@ public class ModElearning extends ServletModel {
 
 	void doCourse(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// if (isConnected(request)) {
-		// BaoUser baoU = (BaoUser) request.getSession().getAttribute(
-		// "baoUser");
-		// int baouId = baoU.getUserId();
-		// List<BaoGroup> userGroups = ROPElearningDao
-		// .getUserGroupsById(baouId);
-		// boolean isTeacher = false;
-		// for (BaoGroup bg : userGroups) {
-		// if (((BaoGroup) bg).getGroupName().equalsIgnoreCase("Teacher")) {
-		// isTeacher = true;
-		// }
-		// }
-		//
-		// if (isTeacher) {
-		// List<BaoCourse> userCourse = ROPElearningDao
-		// .getTeacherCourseById(baouId);
-		//
-		// request.getSession().setAttribute("userCourse", userCourse);
-		// request.getSession().setAttribute("userCourseSize",
-		// userCourse.size());
-		// request.getSession().setAttribute("baoUser", baoUser);
-		// request.getSession().setAttribute("isTeacher", true);
-		// Date d = Calendar.getInstance().getTime();
-		// String dateToday = getDateString(d);
-		// request.getSession().setAttribute("dateToday", dateToday);
-		// includeManager.addJS(request, "/modules/elearning/js/util.js");
-		// includeManager.addJSP(request, "/modules/elearning/index.jsp");
-		// } else {
-		// List<BaoCourse> monitorCourse = ROPElearningDao
-		// .getCourseOfMonitorById(baouId);
-		// List<BaoCourse> studentCourse = ROPElearningDao
-		// .getCourseOfMonitorById(baouId);
-		// System.out.println(monitorCourse.toString());
-		// List<BaoCourse> userCourse = ROPElearningDao.getAllCourses();
-		//
-		// request.getSession().setAttribute("userCourse", userCourse);
-		// request.getSession().setAttribute("userCourseSize",
-		// userCourse.size());
-		// request.getSession().setAttribute("monitorCourse",
-		// monitorCourse);
-		// request.getSession().setAttribute("monitorCourseSize",
-		// monitorCourse.size());
-		// request.getSession().setAttribute("studentCourse",
-		// studentCourse);
-		// request.getSession().setAttribute("studentCourseSize",
-		// studentCourse.size());
-		// request.getSession().setAttribute("baoUser", baoUser);
-		// request.getSession().setAttribute("isTeacher", false);
-		// includeManager.addJSP(request, "/modules/elearning/index.jsp");
-		// }
-		//
-		// } else {
-		// request.getSession().setAttribute("baoUser", null);
 		List<BaoCourse> userCourse = ROPElearningDao.getAllCourses();
 
 		request.getSession().setAttribute("userCourse", userCourse);
@@ -950,13 +1102,11 @@ public class ModElearning extends ServletModel {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
 			int id = includeManager.createSideMenu(request, languageManager
 					.getLanguageValue("el_elearning_menu", langTag), "user");
-			includeManager.addMenuItem(request, id,
-					languageManager.getLanguageValue("el_all_course", langTag),
-					firstLinkPart + "&o=" + encryptor.encrypt("createCourse"),
-					"user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_elearning_home", langTag), firstLinkPart, "user");
 			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
 					"el_subscribe_course", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("viewCourse"), "bell");
+					+ encryptor.encrypt("getCourseToSubscribe"), "bell");
 		} catch (ROPCryptographyException e) {
 
 		}
@@ -966,7 +1116,7 @@ public class ModElearning extends ServletModel {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
 			int id = includeManager.createSideMenu(request, languageManager
-					.getLanguageValue("el_elearning_menu", langTag), "user");
+					.getLanguageValue("el_teacher_menu", langTag), "user");
 			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
 					"el_create_course", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("createCourse"), "user");
@@ -988,26 +1138,30 @@ public class ModElearning extends ServletModel {
 		}
 	}
 
+	public void setTeacherLessonMenu(HttpServletRequest request) {
+		try {
+			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
+			int id = includeManager
+					.createSideMenu(request, languageManager.getLanguageValue(
+							"el_lesson_menu", langTag), "user");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_question_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("questionCourse"), "bell");
+			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
+					"el_viewquestion_course", langTag), firstLinkPart + "&o="
+					+ encryptor.encrypt("viewQuestionCourse"), "bell");
+
+		} catch (ROPCryptographyException e) {
+
+		}
+	}
+
 	public void setTeacherCourseMenu(HttpServletRequest request) {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
-			int id = includeManager.createSideMenu(request, languageManager
-					.getLanguageValue("el_elearning_menu", langTag), "user");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_create_course", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("createCourse"), "user");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_subscribe_course", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("viewCourse"), "bell");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_course_taught", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("taughtCourse"), "user");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_course_directed", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("directedCourse"), "edit");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_course_followed", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("followedCourse"), "bell");
+			int id = includeManager
+					.createSideMenu(request, languageManager.getLanguageValue(
+							"el_course_menu", langTag), "user");
 			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
 					"el_timetable_course", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("timetableCourse"), "user");
@@ -1017,6 +1171,10 @@ public class ModElearning extends ServletModel {
 			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
 					"el_lesson_course", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("lessonCourse"), "bell");
+			includeManager
+					.addMenuItem(request, id, languageManager.getLanguageValue(
+							"el_exam_course", langTag), firstLinkPart + "&o="
+							+ encryptor.encrypt("examCourse"), "bell");
 
 		} catch (ROPCryptographyException e) {
 
@@ -1027,10 +1185,7 @@ public class ModElearning extends ServletModel {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
 			int id = includeManager.createSideMenu(request, languageManager
-					.getLanguageValue("el_elearning_menu", langTag), "user");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_subscribe_course", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("viewCourse"), "bell");
+					.getLanguageValue("el_student_menu", langTag), "user");
 			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
 					"el_course_followed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("followedCourse"), "bell");
@@ -1042,10 +1197,7 @@ public class ModElearning extends ServletModel {
 		try {
 			String firstLinkPart = "/?m=" + encryptor.encrypt("elearning");
 			int id = includeManager.createSideMenu(request, languageManager
-					.getLanguageValue("el_elearning_menu", langTag), "user");
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
-					"el_subscribe_course", langTag), firstLinkPart + "&o="
-					+ encryptor.encrypt("viewCourse"), "bell");
+					.getLanguageValue("el_monitor_menu", langTag), "user");
 			includeManager.addMenuItem(request, id, languageManager.getLanguageValue(
 					"el_course_directed", langTag), firstLinkPart + "&o="
 					+ encryptor.encrypt("directedCourse"), "edit");
@@ -1096,21 +1248,34 @@ public class ModElearning extends ServletModel {
 			if (isTeacher) {
 				if (teacherMenu == 0) {
 					setTeacherMenu(request);
+					setElearningMenu(request);
 				} else if (teacherMenu == 1) {
 					setTeacherCourseMenu(request);
+					setTeacherMenu(request);
+					setElearningMenu(request);
+				} else if (teacherMenu == 2) {
+					setTeacherLessonMenu(request);
+					setTeacherCourseMenu(request);
+					setTeacherMenu(request);
+					setElearningMenu(request);
 				}
 			} else {
 				List<BaoCourse> monitorCourse = ROPElearningDao
 						.getCourseOfMonitorById(baouId);
+				System.out.println(monitorCourse.toString());
 				List<BaoCourse> studentCourse = ROPElearningDao
 						.getCourseOfStudentById(baouId);
-				if (monitorCourse != null) {
+				System.out.println(studentCourse.toString());
+				if (!monitorCourse.isEmpty()) {
 					setMonitorMenu(request);
-				} else if (studentCourse != null) {
+					setElearningMenu(request);
+				} else if (!studentCourse.isEmpty()) {
 					setStudentMenu(request);
+					setElearningMenu(request);
 				} else {
 					setElearningMenu(request);
 				}
+
 			}
 		} else {
 			setElearningMenu(request);

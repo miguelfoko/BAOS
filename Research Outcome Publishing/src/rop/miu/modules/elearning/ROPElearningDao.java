@@ -8,10 +8,12 @@ import java.util.List;
 
 import rop.miu.beans.BaoCourse;
 import rop.miu.beans.BaoCourseTimetable;
+import rop.miu.beans.BaoExamination;
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoIntervention;
 import rop.miu.beans.BaoLesson;
 import rop.miu.beans.BaoMonitorCourse;
+import rop.miu.beans.BaoQuestion;
 import rop.miu.beans.BaoStudentCourse;
 import rop.miu.beans.BaoTeacherCourse;
 import rop.miu.beans.BaoTimetable;
@@ -48,6 +50,18 @@ public class ROPElearningDao {
 		return ROPCrudDao.saveOrUpdate(baoLesson);
 	}
 
+	public static Object saveNewQuestionCourse(BaoQuestion question)
+			throws ROPDaoException {
+		// TODO Auto-generated method stub
+		return ROPCrudDao.saveOrUpdate(question);
+	}
+
+	public static Object saveNewExaminationCourse(BaoExamination examination)
+			throws ROPDaoException {
+		// TODO Auto-generated method stub
+		return ROPCrudDao.saveOrUpdate(examination);
+	}
+
 	public static void updateLesson(BaoLesson baoLesson) throws ROPDaoException {
 		ROPCrudDao.update(baoLesson);
 	}
@@ -58,7 +72,7 @@ public class ROPElearningDao {
 
 	public static void saveNewIntervention(BaoIntervention baoIntervention)
 			throws ROPDaoException {
-		 ROPCrudDao.saveOrUpdate(baoIntervention);
+		ROPCrudDao.saveOrUpdate(baoIntervention);
 	}
 
 	public static void saveNewTeacherCourse(BaoTeacherCourse baoTeacherCourse)
@@ -102,7 +116,7 @@ public class ROPElearningDao {
 		}
 	}
 
-	@SuppressWarnings("unchecked" )
+	@SuppressWarnings("unchecked")
 	public static List<BaoIntervention> getInterventionByLessonId(
 			BaoLesson lessonId) {
 		String query = "Select i from BaoIntervention i where i.interventionIdParent is null and i.lessonId =?";
@@ -113,15 +127,15 @@ public class ROPElearningDao {
 			for (BaoIntervention o : result) {
 				List<BaoIntervention> result2 = getInterventionChildById(o
 						.getInterventionId());
-				if(result2==null){
+				if (result2 == null) {
 					result2 = new ArrayList<BaoIntervention>();
-					System.out.println("taille = "+result2.size());
+					System.out.println("taille = " + result2.size());
 				}
 				o.setBaoInterventionList(result2);
 				String likes = o.getInterventionLike();
-				String[]like = likes.split("_");
-				o.setInterventionLike(""+(like.length - 1));
-				System.out.println("like "+like.length);
+				String[] like = likes.split("_");
+				o.setInterventionLike("" + (like.length - 1));
+				System.out.println("like " + like.length);
 			}
 			return result;
 		} catch (Exception e) {
@@ -135,8 +149,8 @@ public class ROPElearningDao {
 			int interventionId) {
 		String query = "Select i from BaoIntervention i where i.interventionIdParent = ?";
 		try {
-			List<BaoIntervention> result = ROPCrudDao.selectManyElements(
-					query, interventionId);
+			List<BaoIntervention> result = ROPCrudDao.selectManyElements(query,
+					interventionId);
 			return result;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -208,7 +222,7 @@ public class ROPElearningDao {
 			return null;
 		}
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public static List<BaoUser> getTeachersCourseById(int courseId) {
 		String query = "Select * from bao_teacher_course where bao_teacher_course.course_id =?";
@@ -364,6 +378,68 @@ public class ROPElearningDao {
 		// TODO Auto-generated method stub
 		ROPCrudDao.update(parent);
 	}
-	
-	
+
+	public static List<BaoCourse> getAllCoursesToSubscribe(BaoUser baoU) {
+		// TODO Auto-generated method stub
+		String query = "((select c.course_id from bao_course c except select tc.course_id from bao_teacher_course tc where tc.user_id = ? )except select mc.course_id from bao_monitor_course mc where mc.user_id = ?)except select sc.course_id from bao_student_course sc where sc.user_id = ?";
+		List<BaoCourse> bc = new ArrayList<BaoCourse>();
+		try {
+			List result = ROPCrudDao.selectManyElementsSql(query,
+					baoU.getUserId(), baoU.getUserId(), baoU.getUserId());
+			System.out.println("result" + result.toString());
+			Object[] oT;
+			BaoCourse gp;
+			for (Object o : result) {
+				System.out.println("o" + o.toString());
+				gp = (BaoCourse) ROPCrudDao.getById(BaoCourse.class,
+						Integer.parseInt("" + o));
+				System.out.println("gp" + gp.toString());
+				bc.add(gp);
+			}
+			System.out.println(bc.toString());
+
+			return bc;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+
+	}
+
+	public static List<BaoExamination> getExaminationByCourse(BaoCourse course) {
+		// TODO Auto-generated method stub
+		String query = "Select e from BaoExamination e where e.courseId = ?";
+		try {
+			List<BaoExamination> result = ROPCrudDao.selectManyElements(query,
+					course);
+			return result;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+
+	public static BaoExamination getExaminationById(int baoExaminationId) {
+		// TODO Auto-generated method stub
+		try {
+			return (BaoExamination) ROPCrudDao.getById(BaoExamination.class, baoExaminationId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static List<BaoQuestion> getQuestionByLevel(
+			float examinationDifficultyLevel) {
+		// TODO Auto-generated method stub
+		String query = "Select q from BaoQuestion q where q.questionDifficultyLevel = ?";
+		try {
+			List<BaoQuestion> result = ROPCrudDao.selectManyElements(query,
+					examinationDifficultyLevel);
+			return result;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+
 }

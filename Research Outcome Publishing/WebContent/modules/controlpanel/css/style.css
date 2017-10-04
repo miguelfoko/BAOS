@@ -6,3 +6,4 @@ div#home_slideshow{width: 100%; height: auto; border-radius: 2px; /*box-shadow: 
 .image-and-desc .col-md-8{margin-top: -15px; font-size: 0.9em;}
 .desc-row{margin-top: 10px; margin-bottom: 40px;}
 .get-started-row{margin-top: -20px !important; margin-bottom: 10px !important;}
+.cover-button-left{position: absolute; left: 170px; bottom: 80px;}
