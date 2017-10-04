@@ -19,13 +19,6 @@ public class ModControlpanel extends ServletModel {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-
-		controlPanelMenu(request);
-		includeManager.setTitle(request, languageManager.getLanguageValue("control_panel", langTag));
-		includeManager.addJSP(request, "/modules/controlpanel/index.jsp");
-		includeManager.addCSS(request, "/modules/controlpanel/css/style.css");
-		includeManager.addJS(request, "/modules/controlpanel/js/util.js");
-
 		
 		getIncludeManager(request).setTitle(request, languageManager.getLanguageValue("control_panel", langTag));
 		getIncludeManager(request).addJSP(request, "/modules/controlpanel/slide.jsp");

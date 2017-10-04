@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,19 +40,31 @@ public class ModContactUs extends ServletModel {
 				includeManager.addJSP(request, "/modules/contactUs/email.jsp");
 				returnRequest(request, response);
     		}
-    		if (action.equalsIgnoreCase("telephone")) {
-    			includeManager.setTitle(request, languageManager.getLanguageValue("cu_telephone", langTag));
-				includeManager.addJSP(request, "/modules/contactUs/telephone.jsp");
+    		if (action.equalsIgnoreCase("ourContacts")) {
+    			HashMap<String,String> menuList = new HashMap<String,String>();
+    			File fileMenu=new File((getClass().getResource("/../.." + "/modules/contactUs/menus/aboutUs-menu.txt").getFile()).replace("%20", " "));
+				menuList = CreateMenu.generateMenu(fileMenu);
+				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("auth_about", langTag));
+				for (int i=0; i<menuList.size(); i++){
+					try {
+						includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+					} catch(Exception e) {
+					
+					}
+				}
+    			
+    			includeManager.setTitle(request, languageManager.getLanguageValue("cu_contacts", langTag));
+				includeManager.addJSP(request, "/modules/contactUs/aboutUs.jsp");
 				returnRequest(request, response);
     		}
-    		if (action.equalsIgnoreCase("developpers")) {
+    		if (action.equalsIgnoreCase("developpers")) { 
     			includeManager.setTitle(request, languageManager.getLanguageValue("cu_developpers", langTag));
 				includeManager.addJSP(request, "/modules/contactUs/developpers.jsp");
 				returnRequest(request, response);
     		}
     		if (action.equalsIgnoreCase("aboutUs")) {
     			HashMap<String,String> menuList = new HashMap<String,String>();
-    			File fileMenu=new File((getClass().getResource("/../.." + "/modules/contactUs/aboutUs-menu.txt").getFile()).replace("%20", " "));
+    			File fileMenu=new File((getClass().getResource("/../.." + "/modules/contactUs/menus/aboutUs-menu.txt").getFile()).replace("%20", " "));
 				menuList = CreateMenu.generateMenu(fileMenu);
 				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("auth_about", langTag));
 				for (int i=0; i<menuList.size(); i++){
@@ -67,6 +78,46 @@ public class ModContactUs extends ServletModel {
 				includeManager.addJSP(request, "/modules/contactUs/aboutUs.jsp");
 				returnRequest(request, response);
     		}
+    		if (action.equalsIgnoreCase("terms")){
+    			HashMap<String,String> menuList = new HashMap<String,String>();
+    			File fileMenu=new File((getClass().getResource("/../.." + "/modules/contactUs/menus/terms-menu.txt").getFile()).replace("%20", " "));
+				menuList = CreateMenu.generateMenu(fileMenu);
+				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("cu_terms", langTag));
+				for (int i=0; i<menuList.size(); i++){
+					try {
+						includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+					} catch(Exception e) {
+					
+					}
+				}
+    			
+    			includeManager.setTitle(request, languageManager.getLanguageValue("cu_terms", langTag));
+				includeManager.addJSP(request, "/modules/contactUs/terms.jsp");
+				returnRequest(request, response);
+    		}
+    		if (action.equalsIgnoreCase("privacy")){
+    			HashMap<String,String> menuList = new HashMap<String,String>();
+    			File fileMenu=new File((getClass().getResource("/../.." + "/modules/contactUs/menus/privacy-menu.txt").getFile()).replace("%20", " "));
+				menuList = CreateMenu.generateMenu(fileMenu);
+				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("cu_privacy", langTag));
+				for (int i=0; i<menuList.size(); i++){
+					try {
+						includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+					} catch(Exception e) {
+					
+					}
+				}
+    			
+    			includeManager.setTitle(request, languageManager.getLanguageValue("cu_privacy", langTag));
+				includeManager.addJSP(request, "/modules/contactUs/privacy.jsp");
+				returnRequest(request, response);
+    		}
+    		if (action.equalsIgnoreCase("siteMap")){
+    			includeManager.setTitle(request, languageManager.getLanguageValue("cu_site_map", langTag));
+				includeManager.addJSP(request, "/modules/contactUs/siteMap.jsp");
+				returnRequest(request, response);
+    		}
+    		
     	}
 	}
 
