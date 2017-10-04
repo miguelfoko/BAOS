@@ -41,11 +41,7 @@ public class ModAdminJournal extends ServletModel {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-<<<<<<< HEAD
 		adminJournalMenu();
-=======
-		adminJournalMenu(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		String option = null;
 		try{
 			String parOpt = request.getParameter("ob");
@@ -55,11 +51,7 @@ public class ModAdminJournal extends ServletModel {
 			forward500(request, response);
 			return;
 		}
-<<<<<<< HEAD
 		if(isConnected()){
-=======
-		if(isConnected(request)){
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			//			if(isAccessGranted(ROPConstants.ADMIN_ACCESS)){
 			if(option==null||option.equals("login")){
 				indexJournalParameter(request);
@@ -198,17 +190,10 @@ public class ModAdminJournal extends ServletModel {
 					return;
 				}
 				if(option1==null){
-<<<<<<< HEAD
 					includeManager.addCSS("/admin/modules/journal/inc/style.css");
 					includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 					includeManager.setTitle(languageManager.getLanguageValue("journal_home_page", langTag));
 					includeManager.addJSP("/modules/authentication/login.jsp");
-=======
-					includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-					includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-					includeManager.setTitle(request, languageManager.getLanguageValue("journal_home_page", langTag));
-					includeManager.addJSP(request, "/modules/authentication/login.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				}else{
 					if(option1.equals("formCreate")){
 						createJournalForm(request,parser);
@@ -233,17 +218,10 @@ public class ModAdminJournal extends ServletModel {
 				}
 			}
 			else{
-<<<<<<< HEAD
 				includeManager.addCSS("/admin/modules/journal/inc/style.css");
 				includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 				includeManager.setTitle(languageManager.getLanguageValue("journal_home_page", langTag));
 				includeManager.addJSP("/modules/authentication/login.jsp");
-=======
-				includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-				includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-				includeManager.setTitle(request, languageManager.getLanguageValue("journal_home_page", langTag));
-				includeManager.addJSP(request, "/modules/authentication/login.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}
 		}
 		returnRequest(request, response);
@@ -255,7 +233,6 @@ public class ModAdminJournal extends ServletModel {
 	}
 
 	private void updateJournalParameter(HttpServletRequest request){
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
@@ -272,39 +249,14 @@ public class ModAdminJournal extends ServletModel {
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_creation_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/createJournal.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/updateJournal.jsp");
-	}
-	private void indexJournalParameter(HttpServletRequest request){
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_home_page", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/login.jsp");
-	}
-	private void createJournalParameter(HttpServletRequest request){
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_creation_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/createJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void createReviewConditionParameter(HttpServletRequest request){
 		ArrayList<BaoUser> baoUser=RopJournalDao.getAllUser();
 		request.setAttribute("baoUser", baoUser);
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_review_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/createReviewCondition.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_review_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/createReviewCondition.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void createVolumeParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllJournalOrConf();
@@ -316,7 +268,6 @@ public class ModAdminJournal extends ServletModel {
 		ArrayList<BaoAutomaticReviewCondition> baoAutomaticReviewCondition=RopJournalDao.getAllAutomaticReviewCondition();
 		request.setAttribute("baoAutomaticReviewCondition", baoAutomaticReviewCondition);
 
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_volume_title", langTag));
@@ -327,78 +278,38 @@ public class ModAdminJournal extends ServletModel {
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_volume_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/createVolume.jsp");
-	}
-	private void deleteJournalParameter(HttpServletRequest request){
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfJournalParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllJournalOrConf("Journal");
 		request.setAttribute("baoJournalOrConf", baoJournalOrConf);
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_list_of_journal_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/listOfJournal.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_list_of_journal_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/listOfJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfVolumeParameter(HttpServletRequest request){
 		ArrayList<BaoVolumeOrIssue> baoVolumeOrIssue=RopJournalDao.getAllVolumeOrNews();
 		request.setAttribute("baoVolumeOrIssue", baoVolumeOrIssue);
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_list_of_volume_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/listOfVolume.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_list_of_volume_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/listOfVolume.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfConfParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllJournalOrConf("Conference");
 		request.setAttribute("baoJournalOrConf", baoJournalOrConf);
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_list_of_conf_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/listOfConf.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_list_of_conf_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/listOfConf.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void listOfTrashParameter(HttpServletRequest request){
 		ArrayList<BaoJournalOrConf> baoJournalOrConf=RopJournalDao.getAllTrashedJournalOrConf((short)3);
 		request.setAttribute("baoJournalOrConf", baoJournalOrConf);
-<<<<<<< HEAD
 		includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 		includeManager.addCSS("/admin/modules/journal/inc/style.css");
 		includeManager.setTitle(languageManager.getLanguageValue("journal_trash_list_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/trashList.jsp");
-=======
-		includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-		includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_trash_list_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/trashList.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	}
 	private void createJournalForm(HttpServletRequest request, MIUMultipartFormParser parser) {
 		try{
@@ -453,13 +364,8 @@ public class ModAdminJournal extends ServletModel {
 					re.printStackTrace();
 				}
 			}
-<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("journal_creation_title", langTag));
 			includeManager.addJSP("/admin/modules/journal/createJournal.jsp");
-=======
-			includeManager.setTitle(request, languageManager.getLanguageValue("journal_creation_title", langTag));
-			includeManager.addJSP(request, "/admin/modules/journal/createJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -480,24 +386,14 @@ public class ModAdminJournal extends ServletModel {
 				request.setAttribute("journalId",  baoJournalOrConf.getJournalOrConfId());
 				request.setAttribute("journalShortDescription", baoJournalOrConf.getJournalOrConfShortDesc());
 				request.setAttribute("journalDescription", baoJournalOrConf.getJournalOrConfLongDesc());
-<<<<<<< HEAD
 				includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
 				includeManager.addJSP("/admin/modules/journal/updateJournal2.jsp");
-=======
-				includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
-				includeManager.addJSP(request, "/admin/modules/journal/updateJournal2.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}else{
 				request.setAttribute("journalOrConfName", journalOrConfName);
 				request.setAttribute("journalOrConfState", journalOrConfState);
 				request.setAttribute("message", languageManager.getLanguageValue("journal_update_error", langTag));
-<<<<<<< HEAD
 				includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
 				includeManager.addJSP("/admin/modules/journal/updateJournal.jsp");
-=======
-				includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
-				includeManager.addJSP(request, "/admin/modules/journal/updateJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}
 		} catch (MIUIOException e) {
 			// TODO Auto-generated catch block
@@ -564,13 +460,8 @@ public class ModAdminJournal extends ServletModel {
 				re.printStackTrace();
 			}
 			request.setAttribute("resultOfUpdate", "Update success");
-<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("journal_update_title", langTag));
 			includeManager.addJSP("/admin/modules/journal/updateJournal.jsp");
-=======
-			includeManager.setTitle(request, languageManager.getLanguageValue("journal_update_title", langTag));
-			includeManager.addJSP(request, "/admin/modules/journal/updateJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		} catch (MIUIOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -591,7 +482,6 @@ public class ModAdminJournal extends ServletModel {
 					e.printStackTrace();
 				}
 				request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_succes_message", langTag));
-<<<<<<< HEAD
 				includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 				includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
 			}
@@ -599,26 +489,12 @@ public class ModAdminJournal extends ServletModel {
 				request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_error_message", langTag));
 				includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 				includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
-=======
-				includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
-				includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
-			}
-			else{
-				request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_error_message", langTag));
-				includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
-				includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}
 
 		}else{
 			request.setAttribute("resultOfDelete", languageManager.getLanguageValue("journal_delete_error_message", langTag));
-<<<<<<< HEAD
 			includeManager.setTitle(languageManager.getLanguageValue("journal_delete_title", langTag));
 			includeManager.addJSP("/admin/modules/journal/deleteJournal.jsp");
-=======
-			includeManager.setTitle(request, languageManager.getLanguageValue("journal_delete_title", langTag));
-			includeManager.addJSP(request, "/admin/modules/journal/deleteJournal.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}
 	}
 
@@ -647,13 +523,8 @@ public class ModAdminJournal extends ServletModel {
 		}
 		ArrayList<BaoUser> baoUser=RopJournalDao.getAllUser();
 		request.setAttribute("baoUser", baoUser);
-<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("journal_review_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/createReviewCondition.jsp");
-=======
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_review_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/createReviewCondition.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 
 	}
@@ -714,35 +585,22 @@ public class ModAdminJournal extends ServletModel {
 
 		ArrayList<BaoAutomaticReviewCondition> baoAutomaticReviewCondition1=RopJournalDao.getAllAutomaticReviewCondition();
 		request.setAttribute("baoAutomaticReviewCondition", baoAutomaticReviewCondition1);
-<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("journal_volume_title", langTag));
 		includeManager.addJSP("/admin/modules/journal/createVolume.jsp");
-=======
-		includeManager.setTitle(request, languageManager.getLanguageValue("journal_volume_title", langTag));
-		includeManager.addJSP(request, "/admin/modules/journal/createVolume.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
-<<<<<<< HEAD
 		adminJournalMenu();
-=======
-		adminJournalMenu(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		if(contextExists(request)||contextExists1(request)){
 			restoreContext(request, response);
 			request.getSession().removeAttribute("b");
 			request.getSession().removeAttribute("c");
 			return;
 		}
-<<<<<<< HEAD
 		if(isConnected()){
-=======
-		if(isConnected(request)){
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			String formulaire = null;
 			MIUMultipartFormParser parser;
 			try{
@@ -782,7 +640,6 @@ public class ModAdminJournal extends ServletModel {
 		}
 	}
 
-<<<<<<< HEAD
 	public void adminJournalMenu(){
 		int id=includeManager.createSideMenu(languageManager.getLanguageValue("journal_or_conf_menu_title", langTag));
 		try {
@@ -795,20 +652,6 @@ public class ModAdminJournal extends ServletModel {
 			includeManager.addMenuItem(id, languageManager.getLanguageValue("journal_review_creation", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("createReviewCondition"));
 			includeManager.addMenuItem(id, languageManager.getLanguageValue("journal_volume_creation", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("createVolume"));
 			includeManager.addMenuItem(id, languageManager.getLanguageValue("journal_volume_list", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfVolume"));
-=======
-	public void adminJournalMenu(HttpServletRequest request){
-		int id=includeManager.createSideMenu(request, languageManager.getLanguageValue("journal_or_conf_menu_title", langTag));
-		try {
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_create_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("create"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_update_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("update"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_delete_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("delete"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_list_of_journal", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfJournal"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_list_of_conf", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfConf"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_trash_list", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("trashList"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_review_creation", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("createReviewCondition"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_volume_creation", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("createVolume"));
-			includeManager.addMenuItem(request, id, languageManager.getLanguageValue("journal_volume_list", langTag),"/?m="+encryptor.encrypt("adminJournal")+"&ob="+encryptor.encrypt("listOfVolume"));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 
 			//includeManager.addMenuSubItem(id, id2, "Test 2", "#");
 		} catch (ROPCryptographyException e) {

@@ -19,10 +19,10 @@ public class ModControlpanel extends ServletModel {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		includeManager.setTitle(request, languageManager.getLanguageValue("control_panel", langTag));
-		includeManager.addJSP(request, "/modules/controlpanel/index.jsp");
-		includeManager.addCSS(request, "/modules/controlpanel/css/style.css");
-		includeManager.addJS(request, "/modules/controlpanel/js/util.js");
+		includeManager.setTitle(languageManager.getLanguageValue("control_panel", langTag));
+		includeManager.addJSP("/modules/controlpanel/index.jsp");
+		includeManager.addCSS("/modules/controlpanel/css/style.css");
+		includeManager.addJS("/modules/controlpanel/js/util.js");
 		
 		this.returnRequest(request, response);
 		return;

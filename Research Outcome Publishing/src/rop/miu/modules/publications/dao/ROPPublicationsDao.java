@@ -75,11 +75,7 @@ public class ROPPublicationsDao {
 	@SuppressWarnings({ "unchecked", "cast" })
 	public List<BaoPaper> getAllUnreadPapersByJournal () {
 		String query = "SELECT p FROM BaoPaper p where p.paperState=?  ORDER BY p.paperSubmissionDate desc";
-<<<<<<< HEAD
 		List<BaoPaper> listToReturn = (List<BaoPaper>)ROPCrudDao.selectManyElements(query,ROPConstants.STATE_WAITING_VALIDATION);
-=======
-		List<BaoPaper> listToReturn = (List<BaoPaper>)ROPCrudDao.selectManyElements(query,ROPConstants.STATE_NOT_REVIEWED);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		return listToReturn;
 	}
 	
@@ -162,11 +158,7 @@ public class ROPPublicationsDao {
 	
 	@SuppressWarnings({ "unchecked", "cast" })
 	public List<BaoReviewOrEditionContract> getAllReviewersForAJournal (int journalID) {
-<<<<<<< HEAD
 		String query = "SELECT r FROM BaoReviewOrEditionContract r where r.journalOrConfId.journalOrConfId =?";
-=======
-		String query = "SELECT r FROM BaoReviewOrEditionContract r WHERE r.journalOrConfId.journalOrConfId =?";
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		List<BaoReviewOrEditionContract> listToReturn = (List<BaoReviewOrEditionContract>)ROPCrudDao.selectManyElements(query, journalID);
 		return listToReturn;
 	}
@@ -202,10 +194,6 @@ public class ROPPublicationsDao {
 		BaoPaper paper = (BaoPaper)ROPCrudDao.selectSingleElement(query, ROPConstants.STATE_COMPLETED);
 		return paper;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	
 	
 }

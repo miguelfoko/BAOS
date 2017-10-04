@@ -42,10 +42,6 @@ public class FiltrePrincipal implements Filter {
 	public void destroy() {
 		
 	}
-	
-	protected IncludeManager getIncludeManager(HttpServletRequest request) throws ServletException, IOException{
-		return (IncludeManager)request.getAttribute("includeManager");
-	}
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
@@ -54,11 +50,6 @@ public class FiltrePrincipal implements Filter {
 		
 		this.init(request, response);
 		
-<<<<<<< HEAD
-=======
-		IncludeManager includeManager = getIncludeManager(request);
-		
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		String langTag = (String)request.getSession().getAttribute("tag");
 		if(langTag == null){
 			langTag = configManager.getLangTags().get(0);
@@ -97,19 +88,11 @@ public class FiltrePrincipal implements Filter {
 			
 			String success = request.getParameter("s");
 			if(success != null)
-<<<<<<< HEAD
 				includeManager.createSuccessStatus(languageManager.getLanguageValue(encryptor.decrypt(success), langTag));
 			
 			String error = request.getParameter("e");
 			if(error != null)
 				includeManager.createErrorStatus(languageManager.getLanguageValue(encryptor.decrypt(error), langTag));
-=======
-				includeManager.createSuccessStatus(request, languageManager.getLanguageValue(encryptor.decrypt(success), langTag));
-			
-			String error = request.getParameter("e");
-			if(error != null)
-				includeManager.createErrorStatus(request, languageManager.getLanguageValue(encryptor.decrypt(error), langTag));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}catch(Exception e){
 			
 		}
@@ -131,33 +114,19 @@ public class FiltrePrincipal implements Filter {
 		}
 		
 		/*request.setAttribute("modules", configManager.getModules());
-<<<<<<< HEAD
 		int mid = includeManager.createSideMenu("Modules");
 		for(String mod : configManager.getModules()){
 			try {
 				includeManager.addMenuItem(mid, mod, "/?m="+encryptor.encrypt(mod));
-=======
-		int mid = includeManager.createSideMenu(request,"Modules");
-		for(String mod : configManager.getModules()){
-			try {
-				includeManager.addMenuItem(request, mid, mod, "/?m="+encryptor.encrypt(mod));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			} catch (ROPCryptographyException e) {
 				
 			}
 		}
 		request.setAttribute("adminModules", configManager.getAdminModules());
-<<<<<<< HEAD
 		mid = includeManager.createSideMenu("Admin Modules");
 		for(String mod : configManager.getAdminModules()){
 			try {
 				includeManager.addMenuItem(mid, mod, "/admin?m="+encryptor.encrypt(mod));
-=======
-		mid = includeManager.createSideMenu(request,"Admin Modules");
-		for(String mod : configManager.getAdminModules()){
-			try {
-				includeManager.addMenuItem(request,mid, mod, "/admin?m="+encryptor.encrypt(mod));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			} catch (ROPCryptographyException e) {
 				
 			}
@@ -170,13 +139,8 @@ public class FiltrePrincipal implements Filter {
 		if(configManager.moduleExist(moduleName))
 			request.getServletContext().getRequestDispatcher("/Mod"+ConfigManager.setFirstUppercase(moduleName)).forward(request, response);
 		else{
-<<<<<<< HEAD
 			includeManager.addJSP(REDIRECT404);
 			includeManager.setTitle(languageManager.getLanguageValue("404_title", langTag));
-=======
-			includeManager.addJSP(request, REDIRECT404);
-			includeManager.setTitle(request, languageManager.getLanguageValue("404_title", langTag));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			request.getServletContext().getRequestDispatcher("/templates/"+configManager.getDefaultTemplate()+"/index.jsp").forward(request, response);
 		}
 	}
@@ -194,11 +158,7 @@ public class FiltrePrincipal implements Filter {
 				}
 			}
 		}
-<<<<<<< HEAD
 		includeManager = new IncludeManager(request);
-=======
-		IncludeManager includeManager = new IncludeManager(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		request.setAttribute("includeManager", includeManager);
 	}
 

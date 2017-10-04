@@ -32,11 +32,7 @@ public class ModNews extends ServletModel {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		super.doGet(request, response);
-<<<<<<< HEAD
 		newsMenu();
-=======
-		newsMenu(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		String option = null;
 		try{
 			String parOpt = request.getParameter("ob");
@@ -46,11 +42,7 @@ public class ModNews extends ServletModel {
 			forward500(request, response);
 			return;
 		}
-<<<<<<< HEAD
 		if(isConnected()){
-=======
-		if(isConnected(request)){
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			//			if(isAccessGranted(ROPConstants.ADMIN_ACCESS)){
 			if(option==null||option.equals("login")){
 				indexNewsParameter(request);
@@ -91,11 +83,7 @@ public class ModNews extends ServletModel {
 			request.getSession().removeAttribute("c");
 			return;
 		}
-<<<<<<< HEAD
 		if(isConnected()){
-=======
-		if(isConnected(request)){
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			String formulaire = null;
 			try{
 				String parOpt = request.getParameter("formulaire");
@@ -119,32 +107,18 @@ public class ModNews extends ServletModel {
 }
 
 private void indexNewsParameter(HttpServletRequest request){
-<<<<<<< HEAD
 	includeManager.addJS("/modules/news/inc/fonction.js");
 	includeManager.addCSS("/modules/news/inc/style.css");
 	includeManager.setTitle(languageManager.getLanguageValue("news_home_page", langTag));
 	includeManager.addJSP("/modules/news/login.jsp");
-=======
-	includeManager.addJS(request, "/modules/news/inc/fonction.js");
-	includeManager.addCSS(request, "/modules/news/inc/style.css");
-	includeManager.setTitle(request, languageManager.getLanguageValue("news_home_page", langTag));
-	includeManager.addJSP(request, "/modules/news/login.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 }
 private void createNewsParameter(HttpServletRequest request){
 	ArrayList<BaoUser> baoUser=RopNewsDao.getAllUser();
 	request.setAttribute("baoUser", baoUser);
-<<<<<<< HEAD
 	includeManager.addJS("/modules/news/inc/fonction.js");
 	includeManager.addCSS("/modules/news/inc/style.css");
 	includeManager.setTitle(languageManager.getLanguageValue("news_creation_title", langTag));
 	includeManager.addJSP("/modules/news/createNews.jsp");
-=======
-	includeManager.addJS(request, "/modules/news/inc/fonction.js");
-	includeManager.addCSS(request, "/modules/news/inc/style.css");
-	includeManager.setTitle(request, languageManager.getLanguageValue("news_creation_title", langTag));
-	includeManager.addJSP(request, "/modules/news/createNews.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 }
 
 private boolean contextExists(HttpServletRequest request){
@@ -192,17 +166,10 @@ private void restoreContext(HttpServletRequest request, HttpServletResponse resp
 				return;
 			}
 			if(option1==null){
-<<<<<<< HEAD
 				includeManager.addCSS("/modules/news/inc/style.css");
 				includeManager.addJS("/modules/news/inc/fonction.js");
 				includeManager.setTitle(languageManager.getLanguageValue("news_home_page", langTag));
 				includeManager.addJSP("/modules/authentication/login.jsp");
-=======
-				includeManager.addCSS(request, "/modules/news/inc/style.css");
-				includeManager.addJS(request, "/modules/news/inc/fonction.js");
-				includeManager.setTitle(request, languageManager.getLanguageValue("news_home_page", langTag));
-				includeManager.addJSP(request, "/modules/authentication/login.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			}else
 				if(option1.equals("formCreateNews")){
 					createNewsForm(request);
@@ -210,17 +177,10 @@ private void restoreContext(HttpServletRequest request, HttpServletResponse resp
 					createNewsForm(request);//To remove
 		}
 		else{
-<<<<<<< HEAD
 			includeManager.addCSS("/modules/news/inc/style.css");
 			includeManager.addJS("/modules/news/inc/fonction.js");
 			includeManager.setTitle(languageManager.getLanguageValue("news_home_page", langTag));
 			includeManager.addJSP("/modules/authentication/login.jsp");
-=======
-			includeManager.addCSS(request, "/modules/news/inc/style.css");
-			includeManager.addJS(request, "/modules/news/inc/fonction.js");
-			includeManager.setTitle(request, languageManager.getLanguageValue("news_home_page", langTag));
-			includeManager.addJSP(request, "/modules/authentication/login.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		}
 	}
 	returnRequest(request, response);
@@ -265,18 +225,12 @@ private void createNewsForm(HttpServletRequest request){
 	}
 	ArrayList<BaoUser> baoUser=RopNewsDao.getAllUser();
 	request.setAttribute("baoUser", baoUser);
-<<<<<<< HEAD
 	includeManager.setTitle(languageManager.getLanguageValue("news_creation_title", langTag));
 	includeManager.addJSP("/modules/news/createNews.jsp");
-=======
-	includeManager.setTitle(request, languageManager.getLanguageValue("news_creation_title", langTag));
-	includeManager.addJSP(request, "/modules/news/createNews.jsp");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 }
 private void listOfNewsParameter(HttpServletRequest request){
 	ArrayList<BaoNews> baoNews=RopNewsDao.getAllNews();
 	request.setAttribute("baoNews", baoNews);
-<<<<<<< HEAD
 	includeManager.addJS("/admin/modules/journal/inc/fonction.js");
 	includeManager.addCSS("/admin/modules/journal/inc/style.css");
 	includeManager.setTitle(languageManager.getLanguageValue("journal_list_of_journal_title", langTag));
@@ -288,19 +242,6 @@ public void newsMenu(){
 	try {
 		includeManager.addMenuItem(id, languageManager.getLanguageValue("news_create_news", langTag),"/?m="+encryptor.encrypt("news")+"&ob="+encryptor.encrypt("create"));
 		includeManager.addMenuItem(id, languageManager.getLanguageValue("news_list", langTag),"/?m="+encryptor.encrypt("news")+"&ob="+encryptor.encrypt("list"));
-=======
-	includeManager.addJS(request, "/admin/modules/journal/inc/fonction.js");
-	includeManager.addCSS(request, "/admin/modules/journal/inc/style.css");
-	includeManager.setTitle(request, languageManager.getLanguageValue("journal_list_of_journal_title", langTag));
-	includeManager.addJSP(request, "/modules/news/listOfNews.jsp");
-}
-
-public void newsMenu(HttpServletRequest request){
-	int id=includeManager.createSideMenu(request, "NEWS");
-	try {
-		includeManager.addMenuItem(request, id, languageManager.getLanguageValue("news_create_news", langTag),"/?m="+encryptor.encrypt("news")+"&ob="+encryptor.encrypt("create"));
-		includeManager.addMenuItem(request, id, languageManager.getLanguageValue("news_list", langTag),"/?m="+encryptor.encrypt("news")+"&ob="+encryptor.encrypt("list"));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		//includeManager.addMenuSubItem(id, id2, "Test 2", "#");
 	} catch (ROPCryptographyException e) {
 		// TODO Auto-generated catch block

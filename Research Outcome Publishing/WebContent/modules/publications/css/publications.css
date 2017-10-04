@@ -81,30 +81,6 @@
  	cursor: pointer;
  }
  
-<<<<<<< HEAD
-=======
-button
- {
- 	background: rgb(139, 196, 222);
- 	border: none;
- 	-moz-border-radius: 30px;
- 	-webkit-border-radius: 5px;
- 	-khtml-border-radius: 5px;
- 	border-radius: 5px; 
- 	color: #ffffff;
- 	display: block;
- 	padding: 7px 25px;
- 	text-shadow: 0 1px 1px #000000;
- 	text-transform: uppercase;
- }
- 
- button:hover
- {
- 	background: rgb(97, 173, 209);
- 	cursor: pointer;
- }
- 
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
  form#connection button:hover
  {
  	background: rgb(210, 43, 43);
@@ -217,19 +193,6 @@ form#legendPubli
     overflow:auto;
 }
 
-<<<<<<< HEAD
-=======
-#ongletsJournal
-{
-	position: relative;
-    left: 0px;
-    width: 99%;
-    top: 5px;
-    height:350px;
-    overflow:auto;
-}
-
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 form.formPubli #authorManagement, #guideForAuthors, #suggestReviewer, #paperInformations, #requestEditor {
 	display:none;
 }
@@ -238,20 +201,4 @@ form.formPubli #authorManagement, #guideForAuthors, #suggestReviewer, #paperInfo
  
 .tablePubli{border-collapse: collapse; border: 1px solid gray; width: 100%;}
 .tablePubli .trPubli, .tdPubli, .thPubli{border-collapse: collapse; border: 1px solid gray;}
-<<<<<<< HEAD
 .tdPubli, .thPubli{padding: 5px;}
-=======
-.tdPubli, .thPubli{padding: 5px;}
-
-.pub_no_border{border: none !important;}
-.pub_sub_step_bar{margin-top: -10px; margin-bottom: 30px; padding: 2px;}
-.pub_sub_step_bar > div{margin-left: 5px !important;}
-.pub_sub_step_bar > div:nth-child(1){overflow: hidden;}
-.pub_sub_step_bar > .pub-highlight{border-radius: 5px;}
-.pub_table thead th, .pub_table tbody td{text-align: center !important;}
-.sub_add_author_group{margin-top: -10px;}
-.pub-clearfix{clear: both;}
-.pub-divider{margin-top: 25px; margin-bottom: 10px;}
-
-
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc

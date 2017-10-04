@@ -32,10 +32,7 @@ public class ServletModel extends HttpServlet {
 	protected String langTag;
 	protected BaoUser baoUser;
 	protected ConfigManager configManager;
-<<<<<<< HEAD
 	private HttpServletRequest request;
-=======
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
        
     public ServletModel() {
         super();
@@ -69,47 +66,28 @@ public class ServletModel extends HttpServlet {
 	}
 	
 	private void initRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-<<<<<<< HEAD
 		this.request = request;
-=======
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		includeManager = (IncludeManager)request.getAttribute("includeManager");
 		langTag = (String)request.getSession().getAttribute("tag");
 		baoUser = (BaoUser)request.getSession().getAttribute("baoUser");
 	}
 	
-	protected IncludeManager getIncludeManager(HttpServletRequest request) throws ServletException, IOException{
-		return (IncludeManager)request.getAttribute("includeManager");
+	protected boolean isConnected(){
+		return baoUser != null;
 	}
 	
-	protected BaoUser getBaoUser(HttpServletRequest request) throws ServletException, IOException{
-		return (BaoUser)request.getSession().getAttribute("baoUser");
-	}
-	
-	protected void setBaoUser(HttpServletRequest request, BaoUser user) throws ServletException, IOException{
-		request.getSession().setAttribute("baoUser", user);
-	}
-	
-	protected String getLangTag(HttpServletRequest request) throws ServletException, IOException{
-		return (String)request.getSession().getAttribute("tag");
-	}
-	
-	protected boolean isConnected(HttpServletRequest request) throws ServletException, IOException{
-		return getBaoUser(request) != null;
-	}
-	
-	public boolean isAccessGranted(HttpServletRequest request, String access){
+	public boolean isAccessGranted(String access){
 		if(access.equals(ROPConstants.PUBLIC_ACCESS))
 			return true;
 		if(access.equals(ROPConstants.MEMBER_ACCESS))
-			return haveRight(request, ROPConstants.MEMBER_ACCESS_RIGHT);
+			return haveRight(ROPConstants.MEMBER_ACCESS_RIGHT);
 		if(access.equals(ROPConstants.ADMIN_ACCESS))
-			return haveRight(request, ROPConstants.ADMIN_ACCESS_RIGHT);
+			return haveRight(ROPConstants.ADMIN_ACCESS_RIGHT);
 		return false;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public boolean haveRight(HttpServletRequest request, String right){
+	public boolean haveRight(String right){
 		if(baoUser == null)
 			return false;
 		DateTime time = null;
@@ -162,31 +140,19 @@ public class ServletModel extends HttpServlet {
 	}
 	
 	public void forward404(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-<<<<<<< HEAD
 		includeManager.resetIncludeList();
-=======
-		includeManager.resetIncludeList(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		//Compléter par l'inclusion des fichiers correspondants
 		returnRequest(request, response);
 	}
 	
 	public void forward403(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-<<<<<<< HEAD
 		includeManager.resetIncludeList();
-=======
-		includeManager.resetIncludeList(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		//Compléter par l'inclusion des fichiers correspondants
 		returnRequest(request, response);
 	}
 	
 	public void forward500(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-<<<<<<< HEAD
 		includeManager.resetIncludeList();
-=======
-		includeManager.resetIncludeList(request);
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		//Compléter par l'inclusion des fichiers correspondants
 		returnRequest(request, response);
 	}

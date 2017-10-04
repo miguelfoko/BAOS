@@ -33,21 +33,13 @@ public class FiltreAdmin implements Filter {
 	public void destroy() {
 		
 	}
-	
-	protected IncludeManager getIncludeManager(HttpServletRequest request) throws ServletException, IOException{
-		return (IncludeManager)request.getAttribute("includeManager");
-	}
 
+	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		
-<<<<<<< HEAD
-=======
-		IncludeManager includeManager = getIncludeManager(request);
-		
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		String langTag = (String)request.getSession().getAttribute("tag");
 		
 		String moduleName = request.getParameter("m"),
@@ -96,14 +88,9 @@ public class FiltreAdmin implements Filter {
 		if(configManager.adminModuleExist(moduleName))
 			request.getServletContext().getRequestDispatcher("/ModAdmin"+ConfigManager.setFirstUppercase(moduleName)).forward(request, response);
 		else{
-<<<<<<< HEAD
 			IncludeManager includeManager = new IncludeManager(request);
 			includeManager.addJSP(REDIRECT404);
 			includeManager.setTitle(languageManager.getLanguageValue("404_title", langTag));
-=======
-			includeManager.addJSP(request, REDIRECT404);
-			includeManager.setTitle(request, languageManager.getLanguageValue("404_title", langTag));
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 			request.getServletContext().getRequestDispatcher("/admin/templates/"+configManager.getDefaultAdminTemplate()+"/index.jsp").forward(request, response);
 		}
 	}

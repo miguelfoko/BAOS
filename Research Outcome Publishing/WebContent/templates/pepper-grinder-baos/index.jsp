@@ -18,11 +18,7 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <a class="navbar-brand" href="index.jsp">
-<<<<<<< HEAD
 		      	<img src="<c:url value="/ressources/images/logo-baos.png" />" alt="Logo" />
-=======
-		      	<img src="<c:url value="/ressources/images/logo-baos.png" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_logo', sessionScope.tag)}" />" />
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		      </a>
 		    </div>
 		    <div class="collapse navbar-collapse ui-widget-content" id="pgb-top-navbar">
@@ -30,7 +26,6 @@
 		        <li>
 		        	<div id="pgb-top-menu-more" class="dropdown">
 					    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-<<<<<<< HEAD
 					    	<span class="glyphicon glyphicon-th"></span> Menu
 					    	<span class="caret"></span>
 					    </button>
@@ -53,25 +48,6 @@
 			    <li class="pgb-to-hide-1070"><a href="#">Journals</a></li>
 	            <li class="pgb-to-hide-1200"><a href="#">Learning</a></li>
 	            <li class="pgb-to-hide-1200"><a href="#">News</a></li>
-=======
-					    	<span class="glyphicon glyphicon-th"></span> <c:out value="${applicationScope.languageManager.getLanguageValue('auth_menu', sessionScope.tag)}" />
-					    	<span class="caret"></span>
-					    </button>
-					    <ul class="dropdown-menu">
-					      <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> <c:out value="${applicationScope.languageManager.getLanguageValue('auth_home', sessionScope.tag)}" /></a></li>
-					      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}&action=${applicationScope.encryptor.encrypt('paperSubmission')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_journals', sessionScope.tag)}" /></a></li>
-		                  <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_learning', sessionScope.tag)}" /></a></li>
-		        		  <!-- <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('publications')}&action=${applicationScope.encryptor.encrypt('paperSubmission')}" />">Paper Submission</a></li> -->
-					      <li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
-					    </ul>
-				  	</div>
-		        </li>
-		        <li class="pgb-to-hide-870"><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> <c:out value="${applicationScope.languageManager.getLanguageValue('auth_home', sessionScope.tag)}" /></a></li>
-			    <li class="pgb-to-hide-970"><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_journals', sessionScope.tag)}" /></a></li>
-			    <li class="pgb-to-hide-1070"><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_learning', sessionScope.tag)}" /></a></li>
-	            <li class="pgb-to-hide-1200"><a href=""><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
-	            <!-- <li class="pgb-to-hide-1200"><a href="#">News</a></li> -->
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		      </ul>
 		      <form id="pgb-search-nav-bar" class="navbar-form navbar-right">
 		        <div class="form-group input-group">
@@ -82,12 +58,6 @@
 		            </button>
 		          </span>        
 		        </div>
-<<<<<<< HEAD
-=======
-		        <input type="hidden" id="modAuthenticationEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('authentication')}" />" />
-				<input type="hidden" id="actionUnreadEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('unread-notifications')}" />" />
-				<input type="hidden" id="actionReadEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('read-notifications')}" />" />
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		      </form>
 		      <c:choose>
 			      <c:when test="${baoUser == null}">
@@ -104,43 +74,24 @@
 									<c:when test="${baoUser.additionalInfoId.userAvatar != null || baoUser.additionalInfoId.userAvatarType == 'gravatar'}">
 										<c:choose>
 											<c:when test="${baoUser.additionalInfoId.userAvatarType == 'gravatar' || baoUser.additionalInfoId.userAvatarType == null}">
-<<<<<<< HEAD
 												<img class="pgb-top-avatar" src="https://www.gravatar.com/avatar/<c:out value="${applicationScope.encryptor.md5HexEmail(baoUser.userEmail)}?s=120" />" alt="Gravatar" />
 											</c:when>
 											<c:otherwise>
 												<img class="pgb-top-avatar" src="<c:url value="/ressources/images/avatars/${baoUser.additionalInfoId.userAvatar}" />" alt="Avatar" />
-=======
-												<img class="pgb-top-avatar" src="https://www.gravatar.com/avatar/<c:out value="${applicationScope.encryptor.md5HexEmail(baoUser.userEmail)}?s=120" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar', sessionScope.tag)}" />" />
-											</c:when>
-											<c:otherwise>
-												<img class="pgb-top-avatar" src="<c:url value="/ressources/images/avatars/${baoUser.additionalInfoId.userAvatar}" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar', sessionScope.tag)}" />" />
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:otherwise>
-<<<<<<< HEAD
 										<img class="pgb-top-avatar" src="<c:url value="/ressources/images/avatars/default.png" />" alt="Avatar" />
 									</c:otherwise>
 								</c:choose>
 								<span class="caret pgb-profile-avatar-caret"></span>
 								<span class="badge baos-notification-badge pgb-baos-notification-badge-top pgb-background-red">2</span>
-=======
-										<img class="pgb-top-avatar" src="<c:url value="/ressources/images/avatars/default.png" />" alt="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_avatar', sessionScope.tag)}" />" />
-									</c:otherwise>
-								</c:choose>
-								<span class="caret pgb-profile-avatar-caret"></span>
-								<span class="badge baos-notification-badge pgb-baos-notification-badge-top pgb-background-red"></span>
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 						    </button>
 						    <ul class="dropdown-menu">
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('profile')}"><c:out value="${applicationScope.languageManager.getLanguageValue('profile_title', sessionScope.tag)}" /></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('edit-profile')}"><c:out value="${applicationScope.languageManager.getLanguageValue('edit_profile', sessionScope.tag)}" /></a></li>
-<<<<<<< HEAD
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('notification')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_notification', sessionScope.tag)}" /> <span class="badge baos-notification-badge pgb-baos-notification-badge-menu pgb-background-red">2</span></a></li>
-=======
-						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('notification')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_notification', sessionScope.tag)}" /> <span class="badge baos-notification-badge pgb-baos-notification-badge-menu pgb-background-red"></span></a></li>
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('research')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_research_summary', sessionScope.tag)}" /></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('courses')}"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_courses_summary', sessionScope.tag)}" /></a></li>
 						      <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('logout')}"><c:out value="${applicationScope.languageManager.getLanguageValue('logout_title', sessionScope.tag)}" /></a></li>
@@ -194,7 +145,6 @@
 			<div id="pgb-footer-top-row" class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="col-md-3">
-<<<<<<< HEAD
 						Bloc 1
 					</div>
 					<div class="col-md-3">
@@ -205,66 +155,6 @@
 					</div>
 					<div class="col-md-3">
 						Bloc 4
-=======
-						<div class="row">
-							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('cu_contact_us', sessionScope.tag)}" /></h4>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('email')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_email', sessionScope.tag)}" /></a></li>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('telephone')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_by_telephone', sessionScope.tag)}" /></a></li>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('contactUs')}&a=${applicationScope.encryptor.encrypt('developpers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('cu_developpers', sessionScope.tag)}" /></a></li>
-						      		<li><a href="#"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_about', sessionScope.tag)}" /></a></li>
-			                  	</ul>
-					    	</div>
-						</div>
-						
-					</div>
-					<div class="col-md-3">
-						<div class="row">
-							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_authors', sessionScope.tag)}" /></h4>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForAutors')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_authors', sessionScope.tag)}" /></a></li>
-			                  	</ul>
-					    	</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="row">
-							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_teachers', sessionScope.tag)}" /></h4>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForTeachers')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_teachers', sessionScope.tag)}" /></a></li>
-			                  	</ul>
-					    	</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="row">
-							<div class="col-md-12">
-								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_guide_for_students', sessionScope.tag)}" /></h4>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<ul>
-						      		<li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('pages')}&a=${applicationScope.encryptor.encrypt('guideForStudents')}" />"><c:out value="${applicationScope.languageManager.getLanguageValue('pages_read_guide_for_students', sessionScope.tag)}" /></a></li>
-			                  	</ul>
-					    	</div>
-						</div>
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 					</div>
 				</div>
 			</div>

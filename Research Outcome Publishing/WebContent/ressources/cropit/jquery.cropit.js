@@ -191,11 +191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var defaults = (0, _options.loadDefaults)(this.$el);
 	    this.options = _jquery2['default'].extend({}, defaults, options);
 
-<<<<<<< HEAD
 	    this.init();
-=======
-	    //this.init();
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 	  }
 
 	  _createClass(Cropit, [{

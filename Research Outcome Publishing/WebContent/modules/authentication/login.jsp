@@ -14,21 +14,12 @@
 					</div>
 				</c:if>
 				<div class="form-group <c:if test="${loginError != null}">has-error</c:if>">
-<<<<<<< HEAD
 					<label class="auth_label control-label" for="login"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_login', sessionScope.tag)}" /></label>
 					<input type="text" name="login" id="login" value="<c:out value="${param.login}" />" required class="auth_text_zone form-control" placeholder="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_login_holder', sessionScope.tag)}" />" />
 				</div>
 				<div class="form-group <c:if test="${loginError != null}">has-error</c:if>">
 					<label class="auth_label control-label" for="pass"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_pass', sessionScope.tag)}" /></label>
 					<input type="password" name="pass" id="pass" class="auth_text_zone form-control" />
-=======
-					<label class="auth_label control-label" for="login"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_login', sessionScope.tag)}" /><span class="required">*</span></label>
-					<input type="text" name="login" id="login" value="<c:out value="${param.login}" />" required class="auth_text_zone form-control" placeholder="<c:out value="${applicationScope.languageManager.getLanguageValue('auth_login_holder', sessionScope.tag)}" />" />
-				</div>
-				<div class="form-group <c:if test="${loginError != null}">has-error</c:if>">
-					<label class="auth_label control-label" for="pass"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_pass', sessionScope.tag)}" /><span class="required">*</span></label>
-					<input type="password" name="pass" id="pass" required class="auth_text_zone form-control" />
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 				</div>
 				<div class="form-group">
 					<input type="checkbox" name="stayLogged" id="stayLogged" class="auth_checkbox" <c:if test="${(param.login != null && param.stayLogged != null) || param.login == null}">checked</c:if>  />

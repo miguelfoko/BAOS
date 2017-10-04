@@ -31,15 +31,9 @@ public class AddTopic extends ServletModel {
 		List<BaoTopic> topicList = dao.getAllTopics();
 		request.setAttribute("Attr_topicList", topicList);
 		
-<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("publication_insert_topic", langTag));
 		includeManager.addJSP("/modules/publications/index.jsp");
 		includeManager.addCSS("/modules/publications/css/publications.css");
-=======
-		includeManager.setTitle(request, languageManager.getLanguageValue("publication_insert_topic", langTag));
-		includeManager.addJSP(request, "/modules/publications/index.jsp");
-		includeManager.addCSS(request, "/modules/publications/css/publications.css");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		
 		returnRequest(request, response);
 	}
@@ -74,15 +68,9 @@ public class AddTopic extends ServletModel {
 			e.printStackTrace();
 		}
 		
-<<<<<<< HEAD
 		includeManager.setTitle(languageManager.getLanguageValue("publication_succes_insert_topic", langTag));
 		includeManager.addJSP("/modules/publications/index.jsp");
 		includeManager.addCSS("/modules/publications/css/publications.css");
-=======
-		includeManager.setTitle(request, languageManager.getLanguageValue("publication_succes_insert_topic", langTag));
-		includeManager.addJSP(request, "/modules/publications/index.jsp");
-		includeManager.addCSS(request, "/modules/publications/css/publications.css");
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		
 		returnRequest(request, response);
 	}

@@ -7,11 +7,6 @@
 	    <module>publications</module>
 	    <module>adminJournal</module>
 	     <module>news</module>
-<<<<<<< HEAD
-=======
-	    <module>pages</module>
-	    <module>contactUs</module>
->>>>>>> 480cda9ed27267cf1d83f1e4de7d6e19346494fc
 		<default>controlpanel</default>
 	</modules>
 	<adminmodules>
