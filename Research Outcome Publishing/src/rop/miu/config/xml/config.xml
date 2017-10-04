@@ -9,6 +9,7 @@
 	     <module>news</module>
 	    <module>pages</module>
 	    <module>contactUs</module>
+	    <module>payment</module>
 		<default>controlpanel</default>
 	</modules>
 	<adminmodules>

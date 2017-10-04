@@ -1,5 +1,5 @@
 <c:if test="${action == 'indexPubli' }">
-
+	<div id="pub_journal_title"><h4><c:out value="${applicationScope.languageManager.getLanguageValue('pub_journal_title', sessionScope.tag)}" /></h4> </div>
 	<div id="accordeon">
 	
 		<c:forEach items="${Attr_journalList}" var="journal" begin="0">

@@ -1,6 +1,9 @@
 package rop.miu.modules.contactUs;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import rop.miu.modules.ServletModel;
+import rop.miu.modules.pages.util.CreateMenu;
 import rop.miu.util.ROPEncryptor;
 import rop.miu.util.exceptions.ROPCryptographyException;
 
 
-@WebServlet("/ModContactUs")
+
 public class ModContactUs extends ServletModel {
 	private static final long serialVersionUID = 1L;
        
@@ -46,6 +50,22 @@ public class ModContactUs extends ServletModel {
     		if (action.equalsIgnoreCase("developpers")) {
     			includeManager.setTitle(request, languageManager.getLanguageValue("cu_developpers", langTag));
 				includeManager.addJSP(request, "/modules/contactUs/developpers.jsp");
+				returnRequest(request, response);
+    		}
+    		if (action.equalsIgnoreCase("aboutUs")) {
+    			HashMap<String,String> menuList = new HashMap<String,String>();
+    			File fileMenu=new File((getClass().getResource("/../.." + "/modules/contactUs/aboutUs-menu.txt").getFile()).replace("%20", " "));
+				menuList = CreateMenu.generateMenu(fileMenu);
+				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("auth_about", langTag));
+				for (int i=0; i<menuList.size(); i++){
+					try {
+						includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+					} catch(Exception e) {
+					
+					}
+				}
+    			includeManager.setTitle(request, languageManager.getLanguageValue("auth_about", langTag));
+				includeManager.addJSP(request, "/modules/contactUs/aboutUs.jsp");
 				returnRequest(request, response);
     		}
     	}
