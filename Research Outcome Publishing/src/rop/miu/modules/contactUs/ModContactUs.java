@@ -12,7 +12,7 @@ import rop.miu.util.ROPEncryptor;
 import rop.miu.util.exceptions.ROPCryptographyException;
 
 
-@WebServlet("/ModContactUs")
+//@WebServlet("/ModContactUs")
 public class ModContactUs extends ServletModel {
 	private static final long serialVersionUID = 1L;
        

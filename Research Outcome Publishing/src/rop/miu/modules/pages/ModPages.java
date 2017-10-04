@@ -16,7 +16,7 @@ import rop.miu.util.ROPEncryptor;
 import rop.miu.util.exceptions.ROPCryptographyException;
 
 
-@WebServlet("/ModPages")
+//@WebServlet("/ModPages")
 public class ModPages extends ServletModel {
 	private static final long serialVersionUID = 1L;
        
