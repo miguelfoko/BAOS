@@ -220,10 +220,10 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="btn-group">
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/facebook.png" />" alt="Facebook"  width="30px" height="30px" /></a>
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/linkedin.png" />" alt="Linkedin" width="30px" height="30px" /></a>
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/twitter.png" />" alt="Twitter" width="30px" height="30px" /></a>
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/modules/pages/images/youtube.png" />" alt="Youtube" width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/facebook.png" />" alt="Facebook"  width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/linkedin.png" />" alt="Linkedin" width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/twitter.png" />" alt="Twitter" width="30px" height="30px" /></a>
+							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/youtube.png" />" alt="Youtube" width="30px" height="30px" /></a>
 						</div>
 					</div>
 				</div>
