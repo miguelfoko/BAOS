@@ -27,7 +27,7 @@ public class ModControlpanel extends ServletModel {
 		getIncludeManager(request).addJSP(request, "/modules/controlpanel/baos_community.jsp");
 		getIncludeManager(request).addCSS(request, "/ressources/miu_slideshow/themes/default/css/miu_slideshow.css");
 		getIncludeManager(request).addCSS(request, "/modules/controlpanel/css/style.css");
-		getIncludeManager(request).addJS(request, "/ressources/miu_slideshow/js/miu_slideshow.js");
+		getIncludeManager(request).addJS(request, "/ressources/miu_slideshow/js/miu_slideshow.min.js");
 		getIncludeManager(request).addJS(request, "/modules/controlpanel/js/util.js");
 
 		

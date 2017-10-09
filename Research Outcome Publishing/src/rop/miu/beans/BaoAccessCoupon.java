@@ -39,10 +39,12 @@ public class BaoAccessCoupon implements Serializable {
     @Basic(optional = false)
     @Column(name = "access_coupon_num", nullable = false)
     private long accessCouponNum;
-    @Basic(optional = false)
-    @Column(name = "access_coupon_validity_end", nullable = false)
+    @Column(name = "access_coupon_validity_end")
     @Temporal(TemporalType.TIMESTAMP)
     private Date accessCouponValidityEnd;
+    @Basic(optional = false)
+    @Column(name = "access_coupon_details", nullable = false, length = 2147483647)
+    private String accessCouponDetails;
     @Basic(optional = false)
     @Column(name = "access_coupon_state", nullable = false)
     private short accessCouponState;
@@ -60,10 +62,11 @@ public class BaoAccessCoupon implements Serializable {
         this.accessCouponId = accessCouponId;
     }
 
-    public BaoAccessCoupon(Integer accessCouponId, long accessCouponNum, Date accessCouponValidityEnd, short accessCouponState) {
+    public BaoAccessCoupon(Integer accessCouponId, long accessCouponNum, Date accessCouponValidityEnd, String accessCouponDetails, short accessCouponState) {
         this.accessCouponId = accessCouponId;
         this.accessCouponNum = accessCouponNum;
         this.accessCouponValidityEnd = accessCouponValidityEnd;
+        this.accessCouponDetails = accessCouponDetails;
         this.accessCouponState = accessCouponState;
     }
 
@@ -115,7 +118,15 @@ public class BaoAccessCoupon implements Serializable {
         this.userId = userId;
     }
 
-    @Override
+    public String getAccessCouponDetails() {
+		return accessCouponDetails;
+	}
+
+	public void setAccessCouponDetails(String accessCouponDetails) {
+		this.accessCouponDetails = accessCouponDetails;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (accessCouponId != null ? accessCouponId.hashCode() : 0);
