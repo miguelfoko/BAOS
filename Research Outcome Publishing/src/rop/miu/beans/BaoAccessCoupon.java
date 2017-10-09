@@ -16,6 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  *
@@ -54,6 +58,8 @@ public class BaoAccessCoupon implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private BaoUser userId;
+    @Transient
+    private BaoAccessCouponDetails accessCouponDetailsObject;
 
     public BaoAccessCoupon() {
     }
@@ -124,6 +130,27 @@ public class BaoAccessCoupon implements Serializable {
 
 	public void setAccessCouponDetails(String accessCouponDetails) {
 		this.accessCouponDetails = accessCouponDetails;
+	}
+	
+	public void setAccessCouponDetails(BaoAccessCouponDetails accessCouponDetailsObject) {
+		this.accessCouponDetails = accessCouponDetailsObject.toJson();
+		setAccessCouponDetailsObject(accessCouponDetailsObject);
+	}
+
+	public BaoAccessCouponDetails getAccessCouponDetailsObject() {
+		return accessCouponDetailsObject;
+	}
+	
+	public void setAccessCouponDetailsObject() {
+		final GsonBuilder builder = new GsonBuilder();
+        final Gson gson = builder.create();
+        accessCouponDetailsObject = gson.fromJson(accessCouponDetails, BaoAccessCouponDetails.class);
+	}
+
+	public void setAccessCouponDetailsObject(
+			BaoAccessCouponDetails accessCouponDetailsObject) {
+		this.accessCouponDetailsObject = accessCouponDetailsObject;
+		setAccessCouponDetails(accessCouponDetailsObject);
 	}
 
 	@Override

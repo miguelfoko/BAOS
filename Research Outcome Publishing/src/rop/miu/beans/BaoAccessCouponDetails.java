@@ -10,6 +10,7 @@ public class BaoAccessCouponDetails implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer couponTypeId;
     private Serializable paidElementId;
+    private Double paidPrice;
     private String bankTransactionNum;
     private String paymentMode;
     private Date creationDate;
@@ -17,10 +18,11 @@ public class BaoAccessCouponDetails implements Serializable {
     private String paymentDesc;
     private String additionalInfo;
     
-    public BaoAccessCouponDetails(Integer couponTypeId, Serializable paidElementId,
+    public BaoAccessCouponDetails(Integer couponTypeId, Serializable paidElementId, Double paidPrice,
 			String paymentDesc) {
 		this.couponTypeId = couponTypeId;
 		this.paidElementId = paidElementId;
+		this.paidPrice = paidPrice;
 		this.paymentDesc = paymentDesc;
 		this.creationDate = new Date();
 	}
@@ -87,6 +89,14 @@ public class BaoAccessCouponDetails implements Serializable {
 
 	public void setAdditionalInfo(String additionalInfo) {
 		this.additionalInfo = additionalInfo;
+	}
+
+	public Double getPaidPrice() {
+		return paidPrice;
+	}
+
+	public void setPaidPrice(Double paidPrice) {
+		this.paidPrice = paidPrice;
 	}
 
 	public String toJson(){

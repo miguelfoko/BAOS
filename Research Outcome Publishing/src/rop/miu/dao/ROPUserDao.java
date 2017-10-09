@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import rop.miu.beans.BaoAccessCoupon;
 import rop.miu.beans.BaoAdditionalInfo;
 import rop.miu.beans.BaoEmailAccount;
 import rop.miu.beans.BaoEmailTemplate;
@@ -127,6 +128,16 @@ public class ROPUserDao {
 		ArrayList<BaoNotification> list = new ArrayList<BaoNotification>();
 		for(Object o : l)
 			list.add((BaoNotification)o);
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static ArrayList<BaoAccessCoupon> getAllAccessCoupons(BaoUser baoUser) {
+		String req = "SELECT coupon FROM BaoAccessCoupon coupon WHERE coupon.userId = ? ORDER BY coupon.accessCouponId DESC";
+		List<Object> l = ROPCrudDao.selectManyElements(req, baoUser);
+		ArrayList<BaoAccessCoupon> list = new ArrayList<BaoAccessCoupon>();
+		for(Object o : l)
+			list.add((BaoAccessCoupon)o);
 		return list;
 	}
 	
