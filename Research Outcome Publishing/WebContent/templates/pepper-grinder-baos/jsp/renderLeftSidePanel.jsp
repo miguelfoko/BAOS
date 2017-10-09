@@ -1,4 +1,4 @@
-<div class="panel panel-info ui-widget-content">
+ <div class="panel panel-info ui-widget-content">
 	<c:if test="${panelToRender.sidePanelTitle != null}">
 		<div class="panel-heading ui-widget-content">
 			<h3 class="panel-title">
