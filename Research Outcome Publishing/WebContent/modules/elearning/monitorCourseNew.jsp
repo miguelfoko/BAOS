@@ -2,9 +2,9 @@
 	value="${applicationScope.languageManager.getLanguageValue('el_monitor_course', sessionScope.tag)}" /></h2>
 
 <div id="regForm">
-	<div id="form">
+	<div id="form" class="row">
 		<h5 class="subtitle"><c:out value="${applicationScope.languageManager.getLanguageValue('register_subtitle', sessionScope.tag)}" /></h5>
-		<form method="post" action="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('MonitorCourseNew')}" name="regForm" class="form">
+		<form method="post" action="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('MonitorCourseNew')}" name="regForm" class="form col-md-12">
 			<input type="hidden" id="modEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('authentication')}" />" />
 			<input type="hidden" id="actionEncryptedName" value="<c:out value="${applicationScope.encryptor.encrypt('check')}" />" />
 			<label class="auth_label" for="name"><c:out value="${applicationScope.languageManager.getLanguageValue('auth_name', sessionScope.tag)}" /><span class="required">*</span></label>
