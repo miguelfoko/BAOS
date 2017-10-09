@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.joda.time.DateTime;
 
 import rop.miu.ConfigManager;
+import rop.miu.beans.BaoAccessCoupon;
 import rop.miu.beans.BaoAccessRight;
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoUser;
@@ -147,6 +148,11 @@ public class ServletModel extends HttpServlet {
 	public void requestAuthentication(HttpServletRequest request, HttpServletResponse response, String redirect) throws ServletException, IOException{
     	request.setAttribute("auth_redirect", redirect);
     	request.getServletContext().getRequestDispatcher("/ModAuthentication").forward(request, response);
+    }
+	
+	public void requestPayment(HttpServletRequest request, HttpServletResponse response, BaoAccessCoupon coupon) throws ServletException, IOException{
+    	request.getSession().setAttribute("payment_access_coupon", coupon);
+    	request.getServletContext().getRequestDispatcher("/ModPayment").forward(request, response);
     }
 	
 	public void forwardToModule(HttpServletRequest request, HttpServletResponse response, String module) throws ServletException, IOException{

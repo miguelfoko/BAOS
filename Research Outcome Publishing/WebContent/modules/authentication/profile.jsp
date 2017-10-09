@@ -4,6 +4,7 @@
 			<c:set var="notification_tab_url" value="#mod_auth_tab_notification" />
 			<c:set var="research_summary_tab_url" value="#mod_auth_tab_research_summary" />
 			<c:set var="courses_summary_tab_url" value="#mod_auth_tab_courses_summary" />
+			<c:set var="transaction_tab_url" value="#mod_auth_tab_transaction" />
 			<c:if test="${mod_auth_active_tab != 3}">
 				<c:set var="notification_tab_url">
 					<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('notification-ajax')}" />
@@ -17,6 +18,11 @@
 			<c:if test="${mod_auth_active_tab != 5}">
 				<c:set var="courses_summary_tab_url">
 					<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('courses-ajax')}" />
+				</c:set>
+			</c:if>
+			<c:if test="${mod_auth_active_tab != 6}">
+				<c:set var="transaction_tab_url">
+					<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}&o=${applicationScope.encryptor.encrypt('transaction-ajax')}" />
 				</c:set>
 			</c:if>
 			<ul class="row">
@@ -44,6 +50,11 @@
 				<li class="col-md-2">
 					<a href="<c:out value="${courses_summary_tab_url}" />" title="">
 						<c:out value="${applicationScope.languageManager.getLanguageValue('auth_courses_summary', sessionScope.tag)}" />
+					</a>
+				</li>
+				<li class="col-md-2">
+					<a href="<c:out value="${transaction_tab_url}" />" title="">
+						<c:out value="${applicationScope.languageManager.getLanguageValue('auth_transaction', sessionScope.tag)}" />
 					</a>
 				</li>
 			</ul>
@@ -369,6 +380,11 @@
 			<c:if test="${mod_auth_active_tab == 5}">
 				<div id="mod_auth_tab_courses_summary" class="mod_auth_tab">
 					<c:import url="/modules/authentication/courses.jsp" />
+				</div>
+			</c:if>
+			<c:if test="${mod_auth_active_tab == 6}">
+				<div id="mod_auth_tab_transaction" class="mod_auth_tab">
+					<c:import url="/modules/authentication/transaction.jsp" />
 				</div>
 			</c:if>
 		</div>

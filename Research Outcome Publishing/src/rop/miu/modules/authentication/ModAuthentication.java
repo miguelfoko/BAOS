@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -14,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.joda.time.DateTime;
 
 import rop.miu.ConfigManager;
+import rop.miu.beans.BaoAccessCoupon;
+import rop.miu.beans.BaoAccessCouponDetails;
 import rop.miu.beans.BaoAdditionalInfo;
+import rop.miu.beans.BaoCouponType;
 import rop.miu.beans.BaoEmailAccount;
 import rop.miu.beans.BaoEmailTemplate;
 import rop.miu.beans.BaoNotification;
@@ -56,6 +58,8 @@ public class ModAuthentication extends ServletModel {
     		inclManager.setTitle(request, languageManager.getLanguageValue("auth_research_summary", getLangTag(request)));
     	if(activeTab == 5)
     		inclManager.setTitle(request, languageManager.getLanguageValue("auth_courses_summary", getLangTag(request)));
+    	if(activeTab == 6)
+    		inclManager.setTitle(request, languageManager.getLanguageValue("auth_transaction", getLangTag(request)));
 		inclManager.addJSP(request, "/modules/authentication/profile.jsp");
 		request.setAttribute("mod_auth_active_tab", activeTab);
 		inclManager.addJS(request, "/ressources/cropit/jquery.cropit.js");
@@ -243,6 +247,27 @@ public class ModAuthentication extends ServletModel {
 			}
 			setIncludesForProfile(request, 5);
 			returnRequest(request, response);
+			return;
+		}
+		
+		if(option.startsWith("transaction")){
+			ArrayList<BaoAccessCoupon> list = ROPUserDao.getAllAccessCoupons(getBaoUser(request));
+			request.setAttribute("transactionList", list);
+			if(option.endsWith("ajax")){
+				request.getServletContext().getRequestDispatcher("/modules/authentication/transaction.jsp").forward(request, response);
+				return;
+			}
+			setIncludesForProfile(request, 6);
+			returnRequest(request, response);
+			return;
+		}
+		
+		if(option.equals("test-payment")){
+			BaoAccessCouponDetails couponDetails = new BaoAccessCouponDetails(1, 2, 2000.0, "This transaction is to pay for subscription to the course \"Langages Formels\".");
+			BaoAccessCoupon coupon = new BaoAccessCoupon();
+			coupon.setAccessCouponDetailsObject(couponDetails);
+			coupon.setCouponTypeId(new BaoCouponType(1));
+			requestPayment(request, response, coupon);
 			return;
 		}
 	}
@@ -683,6 +708,7 @@ public class ModAuthentication extends ServletModel {
 			inclManager.addMenuItem(request, id, languageManager.getLanguageValue("auth_notification", getLangTag(request)), firstLinkPart + "&o=" + encryptor.encrypt("notification"), "bell");
 			inclManager.addMenuItem(request, id, languageManager.getLanguageValue("auth_research_summary", getLangTag(request)), firstLinkPart + "&o=" + encryptor.encrypt("research"), "book");
 			inclManager.addMenuItem(request, id, languageManager.getLanguageValue("auth_courses_summary", getLangTag(request)), firstLinkPart + "&o=" + encryptor.encrypt("courses"), "education");
+			inclManager.addMenuItem(request, id, languageManager.getLanguageValue("auth_transaction", getLangTag(request)), firstLinkPart + "&o=" + encryptor.encrypt("transaction"), "transfer");
 			inclManager.addMenuItem(request, id, languageManager.getLanguageValue("logout_title", getLangTag(request)), firstLinkPart + "&o=" + encryptor.encrypt("logout"), "log-out");
 		} catch (ROPCryptographyException e) {
 			

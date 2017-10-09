@@ -9,6 +9,7 @@ import rop.miu.beans.BaoAccessCoupon;
 import rop.miu.beans.BaoUser;
 import rop.miu.modules.ServletModel;
 import rop.miu.modules.payment.dao.ROPPaymentDao;
+import rop.miu.util.IncludeManager;
 import rop.miu.util.ROPEncryptor;
 import rop.miu.util.exceptions.ROPCryptographyException;
 import rop.miu.util.exceptions.ROPDaoException;
@@ -25,45 +26,55 @@ public class ModPayment extends ServletModel {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
+		IncludeManager inclManager = getIncludeManager(request);
+		String option = null;
+		try{
+			String parOpt = request.getParameter("o");
+			if(parOpt != null)
+				option = encryptor.decrypt(parOpt);
+		}catch(Exception e){
+			forward500(request, response);
+		}
+		
+		if(option == null || option.equals("do-pay") || request.getAttribute("payment_access_coupon") != null){
+			if(isConnected(request))
+				setIncludesForPayment(request);
+			else
+				requestAuthentication(request, response, "payment");
+			returnRequest(request, response);
+			return;
+		}
 	}
 
 	
+	private void setIncludesForPayment(HttpServletRequest request) throws ServletException, IOException {
+		IncludeManager inclManager = getIncludeManager(request);
+    	inclManager.setTitle(request, languageManager.getLanguageValue("payment_title", getLangTag(request)));
+		inclManager.addJSP(request, "/modules/payment/payment.jsp");
+		inclManager.addCSS(request, "/modules/payment/css/style.css");
+	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
-		ROPEncryptor encryptor = new ROPEncryptor();
-    	String action="";
-    	ROPPaymentDao dao = new ROPPaymentDao();
-    	if(request.getParameter("a") != null){
-    		try {
-	    		action = encryptor.decrypt(request.getParameter("a"));
-	    	} catch (ROPCryptographyException e) {
-				
-			}
-    		if (action.equalsIgnoreCase("")) {
-    			BaoUser user = (BaoUser)request.getSession();
-    			BaoAccessCoupon accessCoupon = new BaoAccessCoupon();
-    			accessCoupon.setAccessCouponState((short)0);
-    			//accessCoupon.setAccessCouponValidityEnd(request.getParameter(""));
-    			accessCoupon.setUserId(user);
-    			try {
-					dao.saveBaoAccessCoupon(accessCoupon);
-					//Envoyer le coupon en session et faire le retour de la requete
-					includeManager.addJSP(request, "/modules/payment/payment.jsp");
-					returnRequest(request, response);
-				} catch (ROPDaoException e) {
-				}
-    		}
-    		if (action.equalsIgnoreCase("")) {
-    			BaoAccessCoupon accessCoupon = (BaoAccessCoupon)request.getSession();
-    			accessCoupon.setAccessCouponState(Short.parseShort(request.getParameter("")));
-    			try {
-					dao.updateStatusOnBaoAccessCoupon(accessCoupon.getAccessCouponState(), accessCoupon);
-					includeManager.addJSP(request, "/modules/payment/payment.jsp");
-					returnRequest(request, response);
-				} catch (ROPDaoException e) {
-				}
-    		}
-    	}
+		IncludeManager inclManager = getIncludeManager(request);
+		String option = null;
+		try{
+			String parOpt = request.getParameter("o");
+			if(parOpt != null)
+				option = encryptor.decrypt(parOpt);
+		}catch(Exception e){
+			forward500(request, response);
+		}
+		
+		if(option == null || option.equals("do-pay") || request.getAttribute("payment_access_coupon") != null){
+			if(isConnected(request))
+				setIncludesForPayment(request);
+			else
+				requestAuthentication(request, response, "payment");
+			returnRequest(request, response);
+			return;
+		}
 	}
 
 }

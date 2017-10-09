@@ -1,8 +1,6 @@
 package rop.miu.modules.elearning;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -152,12 +150,8 @@ public class ModElearning extends ServletModel {
 			}
 			BaoCourse baoCourse = ROPElearningDao.getCourseById(Integer
 					.parseInt(courseId));
-
 			if (isConnected(request)) {
-				BaoUser baoU = (BaoUser) request.getSession().getAttribute(
-						"baoUser");
 				request.getSession().setAttribute("currentCourse", baoCourse);
-				request.getSession().setAttribute("baoUser", baoU);
 				includeManager.addJSP(request, "/modules/elearning/payCourse.jsp");
 				chooseMenu(request, response, 0);
 				this.returnRequest(request, response);
@@ -165,7 +159,6 @@ public class ModElearning extends ServletModel {
 			} else {
 				requestAuthentication(request, response, "elearning");
 				return;
-
 			}
 
 		}
