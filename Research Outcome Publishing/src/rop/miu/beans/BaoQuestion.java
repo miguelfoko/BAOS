@@ -44,12 +44,17 @@ public class BaoQuestion implements Serializable {
     @Basic(optional = false)
     @Column(name = "question_content", nullable = false, length = 2147483647)
     private String questionContent;
+    @Column(name = "question_attachment", length = 2147483647)
+    private String questionAttachment;
     @Basic(optional = false)
     @Column(name = "question_answer_proposals", nullable = false, length = 2147483647)
     private String questionAnswerProposals;
     @Basic(optional = false)
     @Column(name = "question_answer", nullable = false)
     private short questionAnswer;
+    @Basic(optional = false)
+    @Column(name = "question_mark", nullable = false)
+    private Double questionMark;
     @Basic(optional = false)
     @Column(name = "question_is_only_for_exam", nullable = false)
     private boolean questionIsOnlyForExam;
@@ -102,7 +107,23 @@ public class BaoQuestion implements Serializable {
         return questionContent;
     }
 
-    public void setQuestionContent(String questionContent) {
+    public String getQuestionAttachment() {
+		return questionAttachment;
+	}
+
+	public void setQuestionAttachment(String questionAttachment) {
+		this.questionAttachment = questionAttachment;
+	}
+
+	public Double getQuestionMark() {
+		return questionMark;
+	}
+
+	public void setQuestionMark(Double questionMark) {
+		this.questionMark = questionMark;
+	}
+
+	public void setQuestionContent(String questionContent) {
         this.questionContent = questionContent;
     }
 

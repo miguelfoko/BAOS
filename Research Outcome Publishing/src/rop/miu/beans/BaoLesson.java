@@ -48,6 +48,9 @@ public class BaoLesson implements Serializable {
     @Basic(optional = false)
     @Column(name = "lesson_name", nullable = false, length = 255)
     private String lessonName;
+    @Basic(optional = false)
+    @Column(name = "lesson_type", nullable = false)
+    private short lessonType;
     @Column(name = "lesson_logo", length = 255)
     private String lessonLogo;
     @Basic(optional = false)
@@ -90,9 +93,10 @@ public class BaoLesson implements Serializable {
         this.lessonId = lessonId;
     }
 
-    public BaoLesson(Integer lessonId, String lessonName, Date lessonStartTime, Date lessonEndTime, float lessonDifficultyLevel, String lessonContent, Date lessonCreationDate, short lessonState) {
+    public BaoLesson(Integer lessonId, String lessonName, short lessonType, Date lessonStartTime, Date lessonEndTime, float lessonDifficultyLevel, String lessonContent, Date lessonCreationDate, short lessonState) {
         this.lessonId = lessonId;
         this.lessonName = lessonName;
+        this.lessonType = lessonType;
         this.lessonStartTime = lessonStartTime;
         this.lessonEndTime = lessonEndTime;
         this.lessonDifficultyLevel = lessonDifficultyLevel;
@@ -117,7 +121,15 @@ public class BaoLesson implements Serializable {
         this.lessonName = lessonName;
     }
 
-    public Date getLessonStartTime() {
+    public short getLessonType() {
+		return lessonType;
+	}
+
+	public void setLessonType(short lessonType) {
+		this.lessonType = lessonType;
+	}
+
+	public Date getLessonStartTime() {
         return lessonStartTime;
     }
 

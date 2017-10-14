@@ -35,8 +35,7 @@ public class ModPayment extends ServletModel {
 		}catch(Exception e){
 			forward500(request, response);
 		}
-		
-		if(option == null || option.equals("do-pay") || request.getAttribute("payment_access_coupon") != null){
+		if(option == null || option.equals("do-pay") || request.getSession().getAttribute("payment_access_coupon") != null){
 			if(isConnected(request))
 				setIncludesForPayment(request);
 			else

@@ -3,6 +3,7 @@ package rop.miu.modules.elearning;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,11 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.joda.time.DateTime;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import rop.miu.ConfigManager;
+import rop.miu.beans.BaoAccessCoupon;
+import rop.miu.beans.BaoAccessCouponDetails;
 import rop.miu.beans.BaoAdditionalInfo;
+import rop.miu.beans.BaoCouponType;
 import rop.miu.beans.BaoCourse;
 import rop.miu.beans.BaoCourseTimetable;
 import rop.miu.beans.BaoCourseTimetablePK;
+import rop.miu.beans.BaoEmailAccount;
+import rop.miu.beans.BaoEmailTemplate;
 import rop.miu.beans.BaoExamination;
 import rop.miu.beans.BaoGroup;
 import rop.miu.beans.BaoIntervention;
@@ -39,6 +48,9 @@ import rop.miu.util.exceptions.ROPDaoException;
 import rop.miu.util.io.MIUMultipartFormParser;
 import rop.miu.util.io.Upload;
 import rop.miu.util.io.UploadCondition;
+import rop.miu.util.mail.Mail;
+import rop.miu.util.mail.MailSender;
+import rop.miu.util.mail.SMTPBundle;
 
 /**
  * 
@@ -137,7 +149,7 @@ public class ModElearning extends ServletModel {
 		}
 
 		if (option.equals("subscribeCourse")) {
-			includeManager.setTitle(request, languageManager.getLanguageValue(
+			/*includeManager.setTitle(request, languageManager.getLanguageValue(
 					"el_subscribe_course", langTag));
 
 			String courseId = null;
@@ -159,8 +171,13 @@ public class ModElearning extends ServletModel {
 			} else {
 				requestAuthentication(request, response, "elearning");
 				return;
-			}
-
+			}*/
+			BaoAccessCouponDetails couponDetails = new BaoAccessCouponDetails(1, 2, 2000.0, "This transaction is to pay for subscription to the course \"Langages Formels\".");
+			BaoAccessCoupon coupon = new BaoAccessCoupon();
+			coupon.setAccessCouponDetailsObject(couponDetails);
+			coupon.setCouponTypeId(new BaoCouponType(1));
+			requestPayment(request, response, coupon);
+			return;
 		}
 		if (option.equals("timetableCourse")) {
 			includeManager.setTitle(request, languageManager.getLanguageValue(
@@ -1275,6 +1292,51 @@ public class ModElearning extends ServletModel {
 		}
 
 		setElearningGuidesMenu(request);
+	}
+	
+	private void sendConfirmEmailToInstructor(BaoUser user, HttpServletRequest request) throws ServletException, IOException {
+		ArrayList<BaoEmailAccount> accounts = ROPUserDao.getValidEmailAccounts(user);
+		
+		final GsonBuilder builder = new GsonBuilder();
+        final Gson gson = builder.create();
+        
+        BaoEmailTemplate template = ROPUserDao.getEmailTemplateByName("antwort_single_column");
+        String content = "";
+        if(template != null && template.getEmailTemplateState() == ROPConstants.STATE_ACTIVATED){
+        	content = template.getEmailTemplateContent();
+        	String contextBaseUrl = request.getRequestURL().toString().split(request.getContextPath())[0]+request.getContextPath();
+        	content = ROPConstants.setParam("logo", contextBaseUrl+"/ressources/images/logo-baos.png", content);
+        	content = ROPConstants.setParam("title", languageManager.getLanguageValue("register_confirm_title", getLangTag(request)), content);
+        	content = ROPConstants.setParam("subtitle", languageManager.getLanguageValue("register_confirm_subtitle", getLangTag(request)), content);
+        	String mc = languageManager.getLanguageValue("register_confirm_content", getLangTag(request));
+        	mc = ROPConstants.setParam("login", user.getUserLogin(), mc);
+        	mc = ROPConstants.setParam("password", languageManager.getLanguageValue("pass_you_specified", getLangTag(request)), mc);
+        	try{
+        		mc = ROPConstants.setParam("confirm_url", contextBaseUrl+"/index.jsp?m="+encryptor.encrypt("authentication")+"&o="+encryptor.encrypt("validate-"+user.getUserId()), mc);
+        	}catch(Exception ex){
+        		
+        	}
+        	content = ROPConstants.setParam("main_content", mc, content);
+        	content = ROPConstants.setParam("content_blocks", "", content);
+        	content = ROPConstants.setParam("year", (Calendar.getInstance().get(Calendar.YEAR))+"", content);
+        }else{
+        	
+        }
+		Mail mail = new Mail();
+		mail.addToReceiver(user.getUserEmail());
+		mail.setContent(content);
+		mail.setSubject(user.getUserLogin()+" : "+languageManager.getLanguageValue("register_confirm_subtitle", getLangTag(request)));
+		
+		for(BaoEmailAccount acc : accounts){
+			SMTPBundle smtpBundle = gson.fromJson(acc.getEmailAccountDesc(), SMTPBundle.class);
+			try{
+				smtpBundle.setPassword(encryptor.decrypt(smtpBundle.getPassword()));
+				MailSender.sendMail(mail, MailSender.smtpBundleToProperties(smtpBundle));
+				break;
+			}catch(Exception ex){
+				
+			}
+		}
 	}
 
 }

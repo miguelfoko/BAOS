@@ -134,7 +134,7 @@ public class BaoAccessCoupon implements Serializable {
 	
 	public void setAccessCouponDetails(BaoAccessCouponDetails accessCouponDetailsObject) {
 		this.accessCouponDetails = accessCouponDetailsObject.toJson();
-		setAccessCouponDetailsObject(accessCouponDetailsObject);
+		setAccessCouponDetailsObject();
 	}
 
 	public BaoAccessCouponDetails getAccessCouponDetailsObject() {

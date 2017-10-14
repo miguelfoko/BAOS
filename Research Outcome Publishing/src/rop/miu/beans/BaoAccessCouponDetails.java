@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder;
 public class BaoAccessCouponDetails implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer couponTypeId;
-    private Serializable paidElementId;
+    private Integer paidElementId;
     private Double paidPrice;
     private String bankTransactionNum;
     private String paymentMode;
@@ -18,7 +18,11 @@ public class BaoAccessCouponDetails implements Serializable {
     private String paymentDesc;
     private String additionalInfo;
     
-    public BaoAccessCouponDetails(Integer couponTypeId, Serializable paidElementId, Double paidPrice,
+    public BaoAccessCouponDetails() {
+		
+	}
+
+	public BaoAccessCouponDetails(Integer couponTypeId, Integer paidElementId, Double paidPrice,
 			String paymentDesc) {
 		this.couponTypeId = couponTypeId;
 		this.paidElementId = paidElementId;
@@ -35,11 +39,11 @@ public class BaoAccessCouponDetails implements Serializable {
 		this.couponTypeId = couponTypeId;
 	}
 
-	public Serializable getPaidElementId() {
+	public Integer getPaidElementId() {
 		return paidElementId;
 	}
 
-	public void setPaidElementId(Serializable paidElementId) {
+	public void setPaidElementId(Integer paidElementId) {
 		this.paidElementId = paidElementId;
 	}
 

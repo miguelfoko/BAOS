@@ -1,6 +1,6 @@
 <h4 class="subtitle">
 	<c:out
-		value="${applicationScope.languageManager.getLanguageValue('el_lesson_course', sessionScope.tag)}" />
+		value="${applicationScope.languageManager.getLanguageValue('el_question_course', sessionScope.tag)}" />
 </h4>
 
 <c:choose>

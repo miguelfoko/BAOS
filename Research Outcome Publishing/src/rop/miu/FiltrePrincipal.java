@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import rop.miu.beans.BaoUser;
 import rop.miu.dao.ROPUserDao;
+import rop.miu.util.GuiStatus;
 import rop.miu.util.IncludeManager;
 import rop.miu.util.ROPConstants;
 import rop.miu.util.ROPEncryptor;
@@ -101,6 +102,12 @@ public class FiltrePrincipal implements Filter {
 		}catch(Exception e){
 			
 		}
+		if(request.getParameter("c") != null){
+			validateCookie(request, response);
+			request.getServletContext().getRequestDispatcher("/ressources/jsp/cookie.jsp").forward(request, response);
+			return;
+		}
+		informAboutCookie(langTag, request, response);
 		
 		String contextPath = request.getContextPath();
 		String chemin = request.getRequestURI().substring(contextPath.length() );
@@ -181,6 +188,32 @@ public class FiltrePrincipal implements Filter {
 			}
 		}catch(Exception e){
 			throw new ROPApplException(e);
+		}
+	}
+	
+	private void informAboutCookie(String tag, HttpServletRequest request, HttpServletResponse response){
+		try {
+			if(request.getCookies() != null){
+				for(Cookie cookie : request.getCookies()){
+					if(cookie.getName().equalsIgnoreCase(ROPConstants.COOKIE_AGREE_LABEL))
+						return;
+				}
+			}
+			int sid = getIncludeManager(request).createInfoStatus(languageManager.getLanguageValue("auth_cookie", tag), request);
+			getIncludeManager(request).addStatusInfoAction(request, sid, GuiStatus.JAVASCRIPT_FUNCTION, "iAgreeCookie()", languageManager.getLanguageValue("auth_cookie_ok", tag));
+		}catch(Exception e){
+			
+		}
+	}
+	
+	private void validateCookie(HttpServletRequest request, HttpServletResponse response){
+		try {
+			Cookie cook = new Cookie(ROPConstants.COOKIE_AGREE_LABEL, encryptor.encrypt("true"));
+			cook.setPath("/");
+			cook.setMaxAge(2 * 7 * 24 * 60 * 60);
+			response.addCookie(cook);
+		}catch(Exception e){
+			
 		}
 	}
 

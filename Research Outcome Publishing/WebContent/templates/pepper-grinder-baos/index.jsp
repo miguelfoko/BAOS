@@ -60,8 +60,7 @@
 		      <c:choose>
 			      <c:when test="${baoUser == null}">
 				      <ul id="pgb-profile-nav-bar" class="nav navbar-nav navbar-right">
-				        <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('login')}"><span class="glyphicon glyphicon-log-in pgb-color-green"></span> Sign-In</a></li>
-				        <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('register')}"><span class="glyphicon glyphicon-plus-sign pgb-color-green"></span> Sign-Up</a></li>
+				        <li><a href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('authentication')}" />&o=${applicationScope.encryptor.encrypt('login')}"><span class="glyphicon glyphicon-log-in pgb-color-green"></span> <c:out value="${applicationScope.languageManager.getLanguageValue('auth_login', sessionScope.tag)}" /></a></li>
 				      </ul>
 			      </c:when>
 			      <c:otherwise>
@@ -216,26 +215,23 @@
 								<h4><c:out value="${applicationScope.languageManager.getLanguageValue('pages_follow_baos', sessionScope.tag)}" /></h4>
 							</div>
 						</div>
-									
-						
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="btn-group">
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/facebook.png" />" alt="Facebook"  width="30px" height="30px" /></a>
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/linkedin.png" />" alt="Linkedin" width="30px" height="30px" /></a>
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/twitter.png" />" alt="Twitter" width="30px" height="30px" /></a>
-							<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/youtube.png" />" alt="Youtube" width="30px" height="30px" /></a>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<div class="btn-group">
+									<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/facebook.png" />" alt="Facebook"  width="30px" height="30px" /></a>
+									<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/linkedin.png" />" alt="Linkedin" width="30px" height="30px" /></a>
+									<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/twitter.png" />" alt="Twitter" width="30px" height="30px" /></a>
+									<a class="btn btn-default btn-sm" href="#"><img src="<c:url value="/templates/pepper-grinder-baos/images/youtube.png" />" alt="Youtube" width="30px" height="30px" /></a>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-						
 					</div>
 				</div>
 			</div>
 			<div id="pgb-footer-bottom-row" class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div id="pgb-copyright" class="col-md-10">
-						<c:out value="${applicationScope.languageManager.getLanguageValue('copyright', sessionScope.tag)} ${configManager.currentYear}, ${configManager.platformTitle}. ${applicationScope.languageManager.getLanguageValue('all_right_reserved', sessionScope.tag)}" escapeXml="false" />
+						<c:out value="${applicationScope.languageManager.getLanguageValue('copyright', sessionScope.tag)} ${configManager.currentYear} ${configManager.platformTitle} ${applicationScope.languageManager.getLanguageValue('all_right_reserved', sessionScope.tag)}" escapeXml="false" />
 					</div>
 					<div id="pgb-return-to-top" class="col-md-1 col-md-offset-1 text-center">
 						<a href="#scroll-top"><span class="glyphicon glyphicon-chevron-up"></span></a>

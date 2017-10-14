@@ -43,6 +43,7 @@ public class ROPConstants {
 				DAO_FILE = "rop/miu/dao/dao.cfg.rop.xml",
 				
 				COOKIE_SESSION_ID_LABEL = "baossrid",
+				COOKIE_AGREE_LABEL = "baosagreecookie",
 				
 				AVATAR_TYPE_CLASSIC = "classic",
 				AVATAR_TYPE_GRAVATAR = "gravatar",

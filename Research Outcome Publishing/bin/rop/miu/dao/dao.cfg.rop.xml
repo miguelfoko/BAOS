@@ -17,6 +17,7 @@
     <mapping class="rop.miu.beans.BaoComment"></mapping>
     <mapping class="rop.miu.beans.BaoCouponType"></mapping>
     <mapping class="rop.miu.beans.BaoCourse"></mapping>
+    <mapping class="rop.miu.beans.BaoCourseLevel"></mapping>
     <mapping class="rop.miu.beans.BaoCourseTimetable"></mapping>
     <mapping class="rop.miu.beans.BaoEmailAccount"></mapping>
     <mapping class="rop.miu.beans.BaoEmailBugReport"></mapping>

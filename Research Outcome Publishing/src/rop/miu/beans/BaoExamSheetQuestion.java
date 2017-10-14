@@ -36,6 +36,8 @@ public class BaoExamSheetQuestion implements Serializable {
     private Short examSheetQuestionAnswer;
     @Column(name = "exam_sheet_question_justification", length = 2147483647)
     private String examSheetQuestionJustification;
+    @Column(name = "exam_sheet_question_attachment", length = 2147483647)
+    private String examSheetQuestionAttachment;
     @Column(name = "exam_sheet_question_answer_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date examSheetQuestionAnswerDate;
@@ -99,7 +101,15 @@ public class BaoExamSheetQuestion implements Serializable {
         this.examSheetQuestionMark = examSheetQuestionMark;
     }
 
-    public BaoExamSheet getBaoExamSheet() {
+    public String getExamSheetQuestionAttachment() {
+		return examSheetQuestionAttachment;
+	}
+
+	public void setExamSheetQuestionAttachment(String examSheetQuestionAttachment) {
+		this.examSheetQuestionAttachment = examSheetQuestionAttachment;
+	}
+
+	public BaoExamSheet getBaoExamSheet() {
         return baoExamSheet;
     }
 

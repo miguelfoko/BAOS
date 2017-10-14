@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -50,6 +51,9 @@ public class BaoCourse implements Serializable {
     @Column(name = "course_logo", length = 255)
     private String courseLogo;
     @Basic(optional = false)
+    @Column(name = "course_price", nullable = false)
+    private Double coursePrice;
+    @Basic(optional = false)
     @Column(name = "course_start_time", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date courseStartTime;
@@ -68,6 +72,9 @@ public class BaoCourse implements Serializable {
     @Basic(optional = false)
     @Column(name = "course_state", nullable = false)
     private short courseState;
+    @JoinColumn(name = "course_level_id", referencedColumnName = "course_level_id", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private BaoCourseLevel courseLevelId;
     @JoinTable(name = "bao_course_timetable", joinColumns = {
         @JoinColumn(name = "course_id", referencedColumnName = "course_id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "timetable_id", referencedColumnName = "timetable_id", nullable = false)})
@@ -91,9 +98,10 @@ public class BaoCourse implements Serializable {
         this.courseId = courseId;
     }
 
-    public BaoCourse(Integer courseId, String courseName, Date courseStartTime, int courseLength, String courseLengthUnit, Date courseCreationDate, short courseState) {
+    public BaoCourse(Integer courseId, String courseName, Double coursePrice, Date courseStartTime, int courseLength, String courseLengthUnit, Date courseCreationDate, short courseState) {
         this.courseId = courseId;
         this.courseName = courseName;
+        this.coursePrice = coursePrice;
         this.courseStartTime = courseStartTime;
         this.courseLength = courseLength;
         this.courseLengthUnit = courseLengthUnit;
@@ -221,7 +229,23 @@ public class BaoCourse implements Serializable {
         this.baoStudentCourseList = baoStudentCourseList;
     }
 
-    @Override
+    public Double getCoursePrice() {
+		return coursePrice;
+	}
+
+	public void setCoursePrice(Double coursePrice) {
+		this.coursePrice = coursePrice;
+	}
+
+	public BaoCourseLevel getCourseLevelId() {
+		return courseLevelId;
+	}
+
+	public void setCourseLevelId(BaoCourseLevel courseLevelId) {
+		this.courseLevelId = courseLevelId;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (courseId != null ? courseId.hashCode() : 0);
