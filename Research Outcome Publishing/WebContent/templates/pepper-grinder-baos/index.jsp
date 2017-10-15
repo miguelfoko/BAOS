@@ -230,10 +230,15 @@
 			</div>
 			<div id="pgb-footer-bottom-row" class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<div id="pgb-copyright" class="col-md-10">
+					<div id="pgb-copyright" class="col-md-9">
 						<c:out value="${applicationScope.languageManager.getLanguageValue('copyright', sessionScope.tag)} ${configManager.currentYear} ${configManager.platformTitle} ${applicationScope.languageManager.getLanguageValue('all_right_reserved', sessionScope.tag)}" escapeXml="false" />
 					</div>
-					<div id="pgb-return-to-top" class="col-md-1 col-md-offset-1 text-center">
+					<div id="pgb-language" class="col-md-2 text-center">
+						<c:forEach var="langLink" items="${langItems}">
+							<c:out value="${langLink}" escapeXml="false" />
+						</c:forEach>
+					</div>
+					<div id="pgb-return-to-top" class="col-md-1 text-center">
 						<a href="#scroll-top"><span class="glyphicon glyphicon-chevron-up"></span></a>
 					</div>
 				</div>

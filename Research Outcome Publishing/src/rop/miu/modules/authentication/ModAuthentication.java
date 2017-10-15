@@ -24,6 +24,7 @@ import rop.miu.beans.BaoUser;
 import rop.miu.dao.ROPCrudDao;
 import rop.miu.dao.ROPUserDao;
 import rop.miu.modules.ServletModel;
+import rop.miu.util.GuiStatus;
 import rop.miu.util.IncludeManager;
 import rop.miu.util.ROPConstants;
 import rop.miu.util.exceptions.ROPCryptographyException;
@@ -133,6 +134,24 @@ public class ModAuthentication extends ServletModel {
 			setIncludeForResetPassword(request);
 			returnRequest(request, response);
 			return;
+		}
+		
+		if(option.equals("resend_mail")){
+			if(request.getParameter("uid") != null){
+				try {
+					String uid = encryptor.decrypt(request.getParameter("uid"));
+					Integer id = Integer.parseInt(uid);
+					BaoUser user = ROPUserDao.getUserById(id);
+					if(user == null)
+						throw new Exception("");
+					sendConfirmEmail(user, request);
+					request.getServletContext().getRequestDispatcher("/modules/authentication/email.jsp").forward(request, response);
+					return;
+				} catch (Exception e) {
+					throw new IOException("");
+				}
+			}
+			throw new IOException("");
 		}
 		
 		if(option.equals("register")){
@@ -405,7 +424,8 @@ public class ModAuthentication extends ServletModel {
 				sendConfirmEmail(user, request);
 				
 				//setBaoUser(request, user);
-				inclManager.createSuccessStatus(request, languageManager.getLanguageValue("register_success", getLangTag(request)));
+				int sid = inclManager.createSuccessStatus(request, languageManager.getLanguageValue("register_success", getLangTag(request)));
+				inclManager.addStatusDangerAction(request, sid, GuiStatus.JAVASCRIPT_FUNCTION, "sendConfirmEmail({'m' : '"+encryptor.encrypt("authentication")+"', 'o' : '"+encryptor.encrypt("resend_mail")+"', 'uid' : '"+encryptor.encrypt(user.getUserId()+"")+"'}, '"+languageManager.getLanguageValue("auth_email_sent", getLangTag(request))+"')", languageManager.getLanguageValue("auth_resend_email", getLangTag(request)), "envelope");
 				//setIncludesForProfile(request, 1);
 				setIncludeForLogin(request);
 				returnRequest(request, response);
@@ -544,10 +564,10 @@ public class ModAuthentication extends ServletModel {
 				
 				user.setAdditionalInfoId(ROPUserDao.saveAdditionalInfo(user.getAdditionalInfoId()));
 				user = ROPUserDao.saveUser(user);
-				if(emailChanged || loginChanged || passChanged)
+				/*if(emailChanged || loginChanged || passChanged)
 					sendConfirmChangesEmail(user, request);
 				if(emailChanged)
-					sendEditConfirmEmail(user, lastEmail, request);
+					sendEditConfirmEmail(user, lastEmail, request);*/
 				baoUser = user;
 				
 				setBaoUser(request, user);

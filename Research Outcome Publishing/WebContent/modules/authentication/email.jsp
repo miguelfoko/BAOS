@@ -1,0 +1,1 @@
+<h1><c:out value="${applicationScope.languageManager.getLanguageValue('auth_email_sent', sessionScope.tag)}" /></h1>

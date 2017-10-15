@@ -88,7 +88,7 @@ public class FiltrePrincipal implements Filter {
 			ArrayList<String> names = configManager.getLangNames();
 			ArrayList<String> link = new ArrayList<String>();
 			for(int i = 0; i < tags.size(); i++){
-				link.add("<a href=\"index.jsp?l="+encryptor.encrypt("s")+"&v="+encryptor.encrypt(tags.get(i))+"\">"+names.get(i)+"</a>");
+				link.add("<a class=\"btn btn-default\" href=\"index.jsp?l="+encryptor.encrypt("s")+"&v="+encryptor.encrypt(tags.get(i))+"\">"+names.get(i)+"</a>");
 			}
 			request.setAttribute("langItems", link);
 			
@@ -200,7 +200,7 @@ public class FiltrePrincipal implements Filter {
 				}
 			}
 			int sid = getIncludeManager(request).createInfoStatus(languageManager.getLanguageValue("auth_cookie", tag), request);
-			getIncludeManager(request).addStatusInfoAction(request, sid, GuiStatus.JAVASCRIPT_FUNCTION, "iAgreeCookie()", languageManager.getLanguageValue("auth_cookie_ok", tag));
+			getIncludeManager(request).addStatusInfoAction(request, sid, GuiStatus.JAVASCRIPT_FUNCTION, "iAgreeCookie('"+languageManager.getLanguageValue("auth_cookie_validated", tag)+"')", languageManager.getLanguageValue("auth_cookie_ok", tag), "check");
 		}catch(Exception e){
 			
 		}
