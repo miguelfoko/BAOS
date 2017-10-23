@@ -41,20 +41,25 @@
 			<c:otherwise>
 			</c:otherwise>
 		</c:choose>
-		<form method="post"
-			action="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('AddIntervention')}"
-			name="elForm" class="form">
-			<textarea name="comment" id="comment" cols=50 rows=5
-				class="el_text_zone" required>
-						<c:out value="${param.comment}" />
+		<div id="form" class="row">
+			<form method="post"
+				action="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('AddIntervention')}"
+				name="elForm" class="form form-inline col-md-12">
+				<div class="form-group">
+					<textarea name="comment" id="comment" cols=50 rows=5
+						class="el_text_zone auth_text_zone form-control" required>
+								<c:out value="${param.comment}" />
 					</textarea>
-			<br /> <input type="submit"
-				value="<c:out value="${applicationScope.languageManager.getLanguageValue('el_submit', sessionScope.tag)}" />"
-				class="el_button" /> <input type="reset"
-				value="<c:out value="${applicationScope.languageManager.getLanguageValue('el_reset', sessionScope.tag)}" />"
-				class="el_button" /><br />
-
-		</form>
+				</div>
+				<div class="form-group">
+					<input type="submit"
+						value="<c:out value="${applicationScope.languageManager.getLanguageValue('el_submit', sessionScope.tag)}" />"
+						class="el_button auth_button btn btn-success" /> <input type="reset"
+						value="<c:out value="${applicationScope.languageManager.getLanguageValue('el_reset', sessionScope.tag)}" />"
+						class="el_button" />
+				</div>
+			</form>
+		</div>
 	</c:when>
 	<c:otherwise>
 		<a

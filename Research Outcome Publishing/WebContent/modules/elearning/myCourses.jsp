@@ -2,15 +2,17 @@
 	<c:when test="${courseTaught == true}">
 		<c:choose>
 			<c:when test="${userCourse!=null && userCourse.size()>= 1}">
-				<table>
-					<c:forEach items="${userCourse}" var="uC">
-						<p>
-							<a
-								href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewCourse')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
-									value="${uC['courseName']}" /></a>
-						</p>
-					</c:forEach>
-				</table>
+				<section class="col-sm-8 table-responsive">
+					<table class="table table-bordered table-striped">
+						<c:forEach items="${userCourse}" var="uC">
+							<p>
+								<a
+									href="<c:url value="index.jsp?m=${applicationScope.encryptor.encrypt('elearning')}" />&o=${applicationScope.encryptor.encrypt('viewCourse')}&d=${applicationScope.encryptor.encrypt(uC['courseId'])}"><c:out
+										value="${uC['courseName']}" /></a>
+							</p>
+						</c:forEach>
+					</table>
+				</section>
 			</c:when>
 			<c:otherwise>
 				<c:out

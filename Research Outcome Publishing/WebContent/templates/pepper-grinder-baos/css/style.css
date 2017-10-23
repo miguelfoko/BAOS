@@ -73,6 +73,7 @@ body{height: 100%; padding-top: 92px; border: none !important; font-family: Treb
 
 #pgb-footer-top-row .list-group .list-group-item{border:none; background-color:transparent; margin-left:-10px !important;}
 #pgb-footer-top-row .btn-group{border:none; background-color:transparent; margin-left:-30px !important;}
+#pgb-footer-top-row .header-footer {color:rgb(76, 175, 80);}
 
 @media (max-width:1200px){.pgb-to-hide-1200{display: none !important;}}
 @media (max-width:1070px){.pgb-to-hide-1070{display: none !important;}}

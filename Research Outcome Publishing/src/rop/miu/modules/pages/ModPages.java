@@ -13,7 +13,6 @@ import rop.miu.modules.ServletModel;
 import rop.miu.modules.pages.util.CreateMenu;
 import rop.miu.util.ROPEncryptor;
 import rop.miu.util.exceptions.ROPCryptographyException;
-import rop.miu.util.io.MIUIOUtilMethod;
 
 public class ModPages extends ServletModel {
 	private static final long serialVersionUID = 1L;
@@ -173,6 +172,74 @@ public class ModPages extends ServletModel {
 					
 					includeManager.setTitle(request, languageManager.getLanguageValue("pages_guide_for_monitors", langTag));
 					includeManager.addJSP(request, "/modules/pages/en_GB/guideForMonitors.jsp");
+					returnRequest(request, response);
+				}
+	    	}
+    		if (action.equalsIgnoreCase("guideForReviewers")) {
+    			if (langTag.equalsIgnoreCase("fr_FR")){
+    				File fileMenu=new File((getClass().getResource("/../.." + "/modules/pages/fr_FR/menus/guideForReviewers-menu.txt").getFile()).replace("%20", " "));
+					menuList = CreateMenu.generateMenu(fileMenu);    				
+    				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("pages_guide_for_reviewers", langTag));
+    				for (int i=0; i<menuList.size(); i++){
+						try {
+							includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+						} catch(Exception e) {
+						
+						}
+					}
+    				
+    				includeManager.setTitle(request, languageManager.getLanguageValue("pages_guide_for_reviewers", langTag));
+					includeManager.addJSP(request, "/modules/pages/fr_FR/guideForReviewers.jsp");
+					returnRequest(request, response);
+				}
+				if (langTag.equalsIgnoreCase("en_GB")){
+					File fileMenu=new File((getClass().getResource("/../.." + "/modules/pages/en_GB/menus/guideForReviewers-menu.txt").getFile()).replace("%20", " "));
+					menuList = CreateMenu.generateMenu(fileMenu);
+					int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("pages_guide_for_reviewers", langTag));
+					for (int i=0; i<menuList.size(); i++){
+						try {
+							includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+						} catch(Exception e) {
+						
+						}
+					}
+					
+					includeManager.setTitle(request, languageManager.getLanguageValue("pages_guide_for_reviewers", langTag));
+					includeManager.addJSP(request, "/modules/pages/en_GB/guideForReviewers.jsp");
+					returnRequest(request, response);
+				}
+	    	}
+    		if (action.equalsIgnoreCase("guideForEditors")) {
+    			if (langTag.equalsIgnoreCase("fr_FR")){
+    				File fileMenu=new File((getClass().getResource("/../.." + "/modules/pages/fr_FR/menus/guideForEditors-menu.txt").getFile()).replace("%20", " "));
+					menuList = CreateMenu.generateMenu(fileMenu);    				
+    				int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("pages_guide_for_editors", langTag));
+    				for (int i=0; i<menuList.size(); i++){
+						try {
+							includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+						} catch(Exception e) {
+						
+						}
+					}
+    				
+    				includeManager.setTitle(request, languageManager.getLanguageValue("pages_guide_for_editors", langTag));
+					includeManager.addJSP(request, "/modules/pages/fr_FR/guideForEditors.jsp");
+					returnRequest(request, response);
+				}
+				if (langTag.equalsIgnoreCase("en_GB")){
+					File fileMenu=new File((getClass().getResource("/../.." + "/modules/pages/en_GB/menus/guideForEditors-menu.txt").getFile()).replace("%20", " "));
+					menuList = CreateMenu.generateMenu(fileMenu);
+					int id = getIncludeManager(request).createSideMenu(request, languageManager.getLanguageValue("pages_guide_for_editors", langTag));
+					for (int i=0; i<menuList.size(); i++){
+						try {
+							includeManager.addMenuItem(request, id,menuList.keySet().toArray()[i].toString(),"#"+menuList.get(menuList.keySet().toArray()[i].toString()));
+						} catch(Exception e) {
+						
+						}
+					}
+					
+					includeManager.setTitle(request, languageManager.getLanguageValue("pages_guide_for_editors", langTag));
+					includeManager.addJSP(request, "/modules/pages/en_GB/guideForEditors.jsp");
 					returnRequest(request, response);
 				}
 	    	}
